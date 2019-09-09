@@ -15,7 +15,7 @@ namespace Lab2
 
         public static double GetAverage(int num1, int num2, int num3, int num4)
         {
-            int sum = GetSum(num1, num2, num3, num4);
+            double sum = GetSum(num1, num2, num3, num4);
             return sum / 4;
         }
 
@@ -30,7 +30,7 @@ namespace Lab2
             return num1 - num2;
         }
 
-        public static int CombineStrings(string s1, string s2)
+        public static string CombineStrings(string s1, string s2)
         {
             string result = s1 + s2;
             return result;
