@@ -21,9 +21,9 @@ namespace Assignment1
             str2 = str2.PadLeft(9);
             output.WriteLine(str2);
             output.WriteLine("------------ ---------- --------");
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                str2 = System.Convert.ToString(str[i],8);
+                str2 = System.Convert.ToString(str[i], 8);
                 str2 = str2.PadLeft(12);
                 output.Write(str2);
 
@@ -55,7 +55,7 @@ namespace Assignment1
             float max = -10000;
             float sum = 0;
             float average = 0;
-            for(int i = 0; i< 5; i++)
+            for (int i = 0; i< 5; i++)
             {
                 if (flo[i] < min) min = flo[i];
                 if (flo[i] > max) max = flo[i];
