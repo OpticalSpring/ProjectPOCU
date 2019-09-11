@@ -55,7 +55,7 @@ namespace Assignment1
             float max = -10000;
             float sum = 0;
             float average = 0;
-            for (int i = 0; i< 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 if (flo[i] < min) min = flo[i];
                 if (flo[i] > max) max = flo[i];
