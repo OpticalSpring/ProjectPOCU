@@ -31,6 +31,7 @@ namespace Lab3
             //Console.WriteLine("세금 = " + Math.Round(tax, 2));
             //Console.WriteLine("팁 = " + Math.Round(tip, 2));
             //Console.WriteLine("세금 및 팁까지 포함한 가격 = " + Math.Round(all, 2));
+            all = Math.Round(all, 2);
             return all;
         }
 
@@ -44,7 +45,7 @@ namespace Lab3
         {
             double count = double.Parse(input.ReadLine());
             uint a = (uint)(totalCost / count);
-            if(totalCost%count == 0)
+            if (totalCost % count == 0)
             {
 
             }
