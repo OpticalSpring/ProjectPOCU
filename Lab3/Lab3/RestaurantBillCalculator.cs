@@ -15,6 +15,7 @@ namespace Lab3
                 str[i] = double.Parse(input.ReadLine());
                 sum += str[i];
             }
+            
             string s = input.ReadLine();
             if (s != null && s != " ")
             {
@@ -43,7 +44,16 @@ namespace Lab3
         {
             double count = double.Parse(input.ReadLine());
             uint a = (uint)(totalCost / count);
-            return a + 1;
+            if(totalCost%count == 0)
+            {
+
+            }
+            else
+            {
+                a++;
+            }
+            
+            return a;
         }
     }
 }
