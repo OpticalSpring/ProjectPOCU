@@ -26,10 +26,10 @@ namespace Lab3
             double all = sum + tax + tip;
 
 
-            Console.WriteLine("음식 가격 = " + Math.Round(sum, 2));
-            Console.WriteLine("세금 = " + Math.Round(tax, 2));
-            Console.WriteLine("팁 = " + Math.Round(tip, 2));
-            Console.WriteLine("세금 및 팁까지 포함한 가격 = " + Math.Round(all,2));
+            //Console.WriteLine("음식 가격 = " + Math.Round(sum, 2));
+            //Console.WriteLine("세금 = " + Math.Round(tax, 2));
+            //Console.WriteLine("팁 = " + Math.Round(tip, 2));
+            //Console.WriteLine("세금 및 팁까지 포함한 가격 = " + Math.Round(all, 2));
             return all;
         }
 
