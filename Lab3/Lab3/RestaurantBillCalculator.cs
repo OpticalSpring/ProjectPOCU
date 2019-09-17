@@ -15,7 +15,12 @@ namespace Lab3
                 str[i] = double.Parse(input.ReadLine());
                 sum += str[i];
             }
-            str[5] = double.Parse(input.ReadLine());
+            string s = input.ReadLine();
+            if (s != null && s != " ")
+            {
+                str[5] = double.Parse(s);
+            }
+           
             double tax = sum * 0.05;
             double tip = (sum + tax) * str[5] / 100;
             double all = sum + tax + tip;
@@ -38,7 +43,7 @@ namespace Lab3
         {
             double count = double.Parse(input.ReadLine());
             uint a = (uint)(totalCost / count);
-            return a+1;
+            return a + 1;
         }
     }
 }
