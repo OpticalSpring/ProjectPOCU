@@ -15,16 +15,23 @@ namespace Lab3
                 str[i] = double.Parse(input.ReadLine());
                 sum += str[i];
             }
-            str[5] = double.Parse(input.ReadLine());
+            
+            string s = input.ReadLine();
+            if (s != null && s != " ")
+            {
+                str[5] = double.Parse(s);
+            }
+           
             double tax = sum * 0.05;
             double tip = (sum + tax) * str[5] / 100;
             double all = sum + tax + tip;
 
 
-            Console.WriteLine("음식 가격 = " + Math.Round(sum, 2));
-            Console.WriteLine("세금 = " + Math.Round(tax, 2));
-            Console.WriteLine("팁 = " + Math.Round(tip, 2));
-            Console.WriteLine("세금 및 팁까지 포함한 가격 = " + Math.Round(all,2));
+            //Console.WriteLine("음식 가격 = " + Math.Round(sum, 2));
+            //Console.WriteLine("세금 = " + Math.Round(tax, 2));
+            //Console.WriteLine("팁 = " + Math.Round(tip, 2));
+            //Console.WriteLine("세금 및 팁까지 포함한 가격 = " + Math.Round(all, 2));
+            all = Math.Round(all, 2);
             return all;
         }
 
@@ -38,7 +45,16 @@ namespace Lab3
         {
             double count = double.Parse(input.ReadLine());
             uint a = (uint)(totalCost / count);
-            return a+1;
+            if (totalCost % count == 0)
+            {
+
+            }
+            else
+            {
+                a++;
+            }
+            
+            return a;
         }
     }
 }
