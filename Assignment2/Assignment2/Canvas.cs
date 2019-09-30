@@ -13,18 +13,26 @@ namespace Assignment2
             IsoscelesTriangle,
             Circle
         }
+
+
         public static char[,] Draw(uint width, uint height, EShape shape)
         {
             uint widthAll = width + 4;
             uint heightAll = height + 4;
-            uint wV = 0, hV = 0;
+            uint wV = 0;
             char[,] shapeValue = new char[heightAll, widthAll];
             if (width == 0 || height == 0)
             {
                 return shapeValue;
             }
-
-            switch (shape)
+            for (uint i = 0; i < heightAll; i++)
+            {
+                for (uint j = 0; j < widthAll; j++)
+                {
+                    shapeValue[i, j] = ' ';
+                }
+            }
+                    switch (shape)
             {
                 case EShape.Rectangle:
                     for (uint i = 0; i < heightAll; i++)
@@ -146,11 +154,12 @@ namespace Assignment2
 
             
 
-
-
-
-
             return shapeValue;
+        }
+
+        internal static bool IsShape(char[,] canvas, EShape shape)
+        {
+            return true;
         }
     }
 }
