@@ -159,7 +159,47 @@ namespace Assignment2
 
         internal static bool IsShape(char[,] canvas, EShape shape)
         {
-            return true;
+            switch (shape)
+            {
+                case EShape.Circle:
+                    if(shape == EShape.Circle)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case EShape.IsoscelesRightTriangle:
+                    if (shape == EShape.IsoscelesRightTriangle)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case EShape.IsoscelesTriangle:
+                    if (shape == EShape.IsoscelesTriangle)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                case EShape.Rectangle:
+                    if (shape == EShape.Rectangle)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default:
+                    return false;
+            }
         }
     }
 }
