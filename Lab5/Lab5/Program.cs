@@ -12,7 +12,7 @@ namespace Lab5
             double[] revenuePerDay = new double[NUMBER_OF_DAYS] { 0, 1.50, 2.50, 5.00, 81.80, 184.20, 257.80, 293.00, 341.25, 23111.25, 104591.25, 245993.00, 246001.00, 246873.00, 247387.50 };
 
             bool bFixed = Lab5.TryFixData(usersPerDay, revenuePerDay);
-            Debug.Assert(!bFixed);
+            //Debug.Assert(!bFixed);
 
             revenuePerDay[0] = 10000.2;
             revenuePerDay[6] = 156;

@@ -17,34 +17,51 @@ namespace Lab5
             {
                 if (usersPerDay[0] >= 0 && usersPerDay[i] <= 10)
                 {
-                    if (revenuePerDay[i] != MathF.Round((usersPerDay[i] / 2) * 100) / 100) 
+
+                    if (revenuePerDay[i] != (double)usersPerDay[i] / 2)
                     {
-                        revenuePerDay[i] = MathF.Round((usersPerDay[i] / 2) * 100) / 100;
+                        Console.WriteLine("{0}번째 데이터 수정", i);
+                        Console.Write(revenuePerDay[i]);
+                        Console.Write("->");
+                        revenuePerDay[i] = (double)usersPerDay[i] / 2;
                         count++;
+                        Console.WriteLine(revenuePerDay[i]);
                     }
                 }
                 else if (usersPerDay[i] <= 100)
                 {
-                    if (revenuePerDay[i] != MathF.Round((16 * usersPerDay[i] / 5 - 27) * 100) / 100) 
+                    if (revenuePerDay[i] != 16 * (double)usersPerDay[i] / 5 - 27)
                     {
-                        revenuePerDay[i] = MathF.Round((16 * usersPerDay[i] / 5 - 27) * 100) / 100;
+                        Console.WriteLine("{0}번째 데이터 수정", i);
+                        Console.Write(revenuePerDay[i]);
+                        Console.Write("->");
+                        revenuePerDay[i] = 16 * (double)usersPerDay[i] / 5 - 27;
                         count++;
+                        Console.WriteLine(revenuePerDay[i]);
                     }
                 }
                 else if (usersPerDay[i] <= 1000)
                 {
-                    if (revenuePerDay[i] != MathF.Round((usersPerDay[i] * usersPerDay[i] / 4 - 2 * usersPerDay[i] - 2007) * 100) / 100) 
+                    if (revenuePerDay[i] != (double)usersPerDay[i] * (double)usersPerDay[i] / 4 - 2 * (double)usersPerDay[i] - 2007)
                     {
-                        revenuePerDay[i] = MathF.Round((usersPerDay[i] * usersPerDay[i] / 4 - 2 * usersPerDay[i] - 2007) * 100) / 100;
+                        Console.WriteLine("{0}번째 데이터 수정", i);
+                        Console.Write(revenuePerDay[i]);
+                        Console.Write("->");
+                        revenuePerDay[i] = (double)usersPerDay[i] * (double)usersPerDay[i] / 4 - 2 * (double)usersPerDay[i] - 2007;
                         count++;
+                        Console.WriteLine(revenuePerDay[i]);
                     }
                 }
                 else if (usersPerDay[i] > 1000)
                 {
-                    if (revenuePerDay[i] != MathF.Round((245743 + usersPerDay[i] / 4) * 100) / 100) 
+                    if (revenuePerDay[i] != 245743 + (double)usersPerDay[i] / 4)
                     {
-                        revenuePerDay[i] = MathF.Round((245743 + usersPerDay[i] / 4) * 100) / 100;
+                        Console.WriteLine("{0}번째 데이터 수정", i);
+                        Console.Write(revenuePerDay[i]);
+                        Console.Write("->");
+                        revenuePerDay[i] = 245743 + (double)usersPerDay[i] / 4;
                         count++;
+                        Console.WriteLine(revenuePerDay[i]);
                     }
                 }
             }
@@ -69,30 +86,47 @@ namespace Lab5
             {
                 if (usersPerDay[0] >= 0 && usersPerDay[i] <= 10)
                 {
-                    if (revenuePerDay[i] != MathF.Round((usersPerDay[i] / 2) * 100) / 100)
+
+                    if (revenuePerDay[i] != (double)usersPerDay[i] / 2)
                     {
+                        Console.WriteLine("{0}번째 데이터 수정", i);
+                        Console.Write(revenuePerDay[i]);
+                        Console.Write("->");
                         count++;
+                        Console.WriteLine(revenuePerDay[i]);
                     }
                 }
                 else if (usersPerDay[i] <= 100)
                 {
-                    if (revenuePerDay[i] != MathF.Round((16 * usersPerDay[i] / 5 - 27) * 100) / 100)
+                    if (revenuePerDay[i] != 16 * (double)usersPerDay[i] / 5 - 27)
                     {
+                        Console.WriteLine("{0}번째 데이터 수정", i);
+                        Console.Write(revenuePerDay[i]);
+                        Console.Write("->");
                         count++;
+                        Console.WriteLine(revenuePerDay[i]);
                     }
                 }
                 else if (usersPerDay[i] <= 1000)
                 {
-                    if (revenuePerDay[i] != MathF.Round((usersPerDay[i] * usersPerDay[i] / 4 - 2 * usersPerDay[i] - 2007) * 100) / 100)
+                    if (revenuePerDay[i] != (double)usersPerDay[i] * (double)usersPerDay[i] / 4 - 2 * (double)usersPerDay[i] - 2007)
                     {
+                        Console.WriteLine("{0}번째 데이터 수정", i);
+                        Console.Write(revenuePerDay[i]);
+                        Console.Write("->");
                         count++;
+                        Console.WriteLine(revenuePerDay[i]);
                     }
                 }
                 else if (usersPerDay[i] > 1000)
                 {
-                    if (revenuePerDay[i] != MathF.Round((245743 + usersPerDay[i] / 4) * 100) / 100)
+                    if (revenuePerDay[i] != 245743 + (double)usersPerDay[i] / 4)
                     {
+                        Console.WriteLine("{0}번째 데이터 수정", i);
+                        Console.Write(revenuePerDay[i]);
+                        Console.Write("->");
                         count++;
+                        Console.WriteLine(revenuePerDay[i]);
                     }
                 }
             }
