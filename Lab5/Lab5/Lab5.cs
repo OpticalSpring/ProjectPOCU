@@ -13,6 +13,7 @@ namespace Lab5
             double trueValue = 0.0;
             if (usersPerDay.Length != revenuePerDay.Length || usersPerDay.Length == 0 || revenuePerDay.Length == 0)
             {
+                Console.WriteLine("Return False");
                 return false;
             }
             int count = 0;
@@ -31,7 +32,7 @@ namespace Lab5
                 }
                 else if (usersPerDay[i] <= 100)
                 {
-                    trueValue = Math.Round((16 * (double)usersPerDay[i] / 5 - 27) * 100) /100;
+                    trueValue = Math.Round((16 * (double)usersPerDay[i] / 5 - 27) * 100) / 100;
                     Console.WriteLine(trueValue);
                     if (revenuePerDay[i] != trueValue)
                     {
@@ -63,12 +64,14 @@ namespace Lab5
                     }
                 }
             }
-            if (count == 0)
+            if (count != 0)
             {
+                Console.WriteLine("Return True");
                 return true;
             }
             else
             {
+                Console.WriteLine("Return False");
                 return false;
             }
         }
