@@ -163,7 +163,7 @@ namespace Assignment2
         public static bool IsShape(char[,] canvas, EShape shape)
         {
             char[,] newCanvas = Draw((uint)canvas.GetLength(1) - 4, (uint)canvas.GetLength(0) - 4, shape);
-            if (newCanvas.GetLength(0) == 0)
+            if (newCanvas.GetLength(0) == 0 || newCanvas.GetLength(1) == 0 || canvas.GetLength(0) == 0 || canvas.GetLength(1) == 0)
             {
                 return false;
             }
