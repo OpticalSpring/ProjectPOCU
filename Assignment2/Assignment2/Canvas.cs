@@ -32,7 +32,7 @@ namespace Assignment2
                     shapeValue[i, j] = ' ';
                 }
             }
-                    switch (shape)
+            switch (shape)
             {
                 case EShape.Rectangle:
                     for (uint i = 0; i < heightAll; i++)
@@ -58,12 +58,11 @@ namespace Assignment2
                 case EShape.IsoscelesRightTriangle:
                     if (width != height)
                     {
-                        char[,] n = new char[0, 0];
-                        return n;
+                        return new char[0, 0];
                     }
                     for (int i = 0; i < heightAll; i++)
                     {
-                        
+
                         for (uint j = 0; j < widthAll; j++)
                         {
                             if (i == 0 || i == heightAll - 1)
@@ -77,7 +76,7 @@ namespace Assignment2
 
 
                         }
-                        for(uint j = 0; j < wV+1; j++)
+                        for (uint j = 0; j < wV + 1; j++)
                         {
                             if (i > 1 && i < heightAll - 2 && j > 1 && j < widthAll - 2)
                             {
@@ -85,14 +84,18 @@ namespace Assignment2
                             }
                         }
                         wV++;
-                       
+
                     }
                     break;
                 case EShape.IsoscelesTriangle:
-                    if (width != height * 2 - 1) 
+                    if (width != height * 2 - 1)
                     {
-                        char[,] n = new char[0, 0];
-                        return n;
+                        return new char[0, 0];
+                    }
+
+                    if (width != height)
+                    {
+                        return new char[0, 0];
                     }
                     for (uint i = 0; i < heightAll; i++)
                     {
@@ -110,21 +113,20 @@ namespace Assignment2
 
 
                         }
-                        if(i > 1 && i < heightAll - 2)
+                        if (i > 1 && i < heightAll - 2)
                         {
-                            for (uint j = widthAll / 2 - wV; j < widthAll / 2 + wV+1; j++) 
+                            for (uint j = widthAll / 2 - wV; j < widthAll / 2 + wV + 1; j++)
                             {
                                 shapeValue[i, j] = '*';
                             }
-                        wV++;
+                            wV++;
                         }
                     }
                     break;
                 case EShape.Circle:
-                    if (width % 2 == 0) 
+                    if (width % 2 == 0)
                     {
-                        char[,] n = new char[0, 0];
-                        return n;
+                        return new char[0, 0];
                     }
                     for (uint i = 0; i < heightAll; i++)
                     {
@@ -142,7 +144,7 @@ namespace Assignment2
 
                             int xLen = (int)Math.Abs(widthAll / 2 - i);
                             int yLen = (int)Math.Abs(heightAll / 2 - j);
-                            if (xLen * xLen + yLen * yLen <= (width / 2) * (width / 2)) 
+                            if (xLen * xLen + yLen * yLen <= (width / 2) * (width / 2))
                             {
                                 shapeValue[i, j] = '*';
                             }
@@ -150,55 +152,52 @@ namespace Assignment2
                     }
                     break;
             }
-            
 
-            
+
+
 
             return shapeValue;
         }
 
         internal static bool IsShape(char[,] canvas, EShape shape)
         {
-            switch (shape)
+            char[,] newCanvas = Draw((uint)canvas.GetLength(1) - 4, (uint)canvas.GetLength(0) - 4, shape);
+            if (newCanvas.GetLength(0) == 0)
             {
-                case EShape.Circle:
-                    if(shape == EShape.Circle)
+                return false;
+            }
+            printCanvas(newCanvas);
+            int count = 0;
+            for (int i = 0; i < canvas.GetLength(0); i++)
+            {
+                for (int j = 0; j < canvas.GetLength(1); j++)
+                {
+                    if (canvas[i, j] != newCanvas[i, j])
                     {
-                        return true;
+                        count++;
                     }
-                    else
-                    {
-                        return false;
-                    }
-                case EShape.IsoscelesRightTriangle:
-                    if (shape == EShape.IsoscelesRightTriangle)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                case EShape.IsoscelesTriangle:
-                    if (shape == EShape.IsoscelesTriangle)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                case EShape.Rectangle:
-                    if (shape == EShape.Rectangle)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                default:
-                    return false;
+                }
+            }
+            Console.WriteLine("{0}, {1}, count : {2}, shape : {3}", (uint)canvas.GetLength(0), (uint)canvas.GetLength(1), count, shape);
+            if (count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private static void printCanvas(char[,] canvas)
+        {
+            for (int i = 0; i < canvas.GetLength(0); i++)
+            {
+                for (int j = 0; j < canvas.GetLength(1); j++)
+                {
+                    Console.Write(canvas[i, j]);
+                }
+
+                Console.WriteLine();
             }
         }
     }
