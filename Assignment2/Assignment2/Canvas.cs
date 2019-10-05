@@ -160,7 +160,7 @@ namespace Assignment2
             return shapeValue;
         }
 
-        internal static bool IsShape(char[,] canvas, EShape shape)
+        public static bool IsShape(char[,] canvas, EShape shape)
         {
             char[,] newCanvas = Draw((uint)canvas.GetLength(1) - 4, (uint)canvas.GetLength(0) - 4, shape);
             if (newCanvas.GetLength(0) == 0)
