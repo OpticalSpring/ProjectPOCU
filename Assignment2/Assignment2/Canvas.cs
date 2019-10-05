@@ -93,10 +93,7 @@ namespace Assignment2
                         return new char[0, 0];
                     }
 
-                    if (width != height)
-                    {
-                        return new char[0, 0];
-                    }
+                    
                     for (uint i = 0; i < heightAll; i++)
                     {
 
@@ -125,6 +122,10 @@ namespace Assignment2
                     break;
                 case EShape.Circle:
                     if (width % 2 == 0)
+                    {
+                        return new char[0, 0];
+                    }
+                    if (width != height)
                     {
                         return new char[0, 0];
                     }
@@ -166,7 +167,6 @@ namespace Assignment2
             {
                 return false;
             }
-            printCanvas(newCanvas);
             int count = 0;
             for (int i = 0; i < canvas.GetLength(0); i++)
             {
@@ -186,18 +186,6 @@ namespace Assignment2
             else
             {
                 return true;
-            }
-        }
-        private static void printCanvas(char[,] canvas)
-        {
-            for (int i = 0; i < canvas.GetLength(0); i++)
-            {
-                for (int j = 0; j < canvas.GetLength(1); j++)
-                {
-                    Console.Write(canvas[i, j]);
-                }
-
-                Console.WriteLine();
             }
         }
     }
