@@ -23,7 +23,7 @@ namespace Assignment2
             char[,] shapeValue = new char[heightAll, widthAll];
             if (width == 0 || height == 0)
             {
-                return shapeValue;
+                return new char[0, 0];
             }
             for (uint i = 0; i < heightAll; i++)
             {
