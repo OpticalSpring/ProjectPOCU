@@ -18,7 +18,7 @@ namespace Lab6
             return rData;
         }
 
-        public static void TransformArray(int[] data, EMode mode)
+        public static void TransformArray(int[] data)
         {
 
         }
