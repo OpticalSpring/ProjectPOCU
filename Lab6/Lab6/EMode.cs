@@ -1,8 +1,6 @@
-﻿
-public enum EMode
+﻿public enum EMode
 {
     HorizontalMirror,
     VerticalMirror,
     DiagonalShift
 }
-
