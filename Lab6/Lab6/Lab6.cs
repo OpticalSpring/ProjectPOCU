@@ -40,11 +40,11 @@ namespace Lab6
                             }
                             else if (i == 0)
                             {
-                                rData[i, j] = data[data.GetLength(0) - 1, j-1];
+                                rData[i, j] = data[data.GetLength(0) - 1, j - 1];
                             }
                             else if (j == 0)
                             {
-                                rData[i, j] = data[i-1, data.GetLength(1) - 1];
+                                rData[i, j] = data[i - 1, data.GetLength(1) - 1];
                             }
                             else
                             {
