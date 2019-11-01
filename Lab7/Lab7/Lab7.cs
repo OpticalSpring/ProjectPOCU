@@ -24,7 +24,7 @@ namespace Lab7
             }
             Console.WriteLine();
 
-            if (count > 30)
+            if (count > 100)
             {
                 Console.WriteLine("InfinityStop");
                 return false;
@@ -38,7 +38,7 @@ namespace Lab7
             uint shift = array[0] + array[array[0]];
             uint shift2 = array[0] - array[array[0]];
 
-            if (shift2 > 0 && shift2 < array.GetLength(0) && count < 15)
+            if (shift2 > 0 && shift2 < array.GetLength(0) && count < 50)
             {
                 if (array[shift2] == 0)
                 {

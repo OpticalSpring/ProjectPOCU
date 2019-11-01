@@ -91,6 +91,9 @@ namespace Lab7
             array = new uint[] { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 };
             bPass = Lab7.PlayGame(array); // true
 
+            array = new uint[] { 1, 1, 1, 1, 1, 0 };
+            bPass = Lab7.PlayGame(array); // true
+
             Debug.Assert(bPass);
         }
     }
