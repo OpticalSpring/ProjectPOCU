@@ -9,8 +9,10 @@ namespace Lab7
             count = 0;
             if (PlayGame2(array) == true)
             {
+                Console.WriteLine("True");
                 return true;
             }
+            Console.WriteLine("False");
             return false;
         }
 
@@ -22,12 +24,12 @@ namespace Lab7
             }
             Console.WriteLine();
 
-            if (count > 10)
+            if (count > 30)
             {
                 Console.WriteLine("InfinityStop");
                 return false;
             }
-            if (array.GetLength(0) < 2 || array[0] + 1 >= array.GetLength(0) || array[array.GetLength(0) - 1] != 0)
+            if (array.GetLength(0) < 2 || array[0] >= array.GetLength(0) || array[array.GetLength(0) - 1] != 0)
             {
                 Console.WriteLine("Error");
                 return false;
@@ -36,11 +38,11 @@ namespace Lab7
             uint shift = array[0] + array[array[0]];
             uint shift2 = array[0] - array[array[0]];
 
-            if (shift2 > 0 && shift2 < array.GetLength(0))
+            if (shift2 > 0 && shift2 < array.GetLength(0) && count < 15)
             {
                 if (array[shift2] == 0)
                 {
-                    Console.WriteLine("True");
+                    Console.WriteLine("Tr");
                     return true;
                 }
                 else
@@ -60,7 +62,7 @@ namespace Lab7
             {
                 if (array[shift] == 0)
                 {
-                    Console.WriteLine("True");
+                    Console.WriteLine("Tr");
                     return true;
                 }
                 else
@@ -75,7 +77,7 @@ namespace Lab7
                     }
                 }
             }
-            Console.WriteLine("False");
+            Console.WriteLine("Fa");
             return false;
         }
     }
