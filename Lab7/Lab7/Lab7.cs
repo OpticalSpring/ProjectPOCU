@@ -27,7 +27,7 @@ namespace Lab7
                 Console.WriteLine("InfinityStop");
                 return false;
             }
-            if (array.GetLength(0) < 2 || array[0] >= array.GetLength(0))
+            if (array.GetLength(0) < 2 || array[0] >= array.GetLength(0) || array[array.GetLength(0)-1] != 0)
             {
                 Console.WriteLine("Error");
                 return false;
