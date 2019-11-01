@@ -3,11 +3,10 @@ namespace Lab7
 {
     public static class Lab7
     {
-        static int count = 0;
         public static bool PlayGame(uint[] array)
         {
-            count = 0;
-            if (PlayGame2(array) == true)
+            int count = 0;
+            if (PlayGame2(array, ref count) == true)
             {
                 Console.WriteLine("True");
                 return true;
@@ -16,7 +15,7 @@ namespace Lab7
             return false;
         }
 
-        public static bool PlayGame2(uint[] array)
+        public static bool PlayGame2(uint[] array, ref int count)
         {
             for (int i = 0; i < array.GetLength(0); i++)
             {
@@ -52,7 +51,7 @@ namespace Lab7
                     uint[] newArray = array;
                     newArray[0] = shift2;
 
-                    if (PlayGame2(newArray) == true)
+                    if (PlayGame2(newArray, ref count) == true)
                     {
                         return true;
                     }
@@ -71,7 +70,7 @@ namespace Lab7
                     Console.WriteLine("RShift");
                     uint[] newArray = array;
                     newArray[0] = shift;
-                    if (PlayGame2(newArray) == true)
+                    if (PlayGame2(newArray, ref count) == true)
                     {
                         return true;
                     }
