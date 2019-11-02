@@ -8,7 +8,7 @@ namespace Assignment3
 
         public static int GetNumberOfSteps(int numDiscs)
         {
-            if(numDiscs <= 0)
+            if(numDiscs < 0)
             {
                 return -1;
             }
@@ -27,6 +27,7 @@ namespace Assignment3
         }
         public static List<List<int>[]> SolveTowerOfHanoi(int numDiscs)
         {
+            List<List<int>[]> snapshot;
             return null;
         }
     }
