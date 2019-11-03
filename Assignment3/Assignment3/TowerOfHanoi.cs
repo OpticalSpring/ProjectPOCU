@@ -13,16 +13,16 @@ namespace Assignment3
                 return -1;
             }
             int count = 0;
-            Hanoi(ref count, numDiscs, 1, 3, 2);
+            CountHanoi(ref count, numDiscs, 1, 3, 2);
             return count;
         }
 
-        public static void Hanoi(ref int count, int num, int from, int to, int other)
+        public static void CountHanoi(ref int count, int num, int from, int to, int other)
         {
             if (num == 0) { return; }
-            Hanoi(ref count, num - 1, from, other, to);
+            CountHanoi(ref count, num - 1, from, other, to);
             count++;
-            Hanoi(ref count, num - 1, other, to, from);
+            CountHanoi(ref count, num - 1, other, to, from);
         }
         public static List<List<int>[]> SolveTowerOfHanoi(int numDiscs)
         {
@@ -45,16 +45,16 @@ namespace Assignment3
                 nSnapshot[0][0].Add(numDiscs - i);
             }
             int count = 0;
-            
-            HanoiPlus(ref count, numDiscs, 1, 3, 2, ref nSnapshot);
+
+            PlusHanoi(ref count, numDiscs, 1, 3, 2, ref nSnapshot);
             return nSnapshot;
         }
 
 
-        public static void HanoiPlus(ref int count, int num, int from, int to, int other, ref List<List<int>[]> nSnapshot)
+        public static void PlusHanoi(ref int count, int num, int from, int to, int other, ref List<List<int>[]> nSnapshot)
         {
             if (num == 0) { return; }
-            HanoiPlus(ref count, num - 1, from, other, to, ref nSnapshot);
+            PlusHanoi(ref count, num - 1, from, other, to, ref nSnapshot);
             count++;
             nSnapshot.Add(new List<int>[3]);
             nSnapshot[count] = new List<int>[]
@@ -81,7 +81,7 @@ namespace Assignment3
 
             nSnapshot[count][to - 1].Add(num);
             nSnapshot[count][from - 1].Remove(num);
-            HanoiPlus(ref count, num - 1, other, to, from, ref nSnapshot);
+            PlusHanoi(ref count, num - 1, other, to, from, ref nSnapshot);
         }
     }
 }
