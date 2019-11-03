@@ -27,6 +27,7 @@ namespace Assignment3
         }
         public static List<List<int>[]> SolveTowerOfHanoi(int numDiscs)
         {
+            
             List<List<int>[]> nSnapshot = new List<List<int>[]>();
             nSnapshot.Add(new List<int>[3]);
             nSnapshot[0] = new List<int>[]
@@ -35,6 +36,11 @@ namespace Assignment3
                  new List<int> {  },
                   new List<int> {  },
             };
+
+            if (numDiscs < 1)
+            {
+                return nSnapshot;
+            }
             for (int i = 0; i < numDiscs; i++)
             {
                 nSnapshot[0][0].Add(numDiscs - i);
