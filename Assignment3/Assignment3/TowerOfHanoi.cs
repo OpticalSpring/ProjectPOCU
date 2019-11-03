@@ -46,15 +46,15 @@ namespace Assignment3
             }
             int count = 0;
 
-            PlusHanoi(ref count, numDiscs, 1, 3, 2, ref nSnapshot);
+            CountHanoi2(ref count, numDiscs, 1, 3, 2, ref nSnapshot);
             return nSnapshot;
         }
 
 
-        public static void PlusHanoi(ref int count, int num, int from, int to, int other, ref List<List<int>[]> nSnapshot)
+        public static void CountHanoi2(ref int count, int num, int from, int to, int other, ref List<List<int>[]> nSnapshot)
         {
             if (num == 0) { return; }
-            PlusHanoi(ref count, num - 1, from, other, to, ref nSnapshot);
+            CountHanoi2(ref count, num - 1, from, other, to, ref nSnapshot);
             count++;
             nSnapshot.Add(new List<int>[3]);
             nSnapshot[count] = new List<int>[]
@@ -81,7 +81,7 @@ namespace Assignment3
 
             nSnapshot[count][to - 1].Add(num);
             nSnapshot[count][from - 1].Remove(num);
-            PlusHanoi(ref count, num - 1, other, to, from, ref nSnapshot);
+            CountHanoi2(ref count, num - 1, other, to, from, ref nSnapshot);
         }
     }
 }
