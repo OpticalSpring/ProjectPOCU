@@ -13,17 +13,16 @@ namespace Assignment3
                 return -1;
             }
             int count = 0;
-            hanoi(ref count, numDiscs, 1, 3, 2);
+            Hanoi(ref count, numDiscs, 1, 3, 2);
             return count;
         }
 
-        public static void hanoi(ref int count, int num, int from, int to, int other)
+        public static void Hanoi(ref int count, int num, int from, int to, int other)
         {
             if (num == 0) { return; }
-            hanoi(ref count, num - 1, from, other, to);
+            Hanoi(ref count, num - 1, from, other, to);
             count++;
-            Console.WriteLine("{0}->{1} - {2}", from, to, count);
-            hanoi(ref count, num - 1, other, to, from);
+            Hanoi(ref count, num - 1, other, to, from);
         }
         public static List<List<int>[]> SolveTowerOfHanoi(int numDiscs)
         {
@@ -47,15 +46,15 @@ namespace Assignment3
             }
             int count = 0;
             
-            hanoiPlus(ref count, numDiscs, 1, 3, 2, ref nSnapshot);
+            HanoiPlus(ref count, numDiscs, 1, 3, 2, ref nSnapshot);
             return nSnapshot;
         }
 
 
-        public static void hanoiPlus(ref int count, int num, int from, int to, int other, ref List<List<int>[]> nSnapshot)
+        public static void HanoiPlus(ref int count, int num, int from, int to, int other, ref List<List<int>[]> nSnapshot)
         {
             if (num == 0) { return; }
-            hanoiPlus(ref count, num - 1, from, other, to, ref nSnapshot);
+            HanoiPlus(ref count, num - 1, from, other, to, ref nSnapshot);
             count++;
             nSnapshot.Add(new List<int>[3]);
             nSnapshot[count] = new List<int>[]
@@ -79,34 +78,10 @@ namespace Assignment3
             {
                 nSnapshot[count][2].Add(a3[i]);
             }
-            Console.WriteLine("Copy {0}->{1}", count - 1, count);
 
             nSnapshot[count][to - 1].Add(num);
             nSnapshot[count][from - 1].Remove(num);
-            Console.WriteLine($"Step {count}. --------------------------------------");
-            Console.WriteLine($"Start: [ {string.Join(", ", nSnapshot[count][0])} ]");
-            Console.WriteLine($"Aux: [ {string.Join(", ", nSnapshot[count][1])} ]");
-            Console.WriteLine($"End: [ {string.Join(", ", nSnapshot[count][2])} ]");
-            hanoiPlus(ref count, num - 1, other, to, from, ref nSnapshot);
-        }
-
-        private static void printSnapshots(List<List<int>[]> snapshots)
-        {
-            for (int i = 0; i < snapshots.Count; i++)
-            {
-                if (i == 0)
-                {
-                    Console.WriteLine($"Initial State --------------------------------------");
-                }
-                else
-                {
-                    Console.WriteLine($"Step {i}. --------------------------------------");
-                }
-
-                Console.WriteLine($"Start: [ {string.Join(", ", snapshots[i][0])} ]");
-                Console.WriteLine($"Aux: [ {string.Join(", ", snapshots[i][1])} ]");
-                Console.WriteLine($"End: [ {string.Join(", ", snapshots[i][2])} ]");
-            }
+            HanoiPlus(ref count, num - 1, other, to, from, ref nSnapshot);
         }
     }
 }

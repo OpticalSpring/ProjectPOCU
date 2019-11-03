@@ -23,9 +23,8 @@ namespace Assignment3
 
             printSnapshots(TowerOfHanoi.SolveTowerOfHanoi(0));
             printSnapshots(TowerOfHanoi.SolveTowerOfHanoi(-1));
-            printSnapshots(TowerOfHanoi.SolveTowerOfHanoi(4));
+            printSnapshots(TowerOfHanoi.SolveTowerOfHanoi(1));
 
-            printSnapshots(snapshots);
             Debug.Assert(isEqual(snapshots[0][0], new List<int> { 3, 2, 1 }));
             Debug.Assert(snapshots[0][1].Count == 0);
             Debug.Assert(snapshots[0][2].Count == 0);
@@ -57,7 +56,6 @@ namespace Assignment3
             Debug.Assert(snapshots[7][1].Count == 0);
             Debug.Assert(isEqual(snapshots[7][2], new List<int> { 3, 2, 1 }));
 
-            printSnapshots(snapshots);
         }
 
         private static void printSnapshots(List<List<int>[]> snapshots)
