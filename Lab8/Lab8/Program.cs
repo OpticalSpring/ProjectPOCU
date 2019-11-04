@@ -22,6 +22,7 @@ namespace Lab8
             minifiedList = null;
             list = Lab8.PrettifyList(minifiedList);
             Debug.Assert(null == list);
+
         }
     }
 }
