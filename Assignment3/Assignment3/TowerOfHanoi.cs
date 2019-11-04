@@ -28,6 +28,10 @@ namespace Assignment3
         {
             
             List<List<int>[]> nSnapshot = new List<List<int>[]>();
+            if (numDiscs < 1)
+            {
+                return nSnapshot;
+            }
             nSnapshot.Add(new List<int>[3]);
             nSnapshot[0] = new List<int>[]
             {
@@ -36,10 +40,6 @@ namespace Assignment3
                   new List<int> {  },
             };
 
-            if (numDiscs < 1)
-            {
-                return nSnapshot;
-            }
             for (int i = 0; i < numDiscs; i++)
             {
                 nSnapshot[0][0].Add(numDiscs - i);

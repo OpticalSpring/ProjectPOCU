@@ -20,10 +20,13 @@ namespace Assignment3
 
             printSnapshots(snapshots);
 
-
+            var bb = TowerOfHanoi.SolveTowerOfHanoi(0);
             printSnapshots(TowerOfHanoi.SolveTowerOfHanoi(0));
             printSnapshots(TowerOfHanoi.SolveTowerOfHanoi(-1));
             printSnapshots(TowerOfHanoi.SolveTowerOfHanoi(1));
+            Debug.Assert(bb[0][0].Count == 0);
+            Debug.Assert(bb[0][1].Count == 0);
+            Debug.Assert(bb[0][2].Count == 0);
 
             Debug.Assert(isEqual(snapshots[0][0], new List<int> { 3, 2, 1 }));
             Debug.Assert(snapshots[0][1].Count == 0);
