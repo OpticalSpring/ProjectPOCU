@@ -4,7 +4,7 @@
     {
         public static string PrettifyList(string s)
         {
-            if(s == null)
+            if (s == null)
             {
                 return null;
             }
@@ -37,7 +37,7 @@
                     rString += (char)n2Count;
                     rString += ") ";
                 }
-                else if (s[i] == '/')
+                else if (s[i] == '/' && n2Count > 96)
                 {
                     rString += "\r\n        ";
                     rString += "- ";
