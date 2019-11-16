@@ -41,13 +41,15 @@ namespace Lab9
             Dictionary<string, int> reDic = new Dictionary<string, int>();
 
 
-            List<string> dd = new List<string>();
+            List<string> dd1 = new List<string>();
+            List<int> dd2 = new List<int>();
 
             for (int i = 0; i < co; i++)
             {
-                if (!dd.Equals(keys[i]))
+                if (!dd1.Equals(keys[i]) && !dd2.Equals(values[i]))
                 {
-                    dd.Add(keys[i]);
+                    dd1.Add(keys[i]);
+                    dd2.Add(values[i]);
                     reDic.Add(keys[i], values[i]);
                 }
             }
@@ -56,7 +58,9 @@ namespace Lab9
 
         public static Dictionary<string, decimal> MergeDictionaries(Dictionary<string, int> numerators, Dictionary<string, int> denominators)
         {
+            Dictionary<string, decimal> reDic = new Dictionary<string, decimal>();
 
+            
             return null;
         }
     }
