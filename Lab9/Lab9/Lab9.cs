@@ -31,7 +31,7 @@ namespace Lab9
             int co;
             if (keys.Count < values.Count)
             {
-                 co = keys.Count;
+                co = keys.Count;
             }
             else
             {
@@ -59,8 +59,9 @@ namespace Lab9
         public static Dictionary<string, decimal> MergeDictionaries(Dictionary<string, int> numerators, Dictionary<string, int> denominators)
         {
             Dictionary<string, decimal> reDic = new Dictionary<string, decimal>();
-            foreach(KeyValuePair<string,int> i in numerators) { 
-            
+            foreach (KeyValuePair<string, int> i in numerators)
+            {
+
                 if (denominators.ContainsKey(i.Key))
                 {
                     int c;
@@ -71,7 +72,7 @@ namespace Lab9
                         denominators.TryGetValue(i.Key, out d);
 
                         decimal e = (decimal)i.Value / d;
-                        if(e < 0)
+                        if (e < 0)
                         {
                             e *= -1;
                         }
