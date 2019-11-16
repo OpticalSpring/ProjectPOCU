@@ -28,8 +28,24 @@ namespace Lab9
 
         public static Dictionary<string, int> CombineListsToDictionary(List<string> keys, List<int> values)
         {
+            int co;
+            if (keys.Count < values.Count)
+            {
+                 co = keys.Count;
+            }
+            else
+            {
+                co = values.Count;
+            }
 
-            return null;
+            Dictionary<string, int> reDic = new Dictionary<string, int>();
+
+
+            for (int i = 0; i < co; i++)
+            {
+                reDic.Add(keys[i], values[i]);
+            }
+            return reDic;
         }
 
         public static Dictionary<string, decimal> MergeDictionaries(Dictionary<string, int> numerators, Dictionary<string, int> denominators)
