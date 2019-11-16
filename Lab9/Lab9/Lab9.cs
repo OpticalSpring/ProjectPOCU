@@ -41,15 +41,11 @@ namespace Lab9
             Dictionary<string, int> reDic = new Dictionary<string, int>();
 
 
-            List<string> dd1 = new List<string>();
-            List<int> dd2 = new List<int>();
 
             for (int i = 0; i < co; i++)
             {
-                if (!dd1.Equals(keys[i]) && !dd2.Equals(values[i]))
+                if (!reDic.ContainsKey(keys[i]) && !reDic.ContainsValue(values[i]))
                 {
-                    dd1.Add(keys[i]);
-                    dd2.Add(values[i]);
                     reDic.Add(keys[i], values[i]);
                 }
             }
