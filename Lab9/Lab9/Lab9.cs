@@ -59,9 +59,27 @@ namespace Lab9
         public static Dictionary<string, decimal> MergeDictionaries(Dictionary<string, int> numerators, Dictionary<string, int> denominators)
         {
             Dictionary<string, decimal> reDic = new Dictionary<string, decimal>();
-
+            foreach(KeyValuePair<string,int> i in numerators) { 
             
-            return null;
+                if (denominators.ContainsKey(i.Key))
+                {
+                    int c;
+                    denominators.TryGetValue(i.Key, out c);
+                    if (c != 0)
+                    {
+                        int d;
+                        denominators.TryGetValue(i.Key, out d);
+
+                        decimal e = (decimal)i.Value / d;
+                        if(e < 0)
+                        {
+                            e *= -1;
+                        }
+                        reDic.Add(i.Key, e);
+                    }
+                }
+            }
+            return reDic;
         }
     }
 }
