@@ -41,9 +41,15 @@ namespace Lab9
             Dictionary<string, int> reDic = new Dictionary<string, int>();
 
 
+            List<string> dd = new List<string>();
+
             for (int i = 0; i < co; i++)
             {
-                reDic.Add(keys[i], values[i]);
+                if (!dd.Equals(keys[i]))
+                {
+                    dd.Add(keys[i]);
+                    reDic.Add(keys[i], values[i]);
+                }
             }
             return reDic;
         }
