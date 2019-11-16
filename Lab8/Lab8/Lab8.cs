@@ -19,11 +19,13 @@
 
             int n1Count = 1;
             int n2Count = 96;
+            int state = 1;
             string rString = "1) ";
             for (int i = 0; i < s.Length; i++)
             {
                 if (s[i] == '|')
                 {
+                    state = 1;
                     n1Count++;
                     n2Count = 96;
                     rString += "\r\n";
@@ -32,13 +34,15 @@
                 }
                 else if (s[i] == '_')
                 {
+                    state = 2;
                     n2Count++;
                     rString += "\r\n    ";
                     rString += (char)n2Count;
                     rString += ") ";
                 }
-                else if (s[i] == '/' && n2Count > 96)
+                else if (s[i] == '/')
                 {
+                    state = 3;
                     rString += "\r\n        ";
                     rString += "- ";
                 }
