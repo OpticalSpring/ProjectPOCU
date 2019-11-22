@@ -121,6 +121,10 @@ namespace Assignment4
 
         public Monster GetHealthiest()
         {
+            if(MonsterCount == 0)
+            {
+                return null;
+            }
             int max = 0;
             int num = 0;
             for (int i = 0; i < mobCount; i++)
