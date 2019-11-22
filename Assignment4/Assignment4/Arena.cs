@@ -35,14 +35,14 @@ namespace Assignment4
 
             string[] str = { "", "", "", "", "" };
             int num = 0;
-            if(lines.Length > Capacity)
+            if (lines.Length > Capacity)
             {
                 MobCount = (int)Capacity;
             }
             else
             {
 
-            MobCount = lines.Length;
+                MobCount = lines.Length;
             }
             for (int j = 0; j < MobCount; j++)
             {
@@ -88,7 +88,9 @@ namespace Assignment4
 
         public void GoToNextTurn()
         {
-            if(MonsterCount == 1)
+            Turns++;
+            Console.WriteLine(Turns);
+            if (MonsterCount == 1)
             {
                 return;
             }
@@ -105,7 +107,7 @@ namespace Assignment4
                             if (Mob[i + j - MobCount].Health > 0)
                             {
                                 Mob[i].Attack(Mob[i + j - MobCount]);
-                                if(Mob[i + j - MobCount].Health <= 0)
+                                if (Mob[i + j - MobCount].Health <= 0)
                                 {
                                     MonsterCount--;
                                 }
@@ -131,13 +133,11 @@ namespace Assignment4
                     }
                 }
             }
-            Turns++;
-            Console.WriteLine(Turns);
         }
 
         public Monster GetHealthiest()
         {
-            
+
             if (MonsterCount == 0)
             {
                 return null;
