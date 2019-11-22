@@ -83,6 +83,7 @@ namespace Assignment4
         public void GoToNextTurn()
         {
             MonsterCount = 0;
+            Turns++;
             for (int i = 0; i < mobCount; i++)
             {
                 int j = 0;
