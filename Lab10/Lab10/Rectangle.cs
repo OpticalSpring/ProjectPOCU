@@ -18,14 +18,16 @@ namespace Lab10
         public double GetPerimeter()
         {
             double returnValue = Width * 2 + Height * 2;
-            returnValue = Math.Round(returnValue * 10000) / 10000;
+            returnValue = Math.Round(returnValue * 1000) / 1000;
+            Console.WriteLine(returnValue);
             return returnValue;
         }
 
         public double GetArea()
         {
             double returnValue = Width * Height;
-            returnValue = Math.Round(returnValue * 10000) / 10000;
+            returnValue = Math.Round(returnValue * 1000) / 1000;
+            Console.WriteLine(returnValue);
             return returnValue;
         }
     }

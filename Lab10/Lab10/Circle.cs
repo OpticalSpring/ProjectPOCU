@@ -12,16 +12,23 @@ namespace Lab10
         public Circle(uint radius)
         {
             Radius = radius;
+            Diameter = radius * 2;
         }
 
         public double GetCircumference()
         {
-            return 0;
+            double returnValue = Diameter * Math.PI;
+            returnValue = Math.Round(returnValue * 1000) / 1000;
+            Console.WriteLine(returnValue);
+            return returnValue;
         }
 
         public double GetArea()
         {
-            return 0;
+            double returnValue = Radius * Radius * Math.PI;
+            returnValue = Math.Round(returnValue * 1000) / 1000;
+            Console.WriteLine(returnValue);
+            return returnValue;
         }
     }
 }
