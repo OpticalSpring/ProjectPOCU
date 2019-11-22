@@ -33,16 +33,16 @@ namespace Assignment4
 
             Debug.Assert(monster1.Health == 96);
 
-            Arena arena = new Arena("Scorching Rocks", 8);
+            Arena arena = new Arena("Scorching Rocks", 4);
 
             Debug.Assert(arena.ArenaName == "Scorching Rocks");
-            Debug.Assert(arena.Capacity == 8);
+            Debug.Assert(arena.Capacity == 4);
             Debug.Assert(arena.Turns == 0);
             Debug.Assert(arena.MonsterCount == 0);
 
             arena.LoadMonsters("monsters.txt");
 
-            Debug.Assert(arena.MonsterCount == 6);
+            Debug.Assert(arena.MonsterCount == 4);
             Debug.Assert(arena.GetHealthiest().Name == "MyMonster5");
 
             arena.GoToNextTurn();

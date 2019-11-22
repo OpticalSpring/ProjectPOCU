@@ -27,11 +27,23 @@ namespace Assignment4
 
         public void LoadMonsters(string filePath)
         {
+            if (!File.Exists(filePath))
+            {
+                return;
+            }
             string[] lines = File.ReadAllLines(filePath);
 
             string[] str = { "", "", "", "", "" };
             int num = 0;
+            if(lines.Length > Capacity)
+            {
+                MobCount = (int)Capacity;
+            }
+            else
+            {
+
             MobCount = lines.Length;
+            }
             for (int j = 0; j < MobCount; j++)
             {
                 num = 0;
@@ -76,13 +88,15 @@ namespace Assignment4
 
         public void GoToNextTurn()
         {
-            MonsterCount = 0;
+            if(MonsterCount == 1)
+            {
+                return;
+            }
             for (int i = 0; i < MobCount; i++)
             {
                 if (Mob[i].Health > 0)
                 {
                     int j = 0;
-                    MonsterCount++;
                     while (true)
                     {
                         j++;
@@ -91,6 +105,10 @@ namespace Assignment4
                             if (Mob[i + j - MobCount].Health > 0)
                             {
                                 Mob[i].Attack(Mob[i + j - MobCount]);
+                                if(Mob[i + j - MobCount].Health <= 0)
+                                {
+                                    MonsterCount--;
+                                }
                                 Console.WriteLine(Mob[i].Name);
                                 Console.WriteLine(Mob[i].Health);
                                 break;
@@ -101,6 +119,10 @@ namespace Assignment4
                             if (Mob[i + j].Health > 0)
                             {
                                 Mob[i].Attack(Mob[i + j]);
+                                if (Mob[i + j].Health <= 0)
+                                {
+                                    MonsterCount--;
+                                }
                                 Console.WriteLine(Mob[i].Name);
                                 Console.WriteLine(Mob[i].Health);
                                 break;
@@ -115,11 +137,7 @@ namespace Assignment4
 
         public Monster GetHealthiest()
         {
-            for (int i = 0; i < MobCount; i++)
-            {
-                Console.WriteLine(Mob[i].Name);
-                Console.WriteLine(Mob[i].Health);
-            }
+            
             if (MonsterCount == 0)
             {
                 return null;
