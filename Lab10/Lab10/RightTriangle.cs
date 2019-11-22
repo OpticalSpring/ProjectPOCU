@@ -6,8 +6,8 @@ namespace Lab10
 {
     class RightTriangle
     {
-        public uint Width;
-        public uint Height;
+        public uint Width { get; set; }
+        public uint Height { get; set; }
 
         public RightTriangle(uint width, uint height)
         {
