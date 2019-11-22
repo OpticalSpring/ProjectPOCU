@@ -88,8 +88,6 @@ namespace Assignment4
 
         public void GoToNextTurn()
         {
-            Turns++;
-            Console.WriteLine(Turns);
             if (MonsterCount == 1)
             {
                 return;
@@ -133,6 +131,8 @@ namespace Assignment4
                     }
                 }
             }
+            Turns++;
+            Console.WriteLine(Turns);
         }
 
         public Monster GetHealthiest()
