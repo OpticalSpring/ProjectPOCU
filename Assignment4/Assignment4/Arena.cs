@@ -21,7 +21,7 @@ namespace Assignment4
             ArenaName = arenaName;
             Capacity = capacity;
             Mob = new Monster[Capacity];
-            Turns = 0;
+            Turns = 1;
             MonsterCount = 0;
         }
 
@@ -41,7 +41,6 @@ namespace Assignment4
             }
             else
             {
-
                 MobCount = lines.Length;
             }
             for (int j = 0; j < MobCount; j++)
@@ -109,8 +108,6 @@ namespace Assignment4
                                 {
                                     MonsterCount--;
                                 }
-                                Console.WriteLine(Mob[i].Name);
-                                Console.WriteLine(Mob[i].Health);
                                 break;
                             }
                         }
@@ -123,8 +120,6 @@ namespace Assignment4
                                 {
                                     MonsterCount--;
                                 }
-                                Console.WriteLine(Mob[i].Name);
-                                Console.WriteLine(Mob[i].Health);
                                 break;
                             }
                         }
@@ -132,7 +127,11 @@ namespace Assignment4
                 }
             }
             Turns++;
-            Console.WriteLine(Turns);
+            Console.WriteLine("{0} ------------", Turns);
+            for (int i = 0; i < MobCount; i++)
+            {
+                Console.WriteLine("{0} : {1}", Mob[i].Name, Mob[i].Health);
+            }
         }
 
         public Monster GetHealthiest()
@@ -152,7 +151,6 @@ namespace Assignment4
                     num = i;
                 }
             }
-            Console.WriteLine(Mob[num].Name);
             return Mob[num];
         }
     }
