@@ -13,7 +13,7 @@ namespace Assignment4
         public uint Turns { get; private set; }
         public uint MonsterCount { get; private set; }
 
-        private int MobCount;
+        public int MobCount;
 
         public Monster[] Mob;
         public Arena(string arenaName, uint capacity)
