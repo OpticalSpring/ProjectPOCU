@@ -12,7 +12,6 @@ namespace Assignment4
         public int AttackStat { get; private set; }
         public int DefenseStat { get; private set; }
 
-        public Monster() { }
         public Monster(string name, EElementType elementType, int health, int attack, int defense)
         {
             Name = name;

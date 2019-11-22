@@ -13,6 +13,8 @@ namespace Assignment4
         public uint Turns { get; private set; }
         public uint MonsterCount { get; private set; }
 
+        private int mobCount;
+
         public Monster[] monster;
         public Arena(string arenaName, uint capacity)
         {
@@ -29,8 +31,8 @@ namespace Assignment4
 
             string[] str = { "", "", "", "", "" };
             int num = 0;
-
-            for (int j = 0; j < lines.Length; j++)
+            mobCount = lines.Length;
+            for (int j = 0; j < mobCount; j++)
             {
                 num = 0;
                 for (int i = 0; i < 5; i++)
@@ -80,19 +82,57 @@ namespace Assignment4
 
         public void GoToNextTurn()
         {
-            //for (int i = 0; i < MonsterCount; i++)
-            //{
-            //    if(i < MonsterCount - 1)
-            //    {
-            //        if(monster[i]+1)
-            //    }
-            //    monster[i].Attack(monster[i + 1]);
-            //}
+            MonsterCount = 0;
+            for (int i = 0; i < mobCount; i++)
+            {
+                int j = 0;
+                if (monster[i].Health > 0)
+                {
+                    MonsterCount++;
+                    while (true)
+                    {
+                        j++;
+                        if (i + j >= mobCount)
+                        {
+                            if (monster[i + j - mobCount].Health > 0)
+                            {
+                                monster[i].Attack(monster[i + j - mobCount]);
+                                Console.WriteLine("------");
+                                Console.WriteLine("이름: {0}", monster[i].Name);
+                                Console.WriteLine("체력: {0}", monster[i].Health);
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if (monster[i + j].Health > 0)
+                            {
+                                monster[i].Attack(monster[i + j]);
+                                Console.WriteLine("------");
+                                Console.WriteLine("이름: {0}", monster[i].Name);
+                                Console.WriteLine("체력: {0}", monster[i].Health);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         public Monster GetHealthiest()
         {
-            return null;
+            int max = 0;
+            int num = 0;
+            for (int i = 0; i < mobCount; i++)
+            {
+                if (monster[i].Health > max)
+                {
+                    max = monster[i].Health;
+                    num = i;
+                }
+            }
+            Console.WriteLine(monster[num].Name);
+            return monster[num];
         }
     }
 }
