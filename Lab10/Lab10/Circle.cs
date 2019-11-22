@@ -6,8 +6,8 @@ namespace Lab10
 {
     class Circle
     {
-        public uint Radius { get; set; }
-        public uint Diameter { get; set; }
+        public uint Radius { get; private set; }
+        public uint Diameter { get; private set; }
 
         public Circle(uint radius)
         {

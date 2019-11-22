@@ -6,8 +6,8 @@ namespace Lab10
 {
     class Rectangle
     {
-        public uint Width { get; set; }
-        public uint Height { get; set; }
+        public uint Width { get; private set; }
+        public uint Height { get; private set; }
 
         public Rectangle(uint width, uint height)
         {
