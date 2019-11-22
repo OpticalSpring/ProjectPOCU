@@ -21,7 +21,7 @@ namespace Assignment4
             ArenaName = arenaName;
             Capacity = capacity;
             Mob = new Monster[Capacity];
-            Turns = 1;
+            Turns = 0;
             MonsterCount = 0;
         }
 
@@ -87,6 +87,10 @@ namespace Assignment4
 
         public void GoToNextTurn()
         {
+            if (MonsterCount == 0)
+            {
+                return;
+            }
             if (MonsterCount == 1)
             {
                 return;
