@@ -83,10 +83,6 @@ namespace Assignment4
                 {
                     int j = 0;
                     MonsterCount++;
-                    if (MonsterCount == 1)
-                    {
-                        break;
-                    }
                     while (true)
                     {
                         j++;
@@ -95,6 +91,8 @@ namespace Assignment4
                             if (Mob[i + j - MobCount].Health > 0)
                             {
                                 Mob[i].Attack(Mob[i + j - MobCount]);
+                                Console.WriteLine(Mob[i].Name);
+                                Console.WriteLine(Mob[i].Health);
                                 break;
                             }
                         }
@@ -103,6 +101,8 @@ namespace Assignment4
                             if (Mob[i + j].Health > 0)
                             {
                                 Mob[i].Attack(Mob[i + j]);
+                                Console.WriteLine(Mob[i].Name);
+                                Console.WriteLine(Mob[i].Health);
                                 break;
                             }
                         }
@@ -110,10 +110,16 @@ namespace Assignment4
                 }
             }
             Turns++;
+            Console.WriteLine(Turns);
         }
 
         public Monster GetHealthiest()
         {
+            for (int i = 0; i < MobCount; i++)
+            {
+                Console.WriteLine(Mob[i].Name);
+                Console.WriteLine(Mob[i].Health);
+            }
             if (MonsterCount == 0)
             {
                 return null;
