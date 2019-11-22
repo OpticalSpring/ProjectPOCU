@@ -83,13 +83,16 @@ namespace Assignment4
         public void GoToNextTurn()
         {
             MonsterCount = 0;
-            Turns++;
             for (int i = 0; i < mobCount; i++)
             {
-                int j = 0;
                 if (monster[i].Health > 0)
                 {
+                    int j = 0;
                     MonsterCount++;
+                    if(MonsterCount == 1)
+                    {
+                        break;
+                    }
                     while (true)
                     {
                         j++;
@@ -118,6 +121,7 @@ namespace Assignment4
                     }
                 }
             }
+            Turns++;
         }
 
         public Monster GetHealthiest()
