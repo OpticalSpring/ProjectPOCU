@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Assignment4
 {
-    class Monster
+    public class Monster
     {
         public string Name { get; private set; }
         public EElementType ElementType { get; private set; }

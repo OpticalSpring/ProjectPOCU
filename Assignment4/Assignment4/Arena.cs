@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Assignment4
 {
-    class Arena
+    public class Arena
     {
         public uint Capacity { get; private set; }
         public string ArenaName { get; private set; }
