@@ -39,11 +39,11 @@ namespace Assignment4
             switch (ElementType)
             {
                 case EElementType.Fire:
-                    if(otherMonster.ElementType == EElementType.Wind)
+                    if (otherMonster.ElementType == EElementType.Wind)
                     {
                         damagePoint *= 1.5;
                     }
-                    else if(otherMonster.ElementType == EElementType.Water || otherMonster.ElementType == EElementType.Earth)
+                    else if (otherMonster.ElementType == EElementType.Water || otherMonster.ElementType == EElementType.Earth)
                     {
                         damagePoint *= 0.5;
                     }
@@ -79,7 +79,7 @@ namespace Assignment4
                     }
                     break;
             }
-            if(damagePoint < 1)
+            if (damagePoint < 1)
             {
                 damagePoint = 1;
             }
