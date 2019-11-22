@@ -12,6 +12,7 @@ namespace Assignment4
         public int AttackStat { get; private set; }
         public int DefenseStat { get; private set; }
 
+        public Monster() { }
         public Monster(string name, EElementType elementType, int health, int attack, int defense)
         {
             Name = name;
@@ -23,7 +24,14 @@ namespace Assignment4
 
         public void TakeDamage(int amount)
         {
-            Health -= amount;
+            if (Health - amount < 0)
+            {
+                Health = 0;
+            }
+            else
+            {
+                Health -= amount;
+            }
         }
 
         public void Attack(Monster otherMonster)
@@ -31,18 +39,18 @@ namespace Assignment4
             double damagePoint = AttackStat - otherMonster.DefenseStat;
             switch (ElementType)
             {
-                case EElementType.FIre:
+                case EElementType.Fire:
                     if(otherMonster.ElementType == EElementType.Wind)
                     {
                         damagePoint *= 1.5;
                     }
-                    else if(otherMonster.ElementType == EElementType.Water || otherMonster.ElementType == EElementType.Ground)
+                    else if(otherMonster.ElementType == EElementType.Water || otherMonster.ElementType == EElementType.Earth)
                     {
                         damagePoint *= 0.5;
                     }
                     break;
                 case EElementType.Water:
-                    if (otherMonster.ElementType == EElementType.FIre)
+                    if (otherMonster.ElementType == EElementType.Fire)
                     {
                         damagePoint *= 1.5;
                     }
@@ -51,8 +59,8 @@ namespace Assignment4
                         damagePoint *= 0.5;
                     }
                     break;
-                case EElementType.Ground:
-                    if (otherMonster.ElementType == EElementType.FIre)
+                case EElementType.Earth:
+                    if (otherMonster.ElementType == EElementType.Fire)
                     {
                         damagePoint *= 1.5;
                     }
@@ -62,11 +70,11 @@ namespace Assignment4
                     }
                     break;
                 case EElementType.Wind:
-                    if (otherMonster.ElementType == EElementType.Water || otherMonster.ElementType == EElementType.Ground)
+                    if (otherMonster.ElementType == EElementType.Water || otherMonster.ElementType == EElementType.Earth)
                     {
                         damagePoint *= 1.5;
                     }
-                    else if (otherMonster.ElementType == EElementType.FIre)
+                    else if (otherMonster.ElementType == EElementType.Fire)
                     {
                         damagePoint *= 0.5;
                     }

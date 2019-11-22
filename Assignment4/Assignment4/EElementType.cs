@@ -6,9 +6,9 @@ namespace Assignment4
 {
    public enum EElementType
     {
-        FIre,
+        Fire,
         Water,
         Wind,
-        Ground
+        Earth
     };
 }
