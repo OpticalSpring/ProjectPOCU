@@ -20,7 +20,7 @@ namespace Lab11
             {
                 charArray[i] = (char)input.ReadByte();
             }
-            charArray[input.Length] = ' ';
+            charArray[input.Length] = '㉾';
             Console.WriteLine(charArray);
 
             string rStr = "";
@@ -30,7 +30,6 @@ namespace Lab11
             {
                 if (charArray[i] != lastChar)
                 {
-                    
                     rStr += count + "♩"+ lastChar + "♪";
                     lastChar = charArray[i];
                     count = 1;
