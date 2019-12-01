@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{150732AE-6B18-4F80-916F-417D965C158C}"
 	ProjectSection(SolutionItems) = preProject
 		Lab11\bin\Debug\netcoreapp2.1\encode1.txt.output.bin = Lab11\bin\Debug\netcoreapp2.1\encode1.txt.output.bin
+		Lab11\bin\Debug\netcoreapp2.1\encode2.txt.output.bin = Lab11\bin\Debug\netcoreapp2.1\encode2.txt.output.bin
 	EndProjectSection
 EndProject
 Global
