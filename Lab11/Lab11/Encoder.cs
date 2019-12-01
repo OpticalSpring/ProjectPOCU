@@ -30,7 +30,7 @@ namespace Lab11
                 if (charArray[i] != lastChar)
                 {
                     
-                    rStr += count + "♡"+ lastChar + "♥";
+                    rStr += count + "♩"+ lastChar + "♪";
                     lastChar = charArray[i];
                     count = 1;
                 }
@@ -38,7 +38,7 @@ namespace Lab11
                 {
                     if (count >= 255)
                     {
-                        rStr += count + "♡" + lastChar + "♥";
+                        rStr += count + "♩" + lastChar + "♪";
                         lastChar = charArray[i];
                         count = 1;
                     }
@@ -52,7 +52,7 @@ namespace Lab11
             string nav = "";
             for (int i = 0; i < rStr.Length; i++)
             {
-                if (rStr[i] == '♡')
+                if (rStr[i] == '♩')
                 {
                     
                         
@@ -61,7 +61,7 @@ namespace Lab11
                     
                     nav = "";
                 }
-                else if (rStr[i] == '♥')
+                else if (rStr[i] == '♪')
                 {
                     for (int j = 0; j < nav.Length; j++)
                     {
