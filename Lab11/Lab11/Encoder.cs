@@ -57,11 +57,47 @@ namespace Lab11
                 return false;
             }
             string str = "";
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 0; i <input.Length; i++)
             {
-                str += input.ReadByte();
+                str += input.ReadByte() + "/";
             }
-            Console.WriteLine(str); ;
+            Console.WriteLine(str);
+            string rStr = "";
+            string nav = "";
+            int count = 0;
+            int a = 0;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+               if(str[i] == '/')
+                {
+                    a++;
+                    if(a % 2 == 1)
+                    {
+                        count = int.Parse(nav);
+                        nav = "";
+                    }
+                    else
+                    {
+                        for (int j = 0; j < count; j++)
+                        {
+                            rStr += (char)int.Parse(nav);
+                        }
+                        nav = "";
+                    }
+                    
+                }
+                else
+                {
+                    nav += str[i];
+                }
+            }
+            Console.WriteLine(rStr);
+
+            for (int i = 0; i < rStr.Length; i++)
+            {
+                output.WriteByte((byte)rStr[i]);
+            }
 
             return true;
         }
