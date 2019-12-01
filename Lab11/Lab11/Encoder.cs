@@ -30,7 +30,7 @@ namespace Lab11
             {
                 if (charArray[i] != lastChar)
                 {
-                    rStr += count + "♩"+ lastChar + "♪";
+                    rStr += count + "♩" + lastChar + "♪";
                     lastChar = charArray[i];
                     count = 1;
                 }
@@ -54,11 +54,11 @@ namespace Lab11
             {
                 if (rStr[i] == '♩')
                 {
-                    
-                        
-                        int b = int.Parse(nav);
-                        output.WriteByte((byte)b);
-                    
+
+
+                    int b = int.Parse(nav);
+                    output.WriteByte((byte)b);
+
                     nav = "";
                 }
                 else if (rStr[i] == '♪')
