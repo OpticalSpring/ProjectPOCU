@@ -20,7 +20,7 @@ namespace Lab11
                 charArray[i] = (char)input.ReadByte();
             }
             charArray[input.Length] = ' ';
-            Console.WriteLine(charArray);
+            //Console.WriteLine(charArray);
 
             string rStr = "";
             int count = 0;
@@ -38,7 +38,7 @@ namespace Lab11
                     count++;
                 }
             }
-            Console.WriteLine(rStr);
+            //Console.WriteLine(rStr);
             for (int i = 0; i < rStr.Length; i++)
             {
                 output.WriteByte((byte)rStr[i]);
@@ -46,13 +46,24 @@ namespace Lab11
             input.Position = 0;
             output.Position = 0;
 
-            Console.WriteLine(output);
+            //Console.WriteLine(output);
             return true;
         }
 
         public static bool TryDecode(Stream input, Stream output)
         {
-            return false;
+            if (input.Length == 0 || input == null)
+            {
+                return false;
+            }
+            string str = "";
+            for (int i = 0; i < input.Length; i++)
+            {
+                str += input.ReadByte();
+            }
+            Console.WriteLine(str); ;
+
+            return true;
         }
     }
 }
