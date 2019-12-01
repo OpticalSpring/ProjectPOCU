@@ -14,40 +14,39 @@ namespace Lab11
             {
                 return false;
             }
-            string str = "";
+            char[] charArray = new char[input.Length + 1];
             for (int i = 0; i < input.Length; i++)
             {
-                str += input.ReadByte();
-               if(str[i] == ' ')
-                {
-                    
-                    str = str.Substring(0,str.Length - 1);
-                    str += '0';
-                }
+                charArray[i] = (char)input.ReadByte();
             }
-            str += "00";
-            Console.WriteLine(str);
+            charArray[input.Length] = ' ';
+            Console.WriteLine(charArray);
+
             string rStr = "";
-            string b = ""+str[0] + str[1];
             int count = 0;
-            int charValue = int.Parse(b);
-            for (int i = 0; i < str.Length-1; i+=2)
+            char lastChar = charArray[1];
+            for (int i = 0; i < charArray.Length; i++)
             {
-                string a = "" + str[i] + str[i + 1];
-                if(charValue != int.Parse(a))
+                if(charArray[i] != lastChar)
                 {
-                    rStr += Convert.ToString(count, 16).PadLeft(2, '0') + " " + Convert.ToString(charValue,16).PadLeft(2,'0') + " ";
+                    rStr += Convert.ToString(count, 16).PadLeft(2, '0') + " " + Convert.ToString(lastChar, 16).PadLeft(2, '0') + " ";
+                    lastChar = charArray[i];
                     count = 1;
-                    charValue = int.Parse(a);
-                    Console.WriteLine(a);
                 }
                 else
                 {
                     count++;
                 }
-
             }
             Console.WriteLine(rStr);
+            for (int i = 0; i < rStr.Length; i++)
+            {
+                output.WriteByte((byte)rStr[i]);
+            }
+            input.Position = 0;
+            output.Position = 0;
+
+            Console.WriteLine(output);
             return true;
         }
 
