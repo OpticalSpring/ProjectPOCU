@@ -10,7 +10,7 @@ namespace Lab11
     {
         public static bool TryEncode(Stream input, Stream output)
         {
-            if(input.Length == 0 || input == null)
+            if (input.Length == 0 || input == null)
             {
                 return false;
             }
@@ -27,7 +27,7 @@ namespace Lab11
             char lastChar = charArray[1];
             for (int i = 0; i < charArray.Length; i++)
             {
-                if(charArray[i] != lastChar)
+                if (charArray[i] != lastChar)
                 {
                     rStr += Convert.ToString(count, 16).PadLeft(2, '0') + " " + Convert.ToString(lastChar, 16).PadLeft(2, '0') + " ";
                     lastChar = charArray[i];
@@ -35,7 +35,16 @@ namespace Lab11
                 }
                 else
                 {
-                    count++;
+                    if (count >= 255)
+                    {
+                        rStr += Convert.ToString(count, 16).PadLeft(2, '0') + " " + Convert.ToString(lastChar, 16).PadLeft(2, '0') + " ";
+                        lastChar = charArray[i];
+                        count = 1;
+                    }
+                    else
+                    {
+                        count++;
+                    }
                 }
             }
             //Console.WriteLine(rStr);
@@ -57,7 +66,7 @@ namespace Lab11
                 return false;
             }
             string str = "";
-            for (int i = 0; i <input.Length; i++)
+            for (int i = 0; i < input.Length; i++)
             {
                 str += input.ReadByte() + "/";
             }
@@ -69,10 +78,10 @@ namespace Lab11
 
             for (int i = 0; i < str.Length; i++)
             {
-               if(str[i] == '/')
+                if (str[i] == '/')
                 {
                     a++;
-                    if(a % 2 == 1)
+                    if (a % 2 == 1)
                     {
                         count = int.Parse(nav);
                         nav = "";
@@ -85,7 +94,7 @@ namespace Lab11
                         }
                         nav = "";
                     }
-                    
+
                 }
                 else
                 {
