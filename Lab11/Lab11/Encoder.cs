@@ -20,7 +20,7 @@ namespace Lab11
                 charArray[i] = (char)input.ReadByte();
             }
             charArray[input.Length] = ' ';
-            //Console.WriteLine(charArray);
+            Console.WriteLine(charArray);
 
             string rStr = "";
             int count = 0;
@@ -29,7 +29,8 @@ namespace Lab11
             {
                 if (charArray[i] != lastChar)
                 {
-                    rStr += Convert.ToString(count, 16).PadLeft(2, '0') + " " + Convert.ToString(lastChar, 16).PadLeft(2, '0') + " ";
+                    
+                    rStr += count.ToString("X2").PadLeft(2, '0') + " " + ((int)lastChar).ToString("X2").PadLeft(2, '0') + " ";
                     lastChar = charArray[i];
                     count = 1;
                 }
@@ -37,7 +38,7 @@ namespace Lab11
                 {
                     if (count >= 255)
                     {
-                        rStr += Convert.ToString(count, 16).PadLeft(2, '0') + " " + Convert.ToString(lastChar, 16).PadLeft(2, '0') + " ";
+                        rStr += count.ToString("X2").PadLeft(2, '0') + " " + ((int)lastChar).ToString("X2").PadLeft(2, '0') + " ";
                         lastChar = charArray[i];
                         count = 1;
                     }
@@ -47,7 +48,7 @@ namespace Lab11
                     }
                 }
             }
-            //Console.WriteLine(rStr);
+            Console.WriteLine(rStr);
             for (int i = 0; i < rStr.Length; i++)
             {
                 output.WriteByte((byte)rStr[i]);
