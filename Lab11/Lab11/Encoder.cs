@@ -55,7 +55,6 @@ namespace Lab11
             input.Position = 0;
             output.Position = 0;
 
-            //Console.WriteLine(output);
             return true;
         }
 
@@ -70,7 +69,7 @@ namespace Lab11
             {
                 str += input.ReadByte() + "/";
             }
-            Console.WriteLine(str);
+            //Console.WriteLine(str);
             string rStr = "";
             string nav = "";
             int count = 0;
@@ -101,13 +100,14 @@ namespace Lab11
                     nav += str[i];
                 }
             }
-            Console.WriteLine(rStr);
+            //Console.WriteLine(rStr);
 
             for (int i = 0; i < rStr.Length; i++)
             {
                 output.WriteByte((byte)rStr[i]);
             }
-
+            input.Position = 0;
+            output.Position = 0;
             return true;
         }
     }
