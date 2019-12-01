@@ -12,6 +12,7 @@ namespace Lab11
         {
             if (input.Length == 0 || input == null)
             {
+                Console.WriteLine("NULL");
                 return false;
             }
             char[] charArray = new char[input.Length + 1];
@@ -24,7 +25,7 @@ namespace Lab11
 
             string rStr = "";
             int count = 0;
-            char lastChar = charArray[1];
+            char lastChar = charArray[0];
             for (int i = 0; i < charArray.Length; i++)
             {
                 if (charArray[i] != lastChar)
