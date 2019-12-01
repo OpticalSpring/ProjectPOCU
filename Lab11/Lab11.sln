@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.489
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab11", "Lab11\Lab11.csproj", "{196A3121-BE2D-4BF3-83BA-48A57038CFCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab11", "Lab11\Lab11.csproj", "{196A3121-BE2D-4BF3-83BA-48A57038CFCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{150732AE-6B18-4F80-916F-417D965C158C}"
+	ProjectSection(SolutionItems) = preProject
+		Lab11\bin\Debug\netcoreapp2.1\encode1.txt.output.bin = Lab11\bin\Debug\netcoreapp2.1\encode1.txt.output.bin
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
