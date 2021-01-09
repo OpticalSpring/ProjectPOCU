@@ -1,31 +1,46 @@
 #include "MyString.h"
+#include "String.h"
+
+using namespace std;
 
 namespace assignment1
 {
-    MyString::MyString(const char* s)
+    MyString::MyString(const char* s) : mSize(strlen(s)+1)
     {
+        mString = new char[mSize];
+        memcpy(mString, s, mSize);
     }
 
-    MyString::MyString(const MyString& other)
+    MyString::MyString(const MyString& other) : mSize(other.mSize)
     {
+        mString = new char[mSize];
+        memcpy(mString, other.mString, mSize);
     }
 
     MyString::~MyString()
     {
+        delete[] mString;
     }
 
     unsigned int MyString::GetLength() const
     {
-        return 0;
+        return mSize;
     }
 
     const char* MyString::GetCString() const
     {
-        return 0;
+        return mString;
     }
 
     void MyString::Append(const char* s)
     {
+        mSize += strlen(s);
+        char* ns = new char[mSize];
+        strcat(ns, mString);
+        strcat(ns, s);
+        delete[] mString;
+        mString = ns;
+        delete[] ns;
     }
 
     MyString MyString::operator+(const MyString& other) const
