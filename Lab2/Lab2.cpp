@@ -26,7 +26,7 @@ namespace lab2
 			{
 				cout << "Invalid input" << endl;
 				cin.clear();
-				cin.ignore(LLONG_MAX, '\n');
+				cin.ignore(LLONG_MAX, ' ');
 				continue;
 			}
 			v.push_back(number);
