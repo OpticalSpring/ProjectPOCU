@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <algorithm>
 using namespace std;
 namespace lab2
 {
@@ -68,8 +69,11 @@ namespace lab2
 
 		for (size_t i = 0; i < v.size(); i++)
 		{
-			out << showpos << showpoint;
+			out << showpos << showpoint  << fixed ;
+			out.precision(3);
 			out << "     " << setw(14) << internal <<v[i] <<endl;
 		}
+		sort(v.begin(), v.end());
+		out << "max: " << setw(14) << internal << v.back() << endl;
     }
 }
