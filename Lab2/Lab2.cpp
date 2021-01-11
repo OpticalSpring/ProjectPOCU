@@ -7,7 +7,8 @@
 using namespace std;
 namespace lab2
 {
-	void PrintIntegers(std::istream& in, std::ostream& out) {
+	void PrintIntegers(std::istream& in, std::ostream& out) 
+	{
 		vector<int> v;
 		int number;
 
@@ -41,7 +42,8 @@ namespace lab2
 		}
 	}
 
-	void PrintMaxFloat(std::istream& in, std::ostream& out) {
+	void PrintMaxFloat(std::istream& in, std::ostream& out) 
+	{
 		vector<float> v;
 		float number;
 
