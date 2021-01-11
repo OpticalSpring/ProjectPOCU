@@ -24,7 +24,7 @@ namespace lab2
 			{
 				//out << "Invalid input" << endl;
 				in.clear();
-				in.ignore(LLONG_MAX, ' ');
+				in.ignore(LLONG_MAX, '\n');
 				continue;
 			}
 			v.push_back(number);
@@ -59,7 +59,7 @@ namespace lab2
 			{
 				//out << "Invalid input" << endl;
 				in.clear();
-				in.ignore(LLONG_MAX, ' ');
+				in.ignore(LLONG_MAX, '\n');
 				continue;
 			}
 			v.push_back(number);
