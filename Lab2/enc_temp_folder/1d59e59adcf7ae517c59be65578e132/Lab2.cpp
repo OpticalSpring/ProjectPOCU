@@ -13,22 +13,22 @@ namespace lab2
 
 		while (true)
 		{
-			in >> number;
-			if (in.eof())
+			cin >> number;
+			if (cin.eof())
 			{
 				break;
 			}
 
-			if (in.fail())
+			if (cin.fail())
 			{
-				out << "Invalid input" << endl;
-				in.clear();
-				in.ignore(LLONG_MAX, ' ');
+				cout << "Invalid input" << endl;
+				cin.clear();
+				cin.ignore(LLONG_MAX, ' ');
 				continue;
 			}
 			v.push_back(number);
 		}
-		in.clear();
+		cin.clear();
 
 		
 		out << "         oct        dec      hex" << endl;
@@ -48,27 +48,27 @@ namespace lab2
 
 		while (true)
 		{
-			in >> number;
-			if (in.eof())
+			cin >> number;
+			if (cin.eof())
 			{
 				break;
 			}
 
-			if (in.fail())
+			if (cin.fail())
 			{
-				out << "Invalid input" << endl;
-				in.clear();
-				in.ignore(LLONG_MAX, ' ');
+				cout << "Invalid input" << endl;
+				cin.clear();
+				cin.ignore(LLONG_MAX, ' ');
 				continue;
 			}
 			v.push_back(number);
 		}
-		in.clear();
+		cin.clear();
 
 
 		for (size_t i = 0; i < v.size(); i++)
 		{
-			out << showpos << showpoint;
+			out << showpos << showpoint  ;
 			out << "     " << setw(14) << internal <<v[i] <<endl;
 		}
     }
