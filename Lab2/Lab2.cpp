@@ -7,8 +7,7 @@
 using namespace std;
 namespace lab2
 {
-    void PrintIntegers(std::istream& in, std::ostream& out)
-    {
+	void PrintIntegers(std::istream& in, std::ostream& out) {
 		vector<int> v;
 		int number;
 
@@ -22,7 +21,7 @@ namespace lab2
 
 			if (in.fail())
 			{
-				out << "Invalid input" << endl;
+				//out << "Invalid input" << endl;
 				in.clear();
 				in.ignore(LLONG_MAX, ' ');
 				continue;
@@ -31,19 +30,18 @@ namespace lab2
 		}
 		in.clear();
 
-		
+
 		out << "         oct        dec      hex" << endl;
 		out << "------------ ---------- --------" << endl;
 		for (size_t i = 0; i < v.size(); i++)
 		{
-			out <<uppercase <<setfill(' ') << setw(12) <<oct << v[i] ;
+			out << uppercase << setfill(' ') << setw(12) << oct << v[i];
 			out << setw(11) << dec << v[i];
 			out << setw(9) << hex << v[i] << endl;
 		}
-    }
+	}
 
-    void PrintMaxFloat(std::istream& in, std::ostream& out)
-    {
+	void PrintMaxFloat(std::istream& in, std::ostream& out) {
 		vector<float> v;
 		float number;
 
@@ -57,7 +55,7 @@ namespace lab2
 
 			if (in.fail())
 			{
-				out << "Invalid input" << endl;
+				//out << "Invalid input" << endl;
 				in.clear();
 				in.ignore(LLONG_MAX, ' ');
 				continue;
@@ -69,11 +67,11 @@ namespace lab2
 
 		for (size_t i = 0; i < v.size(); i++)
 		{
-			out << showpos << showpoint  << fixed ;
+			out << showpos << showpoint << fixed;
 			out.precision(3);
-			out << "     " << setw(14) << internal <<v[i] <<endl;
+			out << "     " << setw(14) << internal << v[i] << endl;
 		}
 		sort(v.begin(), v.end());
 		out << "max: " << setw(14) << internal << v.back() << endl;
-    }
+	}
 }
