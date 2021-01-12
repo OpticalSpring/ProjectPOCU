@@ -71,9 +71,9 @@ namespace lab2
 		{
 			out << showpos << showpoint << fixed;
 			out.precision(3);
-			out << "     " << setw(14) << internal << v[i] << endl;
+			out << "     " << setw(15) << internal << v[i] << endl;
 		}
 		sort(v.begin(), v.end());
-		out << "max: " << setw(14) << internal << v.back() << endl;
+		out << "max: " << setw(15) << internal << v.back() << endl;
 	}
 }
