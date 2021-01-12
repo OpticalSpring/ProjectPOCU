@@ -12,22 +12,20 @@ namespace lab2
 		vector<int> v;
 		int number;
 
-		//while (true)
+		while (true)
 		{
-			
-
 			in >> number;
 			if (in.eof())
 			{
-				//break;
+				break;
 			}
 
 			if (in.fail())
 			{
 				//out << "Invalid input" << endl;
 				in.clear();
-				in.ignore(LLONG_MAX, '\n');
-				//continue;
+				in.ignore();
+				continue;
 			}
 			v.push_back(number);
 		}
@@ -48,21 +46,20 @@ namespace lab2
 	{
 		vector<float> v;
 		float number;
-		//while (true)
+		while (true)
 		{
-			
 			in >> number;
 			if (in.eof())
 			{
-				//break;
+				break;
 			}
 
 			if (in.fail())
 			{
 				//out << "Invalid input" << endl;
 				in.clear();
-				in.ignore(LLONG_MAX, '\n');
-				//continue;
+				in.ignore();
+				continue;
 			}
 			v.push_back(number);
 		}
