@@ -38,7 +38,7 @@ namespace assignment1
 		mSize += strlen(s);
 		char* ns = new char[mSize];
 		strcpy(ns, mString);
-		
+
 		delete[] mString;
 		strcat(ns, s);
 		mString = ns;
