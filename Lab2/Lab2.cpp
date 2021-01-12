@@ -11,23 +11,23 @@ namespace lab2
 	{
 		vector<int> v;
 		int number;
+		string trash;
 
 		while (true)
 		{
 			in >> number;
+			if (!in.fail())
+			{
+				v.push_back(number);
+				continue;
+			}
+
 			if (in.eof())
 			{
 				break;
 			}
-
-			if (in.fail())
-			{
-				//out << "Invalid input" << endl;
-				in.clear();
-				in.ignore();
-				continue;
-			}
-			v.push_back(number);
+			in.clear();
+			in >> trash;
 		}
 		in.clear();
 
@@ -46,22 +46,23 @@ namespace lab2
 	{
 		vector<float> v;
 		float number;
+		string trash;
+
 		while (true)
 		{
 			in >> number;
+			if (!in.fail())
+			{
+				v.push_back(number);
+				continue;
+			}
+
 			if (in.eof())
 			{
 				break;
 			}
-
-			if (in.fail())
-			{
-				//out << "Invalid input" << endl;
-				in.clear();
-				in.ignore();
-				continue;
-			}
-			v.push_back(number);
+			in.clear();
+			in >> trash;
 		}
 		in.clear();
 
