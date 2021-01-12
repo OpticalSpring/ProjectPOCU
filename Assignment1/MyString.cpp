@@ -46,12 +46,22 @@ namespace assignment1
 
 	MyString MyString::operator+(const MyString& other) const
 	{
-		return MyString("temporary");
+		int nSize = mSize + other.GetLength() - 1;
+		char* ns = new char[nSize];
+		strcpy(ns, mString);
+		strcat(ns, other.GetCString());
+		return MyString(ns);
 	}
 
 	int MyString::IndexOf(const char* s)
 	{
-		return 0;
+		
+		if (strstr(mString, s) != nullptr) {
+			int index = (int)(strstr(mString, s) - mString);
+		}
+		else {
+			return -1;
+		}
 	}
 
 	int MyString::LastIndexOf(const char* s)
@@ -86,6 +96,12 @@ namespace assignment1
 
 	void MyString::Reverse()
 	{
+		for (size_t i = 0; i < mSize/2; i++)
+		{
+			char temp = mString[i];
+			mString[i] = mString[mSize - i - 2];
+			mString[mSize - i - 2] = temp;
+		}
 	}
 
 	bool MyString::operator==(const MyString& rhs) const
@@ -108,9 +124,21 @@ namespace assignment1
 
 	void MyString::ToLower()
 	{
+		for (size_t i = 0; i < mSize; i++)
+		{
+			if (mString[i] >= 'A' && mString[i] <= 'Z') {
+				mString[i] += 32;
+			}
+		}
 	}
 
 	void MyString::ToUpper()
 	{
+		for (size_t i = 0; i < mSize; i++)
+		{
+			if (mString[i] >= 'a' && mString[i] <= 'z') {
+				mString[i] -= 32;
+			}
+		}
 	}
 }
