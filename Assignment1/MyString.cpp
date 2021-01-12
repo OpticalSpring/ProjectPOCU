@@ -64,7 +64,7 @@ namespace assignment1
 	}
 
 	int MyString::LastIndexOf(const char* s)
-	{ 
+	{
 		return 0;
 	}
 
@@ -76,7 +76,7 @@ namespace assignment1
 		int n1 = 0;
 		int n2 = 0;
 		while (true) {
-			if (n1 < mSize-1) {
+			if (n1 < mSize - 1) {
 				ns[a] = mString[n1];
 				n1++;
 				a++;
@@ -86,7 +86,7 @@ namespace assignment1
 				n2++;
 				a++;
 			}
-			if (a >= nSize-1) {
+			if (a >= nSize - 1) {
 				ns[a] = s[n2];
 				break;
 			}
@@ -97,7 +97,7 @@ namespace assignment1
 
 	bool MyString::RemoveAt(unsigned int index)
 	{
-		char* ns = new char[mSize-1];
+		char* ns = new char[mSize - 1];
 		int a = 0;
 		for (size_t i = 0; i < mSize; i++)
 		{
@@ -105,9 +105,9 @@ namespace assignment1
 				ns[a] = mString[i];
 				a++;
 			}
-			
+
 		}
-		
+
 		if (index >= 0 && index < mSize) {
 			mString = ns;
 			mSize -= 1;
@@ -132,7 +132,7 @@ namespace assignment1
 		}
 		ns[totalLength - mSize + 1] = '\0';
 		strcat(ns, mString);
-		
+
 		mString = ns;
 	}
 
@@ -159,7 +159,7 @@ namespace assignment1
 		}
 		char* ns = new char[totalLength + 1];
 		strcpy(ns, mString);
-		for (size_t i = mSize-1; i <= totalLength; i++)
+		for (size_t i = mSize - 1; i <= totalLength; i++)
 		{
 			ns[i] = ' ';
 		}
@@ -186,7 +186,7 @@ namespace assignment1
 
 	void MyString::Reverse()
 	{
-		for (size_t i = 0; i < mSize/2; i++)
+		for (size_t i = 0; i < mSize / 2; i++)
 		{
 			char temp = mString[i];
 			mString[i] = mString[mSize - i - 2];
