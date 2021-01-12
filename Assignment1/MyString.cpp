@@ -55,7 +55,6 @@ namespace assignment1
 
 	int MyString::IndexOf(const char* s)
 	{
-		
 		if (strstr(mString, s) != nullptr) {
 			int index = (int)(strstr(mString, s) - mString);
 		}
@@ -65,12 +64,35 @@ namespace assignment1
 	}
 
 	int MyString::LastIndexOf(const char* s)
-	{
+	{ 
 		return 0;
 	}
 
 	void MyString::Interleave(const char* s)
 	{
+		int nSize = mSize + strlen(s);
+		char* ns = new char[nSize];
+		int a = 0;
+		int n1 = 0;
+		int n2 = 0;
+		while (true) {
+			if (n1 < mSize-1) {
+				ns[a] = mString[n1];
+				n1++;
+				a++;
+			}
+			if (n2 < strlen(s)) {
+				ns[a] = s[n2];
+				n2++;
+				a++;
+			}
+			if (a >= nSize-1) {
+				ns[a] = s[n2];
+				break;
+			}
+		}
+		mString = ns;
+		mSize = nSize;
 	}
 
 	bool MyString::RemoveAt(unsigned int index)
