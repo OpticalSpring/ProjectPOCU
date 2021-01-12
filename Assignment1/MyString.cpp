@@ -97,23 +97,91 @@ namespace assignment1
 
 	bool MyString::RemoveAt(unsigned int index)
 	{
-		return false;
+		char* ns = new char[mSize-1];
+		int a = 0;
+		for (size_t i = 0; i < mSize; i++)
+		{
+			if (i != index) {
+				ns[a] = mString[i];
+				a++;
+			}
+			
+		}
+		
+		if (index >= 0 && index < mSize) {
+			mString = ns;
+			mSize -= 1;
+			delete[] ns;
+			return true;
+		}
+		else {
+			delete[] ns;
+			return false;
+		}
 	}
 
 	void MyString::PadLeft(unsigned int totalLength)
 	{
+		if (totalLength < mSize - 1) {
+			return;
+		}
+		char* ns = new char[totalLength + 1];
+		for (size_t i = 0; i <= totalLength - mSize; i++)
+		{
+			ns[i] = ' ';
+		}
+		ns[totalLength - mSize + 1] = '\0';
+		strcat(ns, mString);
+		
+		mString = ns;
 	}
 
 	void MyString::PadLeft(unsigned int totalLength, const char c)
 	{
+		if (totalLength < mSize - 1) {
+			return;
+		}
+		char* ns = new char[totalLength + 1];
+		for (size_t i = 0; i <= totalLength - mSize; i++)
+		{
+			ns[i] = c;
+		}
+		ns[totalLength - mSize + 1] = '\0';
+		strcat(ns, mString);
+
+		mString = ns;
 	}
 
 	void MyString::PadRight(unsigned int totalLength)
 	{
+		if (totalLength < mSize - 1) {
+			return;
+		}
+		char* ns = new char[totalLength + 1];
+		strcpy(ns, mString);
+		for (size_t i = mSize-1; i <= totalLength; i++)
+		{
+			ns[i] = ' ';
+		}
+		ns[totalLength] = '\0';
+
+		mString = ns;
 	}
 
 	void MyString::PadRight(unsigned int totalLength, const char c)
 	{
+		if (totalLength < mSize - 1) {
+			return;
+		}
+		char* ns = new char[totalLength + 1];
+		strcpy(ns, mString);
+		for (size_t i = mSize - 1; i <= totalLength; i++)
+		{
+			ns[i] = c;
+		}
+		ns[totalLength] = '\0';
+
+		mString = ns;
 	}
 
 	void MyString::Reverse()
