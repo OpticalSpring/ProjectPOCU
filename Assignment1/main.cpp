@@ -7,6 +7,6 @@ using namespace assignment1;
 int main()
 {
 	MyString s("Hello");
-	s.PadRight(8);
+	s.PadRight(3, 'a');
 	cout << s.GetCString();
 }
