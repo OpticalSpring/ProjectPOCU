@@ -5,103 +5,112 @@ using namespace std;
 
 namespace assignment1
 {
-    MyString::MyString(const char* s) : mSize(strlen(s)+1)
-    {
-        mString = new char[mSize];
-        memcpy(mString, s, mSize);
-    }
+	MyString::MyString(const char* s) : mSize(strlen(s) + 1)
+	{
+		mString = new char[mSize];
+		memcpy(mString, s, mSize);
+	}
 
-    MyString::MyString(const MyString& other) : mSize(other.mSize)
-    {
-        mString = new char[mSize];
-        memcpy(mString, other.mString, mSize);
-    }
+	MyString::MyString(const MyString& other) : mSize(other.mSize)
+	{
+		mString = new char[mSize];
+		memcpy(mString, other.mString, mSize);
+	}
 
-    MyString::~MyString()
-    {
-        delete[] mString;
-    }
+	MyString::~MyString()
+	{
 
-    unsigned int MyString::GetLength() const
-    {
-        return mSize;
-    }
+		delete[] mString;
+	}
 
-    const char* MyString::GetCString() const
-    {
-        return mString;
-    }
+	unsigned int MyString::GetLength() const
+	{
+		return mSize;
+	}
 
-    void MyString::Append(const char* s)
-    {
-        mSize += strlen(s);
-        char* ns = new char[mSize];
-        strcat(ns, mString);
-        strcat(ns, s);
-        delete[] mString;
-        mString = ns;
-        delete[] ns;
-    }
+	const char* MyString::GetCString() const
+	{
+		return mString;
+	}
 
-    MyString MyString::operator+(const MyString& other) const
-    {
-        return MyString("temporary");
-    }
+	void MyString::Append(const char* s)
+	{
+		mSize += strlen(s);
+		char* ns = new char[mSize];
+		strcpy(ns, mString);
+		
+		delete[] mString;
+		strcat(ns, s);
+		mString = ns;
+	}
 
-    int MyString::IndexOf(const char* s)
-    {
-        return 0;
-    }
+	MyString MyString::operator+(const MyString& other) const
+	{
+		return MyString("temporary");
+	}
 
-    int MyString::LastIndexOf(const char* s)
-    {
-        return 0;
-    }
+	int MyString::IndexOf(const char* s)
+	{
+		return 0;
+	}
 
-    void MyString::Interleave(const char* s)
-    {
-    }
+	int MyString::LastIndexOf(const char* s)
+	{
+		return 0;
+	}
 
-    bool MyString::RemoveAt(unsigned int index)
-    {
-        return false;
-    }
+	void MyString::Interleave(const char* s)
+	{
+	}
 
-    void MyString::PadLeft(unsigned int totalLength)
-    {
-    }
+	bool MyString::RemoveAt(unsigned int index)
+	{
+		return false;
+	}
 
-    void MyString::PadLeft(unsigned int totalLength, const char c)
-    {
-    }
+	void MyString::PadLeft(unsigned int totalLength)
+	{
+	}
 
-    void MyString::PadRight(unsigned int totalLength)
-    {
-    }
+	void MyString::PadLeft(unsigned int totalLength, const char c)
+	{
+	}
 
-    void MyString::PadRight(unsigned int totalLength, const char c)
-    {
-    }
+	void MyString::PadRight(unsigned int totalLength)
+	{
+	}
 
-    void MyString::Reverse()
-    {
-    }
+	void MyString::PadRight(unsigned int totalLength, const char c)
+	{
+	}
 
-    bool MyString::operator==(const MyString& rhs) const
-    {
-        return false;
-    }
+	void MyString::Reverse()
+	{
+	}
 
-    MyString& MyString::operator=(const MyString& rhs)
-    {
-        return *this;
-    }
+	bool MyString::operator==(const MyString& rhs) const
+	{
+		if (strcmp(mString, rhs.GetCString()) == false) {
+			return true;
+		}
+		else {
 
-    void MyString::ToLower()
-    {
-    }
+			return false;
+		}
+	}
 
-    void MyString::ToUpper()
-    {
-    }
+	MyString& MyString::operator=(const MyString& rhs)
+	{
+		mSize = rhs.GetLength();
+
+		return *this;
+	}
+
+	void MyString::ToLower()
+	{
+	}
+
+	void MyString::ToUpper()
+	{
+	}
 }
