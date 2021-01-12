@@ -11,19 +11,15 @@ namespace lab2
 	{
 		vector<int> v;
 		int number;
-		int a = 0;
 
-		while (true)
+		//while (true)
 		{
-			a++;
-			if (a > 10000) {
-				break;
-				}
+			
 
 			in >> number;
 			if (in.eof())
 			{
-				break;
+				//break;
 			}
 
 			if (in.fail())
@@ -31,7 +27,7 @@ namespace lab2
 				//out << "Invalid input" << endl;
 				in.clear();
 				in.ignore(LLONG_MAX, '\n');
-				continue;
+				//continue;
 			}
 			v.push_back(number);
 		}
@@ -52,17 +48,13 @@ namespace lab2
 	{
 		vector<float> v;
 		float number;
-		int a = 0;
-		while (true)
+		//while (true)
 		{
-			a++;
-			if (a > 10000) {
-				break;
-			}
+			
 			in >> number;
 			if (in.eof())
 			{
-				break;
+				//break;
 			}
 
 			if (in.fail())
@@ -70,7 +62,7 @@ namespace lab2
 				//out << "Invalid input" << endl;
 				in.clear();
 				in.ignore(LLONG_MAX, '\n');
-				continue;
+				//continue;
 			}
 			v.push_back(number);
 		}
