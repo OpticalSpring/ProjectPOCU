@@ -241,7 +241,8 @@ namespace assignment1
 		{
 			return true;
 		}
-		else {
+		else 
+		{
 
 			return false;
 		}
