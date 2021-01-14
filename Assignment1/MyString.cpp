@@ -57,6 +57,7 @@ namespace assignment1
 	{
 		if (strstr(mString, s) != nullptr) {
 			int index = (int)(strstr(mString, s) - mString);
+			return index;
 		}
 		else {
 			return -1;
@@ -65,7 +66,32 @@ namespace assignment1
 
 	int MyString::LastIndexOf(const char* s)
 	{
-		return 0;
+		char* ns = new char[strlen(s)+1];
+		strcpy(ns, s);
+
+		char* nString = new char[mSize];
+		strcpy(nString, mString);
+
+		for (size_t i = 0; i < (strlen(s) + 1) / 2; i++)
+		{
+			char temp = ns[i];
+			ns[i] = ns[strlen(s) + 1 - i - 2];
+			ns[strlen(s) + 1 - i - 2] = temp;
+		}
+		for (size_t i = 0; i < mSize / 2; i++)
+		{
+			char temp = nString[i];
+			nString[i] = nString[mSize - i - 2];
+			nString[mSize - i - 2] = temp;
+		}
+
+		if (strstr(nString, ns) != nullptr) {
+			int index = mSize - 1 - (int)(strstr(nString, ns) - nString) - strlen(s);
+			return index;
+		}
+		else {
+			return -1;
+		}
 	}
 
 	void MyString::Interleave(const char* s)
