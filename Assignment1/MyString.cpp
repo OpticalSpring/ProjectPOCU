@@ -11,26 +11,20 @@ namespace assignment1
 		size_t l1, l2;
 
 		l2 = strlen(s2);
-
-		/* s2 문자열의 길이가 0이라면 무조건 매칭으로 보고 s1의 시작주소를 반환합니다. */
 		if (!s2)
-			return (char*)s1;
+			return const_cast<char*>(s1);
 
 		l1 = strlen(s1);
 		s1 += l1;
-		/* 남은 l1의 길이가 l2 길이 보다 작다면, 비교할 의미가 없으므로 NULL을 리턴합니다. */
-		while (l1 >= l2) {
+		while (l1 >= l2) 
+		{
 			l1--;
-			/*
-			 * s1의 포인터 위치를 이동하면서,
-			 * 현재 s1과 s2의 메모리를 s2의 사이즈만큼 비교합니다.
-			 * 같으면 현재 s1의 포인터를 리턴합니다.
-			 */
+			
 			if (!memcmp(s1, s2, l2))
-				return (char*)s1;
+				return const_cast<char*>(s1);
 			s1--;
 		}
-		return NULL;
+		return nullptr;
 	}
 
 	MyString::MyString(const char* s) : mSize(strlen(s) + 1)
