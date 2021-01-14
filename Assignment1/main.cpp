@@ -282,6 +282,20 @@ void test3() {
 
 int main()
 {
-	
-	test();
+	/* PadLeft() Ex */
+	cout << "-----------------------" << endl;
+	cout << "PadLeft()" << endl;
+	MyString s9("Hello");
+	s9.PadLeft(6);  // "Hello"
+	cout << s9.GetCString() << endl;
+	s9.PadLeft(8);  // "   Hello"
+	cout << s9.GetCString() << endl;
+	bool a = s9 == "   Hello";
+	cout << boolalpha << a << endl;
+	MyString s92("World");
+	s92.PadLeft(3, '-');  // "World"
+	cout << s92.GetCString() << endl;
+	s92.PadLeft(7, '-');  // "--World"
+	cout << s92.GetCString() << endl;
+	//test();
 }

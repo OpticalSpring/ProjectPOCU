@@ -171,7 +171,7 @@ namespace assignment1
 
 	void MyString::PadLeft(unsigned int totalLength)
 	{
-		if (totalLength < mSize - 1) 
+		if (totalLength < mSize) 
 		{
 			return;
 		}
@@ -182,13 +182,13 @@ namespace assignment1
 		}
 		ns[totalLength - mSize + 1] = '\0';
 		strcat(ns, mString);
-
+		delete[] mString;
 		mString = ns;
 	}
 
 	void MyString::PadLeft(unsigned int totalLength, const char c)
 	{
-		if (totalLength < mSize - 1) 
+		if (totalLength < mSize) 
 		{
 			return;
 		}
@@ -199,13 +199,13 @@ namespace assignment1
 		}
 		ns[totalLength - mSize + 1] = '\0';
 		strcat(ns, mString);
-
+		delete[] mString;
 		mString = ns;
 	}
 
 	void MyString::PadRight(unsigned int totalLength)
 	{
-		if (totalLength < mSize - 1) 
+		if (totalLength < mSize) 
 		{
 			return;
 		}
@@ -216,13 +216,13 @@ namespace assignment1
 			ns[i] = ' ';
 		}
 		ns[totalLength] = '\0';
-
+		delete[] mString;
 		mString = ns;
 	}
 
 	void MyString::PadRight(unsigned int totalLength, const char c)
 	{
-		if (totalLength < mSize - 1) 
+		if (totalLength < mSize) 
 		{
 			return;
 		}
@@ -233,7 +233,7 @@ namespace assignment1
 			ns[i] = c;
 		}
 		ns[totalLength] = '\0';
-
+		delete[] mString;
 		mString = ns;
 	}
 
