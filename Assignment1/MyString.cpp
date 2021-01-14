@@ -83,7 +83,9 @@ namespace assignment1
 		char* ns = new char[nSize];
 		strcpy(ns, mString);
 		strcat(ns, other.GetCString());
-		return MyString(ns);
+		MyString rs(ns);
+		delete[] ns;
+		return rs;
 	}
 
 	int MyString::IndexOf(const char* s)
