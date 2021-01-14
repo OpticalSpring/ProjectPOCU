@@ -183,9 +183,13 @@ void test() {
 	cout << s142.GetCString() << endl;
 }
 
-
+void test2() {
+	MyString s("holla");
+	MyString s2(s);
+	cout << s2.GetCString();
+}
 
 int main()
 {
-	test();
+	test2();
 }

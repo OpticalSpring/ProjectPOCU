@@ -11,11 +11,11 @@ namespace assignment1
 		memcpy(mString, s, mSize);
 	}
 
-	MyString::MyString(const MyString& other) : mSize(other.mSize)
+	MyString::MyString(const MyString& other) : mSize(other.GetLength()+1)
 	{
 		char* nString = new char[mSize];
 		memcpy(nString, other.GetCString(), mSize);
-		delete[] mString;
+		
 		mString = nString;
 	}
 
