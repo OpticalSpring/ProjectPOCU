@@ -5,6 +5,34 @@ using namespace std;
 
 namespace assignment1
 {
+
+	char* strrstr(const char* s1, const char* s2)
+	{
+		size_t l1, l2;
+
+		l2 = strlen(s2);
+
+		/* s2 문자열의 길이가 0이라면 무조건 매칭으로 보고 s1의 시작주소를 반환합니다. */
+		if (!s2)
+			return (char*)s1;
+
+		l1 = strlen(s1);
+		s1 += l1;
+		/* 남은 l1의 길이가 l2 길이 보다 작다면, 비교할 의미가 없으므로 NULL을 리턴합니다. */
+		while (l1 >= l2) {
+			l1--;
+			/*
+			 * s1의 포인터 위치를 이동하면서,
+			 * 현재 s1과 s2의 메모리를 s2의 사이즈만큼 비교합니다.
+			 * 같으면 현재 s1의 포인터를 리턴합니다.
+			 */
+			if (!memcmp(s1, s2, l2))
+				return (char*)s1;
+			s1--;
+		}
+		return NULL;
+	}
+
 	MyString::MyString(const char* s) : mSize(strlen(s) + 1)
 	{
 		mString = new char[mSize];
@@ -69,8 +97,15 @@ namespace assignment1
 
 	int MyString::LastIndexOf(const char* s)
 	{
-		return fakeLastIndexOf(s);
-		
+		if (strrstr(mString, s) != nullptr)
+		{
+			int index = static_cast<int>(strrstr(mString, s) - mString);
+			return index;
+		}
+		else
+		{
+			return -1;
+		}
 	}
 
 	void MyString::Interleave(const char* s)
@@ -253,35 +288,7 @@ namespace assignment1
 			}
 		}
 	}
-	int MyString::fakeLastIndexOf(const char* s)
-	{
-		char* ns = new char[strlen(s) + 1];
-		strcpy(ns, s);
+	
 
-		char* nString = new char[mSize];
-		strcpy(nString, mString);
-
-		for (size_t i = 0; i < (strlen(s) + 1) / 2; i++)
-		{
-			char temp = ns[i];
-			ns[i] = ns[strlen(s) + 1 - i - 2];
-			ns[strlen(s) + 1 - i - 2] = temp;
-		}
-		for (size_t i = 0; i < mSize / 2; i++)
-		{
-			char temp = nString[i];
-			nString[i] = nString[mSize - i - 2];
-			nString[mSize - i - 2] = temp;
-		}
-
-		if (strstr(nString, ns) != nullptr)
-		{
-			int index = mSize - 1 - static_cast<int>(strstr(nString, ns) - nString) - strlen(s);
-			return index;
-		}
-		else
-		{
-			return -1;
-		}
-	}
+	
 }

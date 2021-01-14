@@ -282,5 +282,7 @@ void test3() {
 
 int main()
 {
-	test3();
+	MyString s1("Hello Hello");
+	cout << s1.LastIndexOf("ell");
+	//test3();
 }
