@@ -56,11 +56,13 @@ namespace assignment1
 
 	int MyString::IndexOf(const char* s)
 	{
-		if (strstr(mString, s) != nullptr) {
-			int index = (int)(strstr(mString, s) - mString);
+		if (strstr(mString, s) != nullptr) 
+		{
+			int index = static_cast<int>(strstr(mString, s) - mString);
 			return index;
 		}
-		else {
+		else 
+		{
 			return -1;
 		}
 	}
@@ -86,11 +88,13 @@ namespace assignment1
 			nString[mSize - i - 2] = temp;
 		}
 
-		if (strstr(nString, ns) != nullptr) {
-			int index = mSize - 1 - (int)(strstr(nString, ns) - nString) - strlen(s);
+		if (strstr(nString, ns) != nullptr) 
+		{
+			int index = mSize - 1 - static_cast<int>(strstr(nString, ns) - nString) - strlen(s);
 			return index;
 		}
-		else {
+		else 
+		{
 			return -1;
 		}
 	}
@@ -102,18 +106,22 @@ namespace assignment1
 		unsigned int a = 0;
 		unsigned int n1 = 0;
 		unsigned int n2 = 0;
-		while (true) {
-			if (n1 < mSize - 1) {
+		while (true) 
+		{
+			if (n1 < mSize - 1) 
+			{
 				ns[a] = mString[n1];
 				n1++;
 				a++;
 			}
-			if (n2 < strlen(s)) {
+			if (n2 < strlen(s)) 
+			{
 				ns[a] = s[n2];
 				n2++;
 				a++;
 			}
-			if (a >= nSize - 1) {
+			if (a >= nSize - 1) 
+			{
 				ns[a] = s[n2];
 				break;
 			}
@@ -124,12 +132,14 @@ namespace assignment1
 
 	bool MyString::RemoveAt(unsigned int index)
 	{
-		if (index >= 0 && index < mSize - 1) {
+		if (index >= 0 && index < mSize - 1) 
+		{
 			char* ns = new char[mSize - 1];
 			unsigned int a = 0;
 			for (size_t i = 0; i < mSize; i++)
 			{
-				if (i != index) {
+				if (i != index) 
+				{
 					ns[a] = mString[i];
 					a++;
 				}
@@ -140,7 +150,8 @@ namespace assignment1
 			mSize -= 1;
 			return true;
 		}
-		else {
+		else 
+		{
 
 			return false;
 		}
@@ -148,7 +159,8 @@ namespace assignment1
 
 	void MyString::PadLeft(unsigned int totalLength)
 	{
-		if (totalLength < mSize - 1) {
+		if (totalLength < mSize - 1) 
+		{
 			return;
 		}
 		char* ns = new char[totalLength + 1];
@@ -164,7 +176,8 @@ namespace assignment1
 
 	void MyString::PadLeft(unsigned int totalLength, const char c)
 	{
-		if (totalLength < mSize - 1) {
+		if (totalLength < mSize - 1) 
+		{
 			return;
 		}
 		char* ns = new char[totalLength + 1];
@@ -180,7 +193,8 @@ namespace assignment1
 
 	void MyString::PadRight(unsigned int totalLength)
 	{
-		if (totalLength < mSize - 1) {
+		if (totalLength < mSize - 1) 
+		{
 			return;
 		}
 		char* ns = new char[totalLength + 1];
@@ -196,7 +210,8 @@ namespace assignment1
 
 	void MyString::PadRight(unsigned int totalLength, const char c)
 	{
-		if (totalLength < mSize - 1) {
+		if (totalLength < mSize - 1) 
+		{
 			return;
 		}
 		char* ns = new char[totalLength + 1];
@@ -222,7 +237,8 @@ namespace assignment1
 
 	bool MyString::operator==(const MyString& rhs) const
 	{
-		if (strcmp(mString, rhs.GetCString()) == false) {
+		if (strcmp(mString, rhs.GetCString()) == false) 
+		{
 			return true;
 		}
 		else {
@@ -245,7 +261,8 @@ namespace assignment1
 	{
 		for (size_t i = 0; i < mSize; i++)
 		{
-			if (mString[i] >= 'A' && mString[i] <= 'Z') {
+			if (mString[i] >= 'A' && mString[i] <= 'Z') 
+			{
 				mString[i] += 32;
 			}
 		}
@@ -255,7 +272,8 @@ namespace assignment1
 	{
 		for (size_t i = 0; i < mSize; i++)
 		{
-			if (mString[i] >= 'a' && mString[i] <= 'z') {
+			if (mString[i] >= 'a' && mString[i] <= 'z') 
+			{
 				mString[i] -= 32;
 			}
 		}
