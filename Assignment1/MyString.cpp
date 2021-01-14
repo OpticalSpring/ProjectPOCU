@@ -1,6 +1,6 @@
 #include "MyString.h"
 #include "String.h"
-
+#include <iostream>
 using namespace std;
 
 namespace assignment1
@@ -10,19 +10,25 @@ namespace assignment1
 	{
 		size_t l1, l2;
 
-		l2 = strlen(s2);
-		if (!s2)
-			return const_cast<char*>(s1);
-
 		l1 = strlen(s1);
+		l2 = strlen(s2);
 		s1 += l1;
-		while (l1 >= l2) 
+		if (!memcmp(s1, s2, l2))
+		{
+			return const_cast<char*>(s1);
+		}
+		while (l1 > 0)
 		{
 			l1--;
-			
-			if (!memcmp(s1, s2, l2))
-				return const_cast<char*>(s1);
 			s1--;
+			if (!memcmp(s1, s2, l2)) 
+			{
+				return const_cast<char*>(s1);
+			}
+		}
+		if (l2 == 0) 
+		{
+			return const_cast<char*>(s1);
 		}
 		return nullptr;
 	}
