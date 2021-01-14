@@ -282,6 +282,19 @@ void test3() {
 
 int main()
 {
-	
-	test();
+	/* PadRight() Ex */
+	cout << "-----------------------" << endl;
+	cout << "PadRight()" << endl;
+	MyString s10("Hello");
+	s10.PadRight(2);  // "Hello"
+	cout << s10.GetCString() << endl;
+	s10.PadRight(8);  // "Hello   "
+	cout << s10.GetCString() << '|' << endl;// 공백 확인 위한 |
+	cout << s10.GetLength() << endl;
+	MyString s102("World");
+	s102.PadRight(3, '-');  // "World"
+	cout << s102.GetCString() << endl;
+	s102.PadRight(7, '-');  // "World--"
+	cout << s102.GetCString() << endl;
+	//test();
 }

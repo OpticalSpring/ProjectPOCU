@@ -36,6 +36,7 @@ namespace assignment1
 	{
 		mString = new char[mSize];
 		memcpy(mString, s, mSize);
+		
 	}
 
 	MyString::MyString(const MyString& other) : mSize(other.GetLength() + 1)
@@ -189,6 +190,7 @@ namespace assignment1
 		strcat(ns, mString);
 		delete[] mString;
 		mString = ns;
+		mSize = totalLength + 1;
 	}
 
 	void MyString::PadLeft(unsigned int totalLength, const char c)
@@ -206,6 +208,7 @@ namespace assignment1
 		strcat(ns, mString);
 		delete[] mString;
 		mString = ns;
+		mSize = totalLength + 1;
 	}
 
 	void MyString::PadRight(unsigned int totalLength)
@@ -223,6 +226,7 @@ namespace assignment1
 		ns[totalLength] = '\0';
 		delete[] mString;
 		mString = ns;
+		mSize = totalLength + 1;
 	}
 
 	void MyString::PadRight(unsigned int totalLength, const char c)
@@ -240,6 +244,7 @@ namespace assignment1
 		ns[totalLength] = '\0';
 		delete[] mString;
 		mString = ns;
+		mSize = totalLength + 1;
 	}
 
 	void MyString::Reverse()
