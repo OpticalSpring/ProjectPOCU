@@ -6,16 +6,15 @@ using namespace std;
 namespace assignment1
 {
 
-	char* strrstr(const char* s1, const char* s2)
+	char* strrstr(char* s1, const char* s2)
 	{
 		size_t l1, l2;
-
 		l1 = strlen(s1);
 		l2 = strlen(s2);
 		s1 += l1;
 		if (!memcmp(s1, s2, l2))
 		{
-			return const_cast<char*>(s1);
+			return s1;
 		}
 		while (l1 > 0)
 		{
@@ -23,12 +22,12 @@ namespace assignment1
 			s1--;
 			if (!memcmp(s1, s2, l2)) 
 			{
-				return const_cast<char*>(s1);
+				return s1;
 			}
 		}
 		if (l2 == 0) 
 		{
-			return const_cast<char*>(s1);
+			return s1;
 		}
 		return nullptr;
 	}
@@ -64,6 +63,10 @@ namespace assignment1
 
 	void MyString::Append(const char* s)
 	{
+		if (strlen(s) == 0) 
+		{
+			return;
+		}
 		mSize += strlen(s);
 		char* ns = new char[mSize];
 		strcpy(ns, mString);
@@ -80,6 +83,7 @@ namespace assignment1
 		strcpy(ns, mString);
 		strcat(ns, other.GetCString());
 		return MyString(ns);
+		delete[] ns;
 	}
 
 	int MyString::IndexOf(const char* s)

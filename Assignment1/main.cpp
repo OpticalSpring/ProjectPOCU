@@ -282,23 +282,6 @@ void test3() {
 
 int main()
 {
-	/* LastIndexOf() Ex */
-	cout << "-----------------------" << endl;
-	cout << "LastIndexOf()" << endl;
-	MyString s6("Hello");
-	cout << s6.LastIndexOf("ell") << endl;   // 1
-	cout << s6.LastIndexOf("l") << endl;     // 3
-	cout << s6.LastIndexOf("This") << endl;  // -1
-	cout << s6.LastIndexOf("") << endl;   // 5
-	cout << s6.LastIndexOf("He") << endl;   // 0
-
-	MyString s62("");
-	cout << s62.LastIndexOf("") << endl;  // 0
-	cout << s62.LastIndexOf("A") << endl; // -1
-
-	MyString s63("Hellello");
-	MyString s64("Heloo");
-	cout << s63.LastIndexOf("ell") << endl;   // 4
-	cout << s64.LastIndexOf("ell") << endl;   // -1
-	//test();
+	
+	test();
 }
