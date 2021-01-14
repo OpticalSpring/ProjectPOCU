@@ -11,11 +11,11 @@ namespace assignment1
 		memcpy(mString, s, mSize);
 	}
 
-	MyString::MyString(const MyString& other) : mSize(other.GetLength()+1)
+	MyString::MyString(const MyString& other) : mSize(other.GetLength() + 1)
 	{
 		char* nString = new char[mSize];
 		memcpy(nString, other.GetCString(), mSize);
-		
+
 		mString = nString;
 	}
 
@@ -27,7 +27,7 @@ namespace assignment1
 
 	unsigned int MyString::GetLength() const
 	{
-		return mSize-1;
+		return mSize - 1;
 	}
 
 	const char* MyString::GetCString() const
@@ -125,7 +125,7 @@ namespace assignment1
 
 	bool MyString::RemoveAt(unsigned int index)
 	{
-		if (index >= 0 && index < mSize-1) {
+		if (index >= 0 && index < mSize - 1) {
 			char* ns = new char[mSize - 1];
 			unsigned int a = 0;
 			for (size_t i = 0; i < mSize; i++)
@@ -142,7 +142,7 @@ namespace assignment1
 			return true;
 		}
 		else {
-			
+
 			return false;
 		}
 	}
