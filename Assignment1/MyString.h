@@ -26,6 +26,7 @@ namespace assignment1
 		void ToLower();
 		void ToUpper();
 	private:
+		int fakeLastIndexOf(const char* s);
 		char* mString;
 		unsigned int mSize;
 	};
