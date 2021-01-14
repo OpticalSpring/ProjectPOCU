@@ -13,10 +13,9 @@ namespace assignment1
 
 	MyString::MyString(const MyString& other) : mSize(other.GetLength() + 1)
 	{
-		char* nString = new char[mSize];
-		memcpy(nString, other.GetCString(), mSize);
+		mString = new char[mSize];
+		memcpy(mString, other.GetCString(), mSize);
 
-		mString = nString;
 	}
 
 	MyString::~MyString()
