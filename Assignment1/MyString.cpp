@@ -113,6 +113,10 @@ namespace assignment1
 
 	void MyString::Interleave(const char* s)
 	{
+		if (strlen(s) == 0) 
+		{
+			return;
+		}
 		unsigned int nSize = mSize + strlen(s);
 		char* ns = new char[nSize];
 		unsigned int a = 0;
@@ -138,6 +142,7 @@ namespace assignment1
 				break;
 			}
 		}
+		delete[] mString;
 		mString = ns;
 		mSize = nSize;
 	}
