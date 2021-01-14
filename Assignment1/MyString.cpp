@@ -27,7 +27,7 @@ namespace assignment1
 
 	unsigned int MyString::GetLength() const
 	{
-		return mSize;
+		return mSize-1;
 	}
 
 	const char* MyString::GetCString() const
@@ -48,7 +48,7 @@ namespace assignment1
 
 	MyString MyString::operator+(const MyString& other) const
 	{
-		unsigned int nSize = mSize + other.GetLength() - 1;
+		unsigned int nSize = mSize + other.GetLength();
 		char* ns = new char[nSize];
 		strcpy(ns, mString);
 		strcat(ns, other.GetCString());
@@ -125,25 +125,24 @@ namespace assignment1
 
 	bool MyString::RemoveAt(unsigned int index)
 	{
-		char* ns = new char[mSize - 1];
-		unsigned int a = 0;
-		for (size_t i = 0; i < mSize; i++)
-		{
-			if (i != index) {
-				ns[a] = mString[i];
-				a++;
+		if (index >= 0 && index < mSize-1) {
+			char* ns = new char[mSize - 1];
+			unsigned int a = 0;
+			for (size_t i = 0; i < mSize; i++)
+			{
+				if (i != index) {
+					ns[a] = mString[i];
+					a++;
+				}
 			}
 
-		}
-
-		if (index >= 0 && index < mSize) {
+			delete[] mString;
 			mString = ns;
 			mSize -= 1;
-			delete[] ns;
 			return true;
 		}
 		else {
-			delete[] ns;
+			
 			return false;
 		}
 	}
@@ -235,7 +234,7 @@ namespace assignment1
 
 	MyString& MyString::operator=(const MyString& rhs)
 	{
-		mSize = rhs.GetLength();
+		mSize = rhs.GetLength() + 1;
 		char* nString = new char[mSize];
 		memcpy(nString, rhs.GetCString(), mSize);
 		delete[] mString;
