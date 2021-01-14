@@ -6,6 +6,8 @@ using namespace assignment1;
 
 int main()
 {
-	MyString s("Hello Hello World ");
-	cout << s.IndexOf("Hello") << endl << s.LastIndexOf("Hello");
+	MyString s("Hello");
+	s = s;
+	MyString s2(s);
+	cout << s2.GetCString();
 }

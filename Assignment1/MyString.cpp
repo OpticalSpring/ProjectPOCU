@@ -13,8 +13,10 @@ namespace assignment1
 
 	MyString::MyString(const MyString& other) : mSize(other.mSize)
 	{
-		mString = new char[mSize];
-		memcpy(mString, other.mString, mSize);
+		char* nString = new char[mSize];
+		memcpy(nString, other.GetCString(), mSize);
+		delete[] mString;
+		mString = nString;
 	}
 
 	MyString::~MyString()
@@ -46,7 +48,7 @@ namespace assignment1
 
 	MyString MyString::operator+(const MyString& other) const
 	{
-		int nSize = mSize + other.GetLength() - 1;
+		unsigned int nSize = mSize + other.GetLength() - 1;
 		char* ns = new char[nSize];
 		strcpy(ns, mString);
 		strcat(ns, other.GetCString());
@@ -66,7 +68,7 @@ namespace assignment1
 
 	int MyString::LastIndexOf(const char* s)
 	{
-		char* ns = new char[strlen(s)+1];
+		char* ns = new char[strlen(s) + 1];
 		strcpy(ns, s);
 
 		char* nString = new char[mSize];
@@ -96,11 +98,11 @@ namespace assignment1
 
 	void MyString::Interleave(const char* s)
 	{
-		int nSize = mSize + strlen(s);
+		unsigned int nSize = mSize + strlen(s);
 		char* ns = new char[nSize];
-		int a = 0;
-		int n1 = 0;
-		int n2 = 0;
+		unsigned int a = 0;
+		unsigned int n1 = 0;
+		unsigned int n2 = 0;
 		while (true) {
 			if (n1 < mSize - 1) {
 				ns[a] = mString[n1];
@@ -124,7 +126,7 @@ namespace assignment1
 	bool MyString::RemoveAt(unsigned int index)
 	{
 		char* ns = new char[mSize - 1];
-		int a = 0;
+		unsigned int a = 0;
 		for (size_t i = 0; i < mSize; i++)
 		{
 			if (i != index) {
@@ -234,7 +236,10 @@ namespace assignment1
 	MyString& MyString::operator=(const MyString& rhs)
 	{
 		mSize = rhs.GetLength();
-
+		char* nString = new char[mSize];
+		memcpy(nString, rhs.GetCString(), mSize);
+		delete[] mString;
+		mString = nString;
 		return *this;
 	}
 
