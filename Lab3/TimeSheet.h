@@ -8,14 +8,17 @@ namespace lab3
 	{
 	public:
 		TimeSheet(const char* name, unsigned int maxEntries);
+		TimeSheet(const TimeSheet& other);
+		~TimeSheet();
 		void AddTime(int timeInHours);
 		int GetTimeEntry(unsigned int index) const;
 		int GetTotalTime() const;
 		float GetAverageTime() const;
 		float GetStandardDeviation() const;
+		const unsigned int GetLength() const;
+		const unsigned int GetNow() const;
 		const std::string& GetName() const;
 
-		~TimeSheet();
 	private:
 		std::string mSheetName;
 		int* mSheetTime;

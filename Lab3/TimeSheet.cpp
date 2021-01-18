@@ -11,6 +11,18 @@ namespace lab3
 
 	}
 
+	TimeSheet::TimeSheet(const TimeSheet& other)
+	{
+		mSheetName = other.GetName();
+		mSheetTime = new int[other.GetLength()]();
+		mSheetTimeLength = other.GetLength();
+		mSheetTimeNow = other.GetNow();
+		for (int i = 0; i < static_cast<int>(mSheetTimeLength); i++)
+		{
+			mSheetTime[i] = other.GetTimeEntry(i);
+		}
+	}
+
 	void TimeSheet::AddTime(int timeInHours)
 	{
 		if (timeInHours < 1 || timeInHours > 10)
@@ -39,6 +51,10 @@ namespace lab3
 
 	int TimeSheet::GetTotalTime() const
 	{
+		if (mSheetTimeNow == 0)
+		{
+			return 0;
+		}
 		int sum = 0;
 		for (size_t i = 0; i < mSheetTimeNow; i++)
 		{
@@ -49,6 +65,10 @@ namespace lab3
 
 	float TimeSheet::GetAverageTime() const
 	{
+		if (mSheetTimeNow == 0)
+		{
+			return 0;
+		}
 		float avg = static_cast<float>(GetTotalTime()) / static_cast<float>(mSheetTimeNow);
 		return avg;
 	}
@@ -70,6 +90,16 @@ namespace lab3
 		float std = static_cast<float>(sqrt(var));
 
 		return std;
+	}
+
+	const unsigned int TimeSheet::GetLength() const
+	{
+		return mSheetTimeLength;
+	}
+
+	const unsigned int TimeSheet::GetNow() const
+	{
+		return mSheetTimeNow;
 	}
 
 	const std::string& TimeSheet::GetName() const
