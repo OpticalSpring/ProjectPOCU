@@ -15,10 +15,10 @@ namespace lab3
         const std::string& GetName() const;
 
     private:
-        char* sheetName;
-        int* sheetTime;
-        int sheetTimeLength;
-        int sheetTimeNow;
+        char* mSheetName;
+        int* mSheetTime;
+        int mSheetTimeLength;
+        int mSheetTimeNow;
         // 필요에 따라 private 변수와 메서드를 추가하세요.
     };
 }
