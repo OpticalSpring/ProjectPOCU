@@ -4,11 +4,11 @@ namespace lab3
 {
 	TimeSheet::TimeSheet(const char* name, unsigned int maxEntries)
 	{
-		mSheetName = new char[strlen(name) + 1];
-		strcpy(mSheetName, name);
-		mSheetTime = new int[maxEntries];
+		mSheetName = name;
+		mSheetTime = new int[maxEntries]();
 		mSheetTimeLength = maxEntries;
 		mSheetTimeNow = 0;
+
 	}
 
 	void TimeSheet::AddTime(int timeInHours)
@@ -17,7 +17,7 @@ namespace lab3
 		{
 			return;
 		}
-		if (mSheetTimeNow > mSheetTimeLength)
+		if (mSheetTimeNow > mSheetTimeLength-1)
 		{
 			return;
 		}
@@ -27,7 +27,7 @@ namespace lab3
 
 	int TimeSheet::GetTimeEntry(unsigned int index) const
 	{
-		if (index < 0 || index > mSheetTimeLength - 1)
+		if (index < 0 || index > mSheetTimeNow - 1)
 		{
 			return -1;
 		}
@@ -40,7 +40,7 @@ namespace lab3
 	int TimeSheet::GetTotalTime() const
 	{
 		int sum = 0;
-		for (size_t i = 0; i < mSheetTimeLength; i++)
+		for (size_t i = 0; i < mSheetTimeNow; i++)
 		{
 			sum += mSheetTime[i];
 		}
@@ -49,7 +49,7 @@ namespace lab3
 
 	float TimeSheet::GetAverageTime() const
 	{
-		float avg = GetTotalTime() / mSheetTimeLength;
+		float avg = static_cast<float>(GetTotalTime()) / static_cast<float>(mSheetTimeNow);
 		return avg;
 	}
 
@@ -57,11 +57,11 @@ namespace lab3
 	{
 		float avg = GetAverageTime();
 		float var = 0;
-		for (size_t i = 0; i < mSheetTimeLength; i++)
+		for (size_t i = 0; i < mSheetTimeNow; i++)
 		{
-			var += pow(mSheetTime[i] - avg, 2);
+			var += static_cast<float>(pow(mSheetTime[i] - avg, 2));
 		}
-		var = sqrt(var);
+		var = static_cast<float>(sqrt(var));
 
 		return var;
 	}

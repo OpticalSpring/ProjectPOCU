@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 
+
 namespace lab3
 {
 	class TimeSheet
@@ -15,9 +16,9 @@ namespace lab3
 		const std::string& GetName() const;
 
 	private:
-		char* mSheetName;
+		std::string mSheetName;
 		int* mSheetTime;
-		int mSheetTimeLength;
-		int mSheetTimeNow;
+		unsigned int mSheetTimeLength;
+		unsigned int mSheetTimeNow;
 	};
 }
