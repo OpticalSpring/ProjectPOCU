@@ -16,6 +16,7 @@ namespace lab3
 		const std::string& GetName() const;
 
 	private:
+		~TimeSheet();
 		std::string mSheetName;
 		int* mSheetTime;
 		unsigned int mSheetTimeLength;

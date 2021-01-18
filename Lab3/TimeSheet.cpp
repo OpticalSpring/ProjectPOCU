@@ -76,4 +76,8 @@ namespace lab3
 	{
 		return mSheetName;
 	}
+	TimeSheet::~TimeSheet()
+	{
+		delete[] mSheetTime;
+	}
 }
