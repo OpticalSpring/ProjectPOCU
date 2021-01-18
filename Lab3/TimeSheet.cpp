@@ -110,4 +110,21 @@ namespace lab3
 	{
 		delete[] mSheetTime;
 	}
+	TimeSheet& TimeSheet::operator=(const TimeSheet& other)
+	{
+		mSheetName = other.GetName();
+		mSheetTimeLength = other.GetLength();
+		mSheetTimeNow = other.GetNow();
+		int* nSheetTime = new int[other.GetLength()]();
+		for (int i = 0; i < static_cast<int>(mSheetTimeLength); i++)
+		{
+			nSheetTime[i] = other.GetTimeEntry(i);
+		}
+		for (int i = 0; i < static_cast<int>(mSheetTimeLength); i++)
+		{
+			mSheetTime[i] = nSheetTime[i];
+		}
+		delete[] nSheetTime;
+		return *this;
+	}
 }
