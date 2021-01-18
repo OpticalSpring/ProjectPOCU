@@ -17,7 +17,7 @@ namespace lab3
 		{
 			return;
 		}
-		if (mSheetTimeNow > mSheetTimeLength-1)
+		if (mSheetTimeNow > mSheetTimeLength - 1)
 		{
 			return;
 		}
@@ -55,15 +55,21 @@ namespace lab3
 
 	float TimeSheet::GetStandardDeviation() const
 	{
+		if (mSheetTimeNow == 0)
+		{
+			return 0;
+		}
+
 		float avg = GetAverageTime();
 		float var = 0;
 		for (size_t i = 0; i < mSheetTimeNow; i++)
 		{
 			var += static_cast<float>(pow(mSheetTime[i] - avg, 2));
 		}
-		var = static_cast<float>(sqrt(var));
+		var = var / mSheetTimeNow;
+		float std = static_cast<float>(sqrt(var));
 
-		return var;
+		return std;
 	}
 
 	const std::string& TimeSheet::GetName() const
