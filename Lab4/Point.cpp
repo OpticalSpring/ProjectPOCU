@@ -28,6 +28,13 @@ namespace lab4
 		return Point(x, y);
 	}
 
+	Point& Point::operator=(const Point& other)
+	{
+		mX = other.GetX();
+		mY = other.GetY();
+		return *this;
+	}
+
 	float Point::Dot(const Point& other) const
 	{
 		float dot = mX * other.GetX() + mY * other.GetY();
