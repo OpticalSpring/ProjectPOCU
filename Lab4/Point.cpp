@@ -41,10 +41,6 @@ namespace lab4
 		return Point(x, y);
 	}
 
-	Point Point::operator=(const Point& other) const
-	{
-		return other;
-	}
 
 	float Point::GetX() const
 	{

@@ -107,8 +107,10 @@ namespace lab4
 			}
 		}
 
-		outMin = new Point(xMin, yMin);
-		outMax = new Point(xMax, yMax);
+		outMin->SetX(xMin);
+		outMin->SetY(yMin); 
+		outMax->SetX(xMax);
+		outMax->SetY(yMax);
 		return true;
 	}
 

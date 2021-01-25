@@ -13,10 +13,11 @@ namespace lab4
 		Point operator-(const Point& other) const;
 		float Dot(const Point& other) const;
 		Point operator*(float operand) const;
-		Point operator=(const Point& other) const;
 		friend Point operator*(float operand, const Point& other);
 		float GetX() const;
 		float GetY() const;
+		void SetX(float n) { mX = n; }
+		void SetY(float n) { mY = n; }
 	private:
 		float mX;
 		float mY;
