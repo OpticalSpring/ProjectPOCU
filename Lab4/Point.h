@@ -17,8 +17,8 @@ namespace lab4
 		friend Point operator*(float operand, const Point& other);
 		float GetX() const;
 		float GetY() const;
-		void SetX(float n) { mX = n; }
-		void SetY(float n) { mY = n; }
+		void SetX(float n);
+		void SetY(float n);
 	private:
 		float mX;
 		float mY;

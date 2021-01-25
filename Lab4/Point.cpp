@@ -58,6 +58,16 @@ namespace lab4
 	{
 		return mY;
 	}
+
+	void Point::SetX(float n)
+	{
+		mX = n;
+	}
+
+	void Point::SetY(float n)
+	{
+		mY = n;
+	}
 	
 	Point operator*(float operand, const Point& other)
 	{
