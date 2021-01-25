@@ -68,6 +68,8 @@ namespace lab4
 	{
 		mY = n;
 	}
+
+	
 	
 	Point operator*(float operand, const Point& other)
 	{

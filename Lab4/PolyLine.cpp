@@ -7,23 +7,29 @@ namespace lab4
 	PolyLine::PolyLine()
 	{
 		mSize = 0;
-		mPointLine = new Point[mSize];
+		for (size_t i = 0; i < 10; i++)
+		{
+			mPointLine[i] = nullptr;
+		}
 	}
 
 	PolyLine::PolyLine(const PolyLine& other)
 	{
 		
 		mSize = other.GetSize();
-		mPointLine = new Point[mSize];
+		for (size_t i = 0; i < 10; i++)
+		{
+			mPointLine[i] = nullptr;
+		}
 		for (size_t i = 0; i < mSize; i++)
 		{
-			mPointLine[i] = other.GetPointLine()[i];
+			mPointLine[i] = &other.GetPointLine()[i];
 		}
 	}
 
 	PolyLine::~PolyLine()
 	{
-		delete[] mPointLine;
+		//delete[] &mPointLine;
 	}
 
 	bool PolyLine::AddPoint(float x, float y)
@@ -32,30 +38,18 @@ namespace lab4
 		{
 			return false;
 		}
-		Point* nPointLine = new Point[mSize + 1];
-		for (size_t i = 0; i < mSize; i++)
-		{
-			nPointLine[i] = mPointLine[i];
-		}
-		nPointLine[mSize] = Point(x, y);
-		mPointLine = nPointLine;
+		mPointLine[mSize] = new Point(x, y);
 		mSize++;
 		return true;
 	}
 
-	bool PolyLine::AddPoint(const Point* point)
+	bool PolyLine::AddPoint( Point* point)
 	{
 		if (mSize >= 10)
 		{
 			return false;
 		}
-		Point* nPointLine = new Point[mSize + 1];
-		for (size_t i = 0; i < mSize; i++)
-		{
-			nPointLine[i] = mPointLine[i];
-		}
-		nPointLine[mSize] = Point(point->GetX(), point->GetY());
-		mPointLine = nPointLine;
+		mPointLine[mSize] = point;
 		mSize++;
 		return true;
 	}
@@ -63,10 +57,9 @@ namespace lab4
 	PolyLine& PolyLine::operator=(const PolyLine& other)
 	{
 		mSize = other.GetSize();
-		mPointLine = new Point[mSize];
 		for (size_t i = 0; i < mSize; i++)
 		{
-			mPointLine[i] = other.GetPointLine()[i];
+			mPointLine[i] = &other.GetPointLine()[i];
 		}
 		return *this;
 	}
@@ -77,17 +70,11 @@ namespace lab4
 		{
 			return false;
 		}
-		Point* nPointLine = new Point[mSize - 1];
-		for (size_t j = 0; j < i; j++)
+		delete mPointLine[i];
+		for (size_t j = i; j < mSize-1; j++)
 		{
-			nPointLine[j] = mPointLine[j];
+			mPointLine[j] = mPointLine[j + 1];
 		}
-		for (size_t j = i + 1; j < mSize; j++)
-		{
-			nPointLine[j - 1] = mPointLine[j];
-		}
-		
-		mPointLine = nPointLine;
 		mSize--;
 		return true;
 	}
@@ -98,27 +85,27 @@ namespace lab4
 		{
 			return false;
 		}
-		float xMin = mPointLine[0].GetX();
-		float yMin = mPointLine[0].GetY();
-		float xMax = mPointLine[0].GetX();
-		float yMax = mPointLine[0].GetY();
+		float xMin = mPointLine[0]->GetX();
+		float yMin = mPointLine[0]->GetY();
+		float xMax = mPointLine[0]->GetX();
+		float yMax = mPointLine[0]->GetY();
 		for (size_t i = 0; i < mSize; i++)
 		{
-			if (mPointLine[i].GetX() < xMin) 
+			if (mPointLine[i]->GetX() < xMin)
 			{
-				xMin = mPointLine[i].GetX();
+				xMin = mPointLine[i]->GetX();
 			}
-			if (mPointLine[i].GetY() < yMin)
+			if (mPointLine[i]->GetY() < yMin)
 			{
-				yMin = mPointLine[i].GetY();
+				yMin = mPointLine[i]->GetY();
 			}
-			if (mPointLine[i].GetX() > xMax)
+			if (mPointLine[i]->GetX() > xMax)
 			{
-				xMax = mPointLine[i].GetX();
+				xMax = mPointLine[i]->GetX();
 			}
-			if (mPointLine[i].GetY() > yMax)
+			if (mPointLine[i]->GetY() > yMax)
 			{
-				yMax = mPointLine[i].GetY();
+				yMax = mPointLine[i]->GetY();
 			}
 		}
 
@@ -137,11 +124,12 @@ namespace lab4
 		{
 			return nullptr;
 		}
-		return new Point(mPointLine[i].GetX(), mPointLine[i].GetY());
+		//return new Point(mPointLine[i]->GetX(), mPointLine[i]->GetY());
+		return mPointLine[i];
 	}
 	Point* PolyLine::GetPointLine() const
 	{
-		return mPointLine;
+		return *mPointLine;
 	}
 	unsigned int PolyLine::GetSize() const
 	{
