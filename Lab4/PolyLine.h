@@ -13,6 +13,7 @@ namespace lab4
 
 		bool AddPoint(float x, float y);
 		bool AddPoint(const Point* point);
+		PolyLine& operator=(const PolyLine& other);
 		bool RemovePoint(unsigned int i);
 		bool TryGetMinBoundingRectangle(Point* outMin, Point* outMax) const;
 		const Point* operator[](unsigned int i) const;

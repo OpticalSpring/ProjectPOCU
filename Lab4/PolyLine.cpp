@@ -14,7 +14,11 @@ namespace lab4
 	{
 		
 		mSize = other.GetSize();
-		mPointLine = other.GetPointLine();
+		mPointLine = new Point[mSize];
+		for (size_t i = 0; i < mSize; i++)
+		{
+			mPointLine[i] = other.GetPointLine()[i];
+		}
 	}
 
 	PolyLine::~PolyLine()
@@ -54,6 +58,17 @@ namespace lab4
 		mPointLine = nPointLine;
 		mSize++;
 		return true;
+	}
+
+	PolyLine& PolyLine::operator=(const PolyLine& other)
+	{
+		mSize = other.GetSize();
+		mPointLine = new Point[mSize];
+		for (size_t i = 0; i < mSize; i++)
+		{
+			mPointLine[i] = other.GetPointLine()[i];
+		}
+		return *this;
 	}
 
 	bool PolyLine::RemovePoint(unsigned int i)
