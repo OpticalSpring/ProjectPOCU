@@ -63,7 +63,6 @@ void PolyLineAddPointTest()
 {
 	cout << "- PolyLine::AddPoint() -" << endl;
 	PolyLine pl;
-
 	assert(pl.AddPoint(1.0f, 2.0f) == true);
 	assert(pl.AddPoint(new Point(2.0f, 3.0f)) == true);
 	assert(pl.AddPoint(2.2f, 1.9f) == true);  // plÀº [1.0f, 2.0f], [2.0f, 3.0f], [2.2f, 1.9f]

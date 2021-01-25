@@ -29,7 +29,7 @@ namespace lab4
 
 	PolyLine::~PolyLine()
 	{
-		//delete[] &mPointLine;
+		//delete mPointLine;
 	}
 
 	bool PolyLine::AddPoint(float x, float y)
@@ -57,6 +57,10 @@ namespace lab4
 	PolyLine& PolyLine::operator=(const PolyLine& other)
 	{
 		mSize = other.GetSize();
+		for (size_t i = 0; i < 10; i++)
+		{
+			mPointLine[i] = nullptr;
+		}
 		for (size_t i = 0; i < mSize; i++)
 		{
 			mPointLine[i] = &other.GetPointLine()[i];
@@ -127,7 +131,7 @@ namespace lab4
 		//return new Point(mPointLine[i]->GetX(), mPointLine[i]->GetY());
 		return mPointLine[i];
 	}
-	Point* PolyLine::GetPointLine() const
+	const Point* PolyLine::GetPointLine() const
 	{
 		return *mPointLine;
 	}
