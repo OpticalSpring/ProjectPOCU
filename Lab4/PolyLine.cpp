@@ -43,7 +43,7 @@ namespace lab4
 		return true;
 	}
 
-	bool PolyLine::AddPoint( Point* point)
+	bool PolyLine::AddPoint(const Point* point)
 	{
 		if (mSize >= 10)
 		{
