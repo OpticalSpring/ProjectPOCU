@@ -15,9 +15,11 @@ namespace lab4
 
 	PolyLine::PolyLine(const PolyLine& other)
 	{
-		
 		mSize = other.GetSize();
-		
+		for (size_t i = 0; i < 10; i++)
+		{
+			mPointLine[i] = nullptr;
+		}
 		for (size_t i = 0; i < mSize; i++)
 		{
 			mPointLine[i] = new Point(other[i]->GetX(), other[i]->GetY());
@@ -60,8 +62,8 @@ namespace lab4
 		{
 			return *this;
 		}
+
 		mSize = other.GetSize();
-		
 		for (size_t i = 0; i < mSize; i++)
 		{
 			mPointLine[i] = new Point(other[i]->GetX(), other[i]->GetY());
@@ -118,8 +120,6 @@ namespace lab4
 		outMin->SetY(yMin);
 		outMax->SetX(xMax);
 		outMax->SetY(yMax);
-		//outMin = new Point(xMin, yMin);
-		//outMax = new Point(xMax, yMax);
 		return true;
 	}
 
@@ -129,13 +129,9 @@ namespace lab4
 		{
 			return nullptr;
 		}
-		//return new Point(mPointLine[i]->GetX(), mPointLine[i]->GetY());
 		return mPointLine[i];
 	}
-	const Point* PolyLine::GetPointLine() const
-	{
-		return *mPointLine;
-	}
+
 	unsigned int PolyLine::GetSize() const
 	{
 		return mSize;

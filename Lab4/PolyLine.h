@@ -17,7 +17,7 @@ namespace lab4
 		bool RemovePoint(unsigned int i);
 		bool TryGetMinBoundingRectangle(Point* outMin, Point* outMax) const;
 		const Point* operator[](unsigned int i) const;
-		const Point* GetPointLine() const;
+		//const Point* GetPointLine() const;
 		unsigned int GetSize() const;
 	private:
 		const Point* mPointLine[10];
