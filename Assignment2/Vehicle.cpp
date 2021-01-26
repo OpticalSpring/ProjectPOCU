@@ -4,8 +4,15 @@ namespace assignment2
 {
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
 	{
+		for (size_t i = 0; i < 100; i++)
+		{
+			mPassengers[i] = nullptr;
+		}
 		mMaxPassengersCount = maxPassengersCount;
 		mSize = 0;
+		mWeight = 0;
+		mSpeed = 0;
+		mDistance = 0;
 	}
 
 	Vehicle::~Vehicle()

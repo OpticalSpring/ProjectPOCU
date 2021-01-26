@@ -2,7 +2,7 @@
 
 namespace assignment2
 {
-	Sedan::Sedan()
+	Sedan::Sedan() :Vehicle(4)
 	{
 	}
 
@@ -18,5 +18,13 @@ namespace assignment2
 	bool Sedan::RemoveTrailer()
 	{
 		return false;
+	}
+	unsigned int Sedan::GetMaxSpeed() const
+	{
+		return 0;
+	}
+	unsigned int Sedan::GetDriveSpeed() const
+	{
+		return 0;
 	}
 }

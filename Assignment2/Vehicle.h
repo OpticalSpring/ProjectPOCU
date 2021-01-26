@@ -17,9 +17,12 @@ namespace assignment2
 		const Person* GetPassenger(unsigned int i) const;
 		unsigned int GetPassengersCount() const;
 		unsigned int GetMaxPassengersCount() const;
-	private:
+	protected:
 		unsigned int mMaxPassengersCount;
 		const Person* mPassengers[100];
 		int mSize;
+		unsigned int mWeight;
+		unsigned int mSpeed;
+		unsigned int mDistance;
 	};
 }

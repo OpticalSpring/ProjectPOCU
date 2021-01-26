@@ -9,5 +9,7 @@ namespace assignment2
 		~Trailer();
 
 		unsigned int GetWeight() const;
+	private:
+		unsigned int mWeight;
 	};
 }
