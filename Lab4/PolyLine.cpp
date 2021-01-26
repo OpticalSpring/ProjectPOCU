@@ -15,7 +15,7 @@ namespace lab4
 
 	PolyLine::PolyLine(const PolyLine& other)
 	{
-		
+
 		mSize = other.GetSize();
 		for (size_t i = 0; i < 10; i++)
 		{
@@ -23,15 +23,16 @@ namespace lab4
 		}
 		for (size_t i = 0; i < mSize; i++)
 		{
+			//mPointLine[i] = &other.GetPointLine()[i];
 			mPointLine[i] = new Point(other.GetPointLine()[i].GetX(), other.GetPointLine()[i].GetY());
 		}
 	}
 
 	PolyLine::~PolyLine()
 	{
-		for (size_t i = 0; i < 10; i++)
+		for (size_t i = 0; i < mSize; i++)
 		{
-			mPointLine[i] = nullptr;
+			delete mPointLine[i];
 		}
 	}
 
@@ -66,6 +67,7 @@ namespace lab4
 		}
 		for (size_t i = 0; i < mSize; i++)
 		{
+			//mPointLine[i] = &other.GetPointLine()[i];
 			mPointLine[i] = new Point(other.GetPointLine()[i].GetX(), other.GetPointLine()[i].GetY());
 		}
 		return *this;
@@ -78,7 +80,7 @@ namespace lab4
 			return false;
 		}
 		delete mPointLine[i];
-		for (size_t j = i; j < mSize-1; j++)
+		for (size_t j = i; j < mSize - 1; j++)
 		{
 			mPointLine[j] = mPointLine[j + 1];
 		}
@@ -88,7 +90,7 @@ namespace lab4
 
 	bool PolyLine::TryGetMinBoundingRectangle(Point* outMin, Point* outMax) const
 	{
-		if (mSize == 0) 
+		if (mSize == 0)
 		{
 			return false;
 		}
@@ -117,7 +119,7 @@ namespace lab4
 		}
 
 		outMin->SetX(xMin);
-		outMin->SetY(yMin); 
+		outMin->SetY(yMin);
 		outMax->SetX(xMax);
 		outMax->SetY(yMax);
 		//outMin = new Point(xMin, yMin);
