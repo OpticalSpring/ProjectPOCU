@@ -17,10 +17,7 @@ namespace lab4
 	{
 
 		mSize = other.GetSize();
-		for (size_t i = 0; i < 10; i++)
-		{
-			mPointLine[i] = nullptr;
-		}
+		
 		for (size_t i = 0; i < mSize; i++)
 		{
 			//mPointLine[i] = &other.GetPointLine()[i];
@@ -61,10 +58,7 @@ namespace lab4
 	PolyLine& PolyLine::operator=(const PolyLine& other)
 	{
 		mSize = other.GetSize();
-		for (size_t i = 0; i < 10; i++)
-		{
-			mPointLine[i] = nullptr;
-		}
+		
 		for (size_t i = 0; i < mSize; i++)
 		{
 			//mPointLine[i] = &other.GetPointLine()[i];
