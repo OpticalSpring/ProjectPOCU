@@ -63,6 +63,10 @@ namespace lab4
 			return *this;
 		}
 
+		for (size_t i = 0; i < mSize; i++)
+		{
+			delete mPointLine[i];
+		}
 		mSize = other.GetSize();
 		for (size_t i = 0; i < mSize; i++)
 		{

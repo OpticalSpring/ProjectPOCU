@@ -4,7 +4,15 @@ namespace assignment2
 {
 	DeusExMachina* DeusExMachina::GetInstance()
 	{
-		return NULL;
+		if (instance == nullptr) 
+		{
+			instance = new DeusExMachina();
+		}
+		else 
+		{
+			return instance;
+		}
+
 	}
 
 	void DeusExMachina::Travel() const
