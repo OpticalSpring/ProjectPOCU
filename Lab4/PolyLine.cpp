@@ -15,16 +15,12 @@ namespace lab4
 
 	PolyLine::PolyLine(const PolyLine& other)
 	{
-		if (&other == this) 
-		{
-			return;
-		}
+		
 		mSize = other.GetSize();
 		
 		for (size_t i = 0; i < mSize; i++)
 		{
-			//mPointLine[i] = &other.GetPointLine()[i];
-			mPointLine[i] = new Point(other.GetPointLine()[i].GetX(), other.GetPointLine()[i].GetY());
+			mPointLine[i] = new Point(other[i]->GetX(), other[i]->GetY());
 		}
 	}
 
@@ -68,8 +64,7 @@ namespace lab4
 		
 		for (size_t i = 0; i < mSize; i++)
 		{
-			//mPointLine[i] = &other.GetPointLine()[i];
-			mPointLine[i] = new Point(other.GetPointLine()[i].GetX(), other.GetPointLine()[i].GetY());
+			mPointLine[i] = new Point(other[i]->GetX(), other[i]->GetY());
 		}
 		return *this;
 	}
