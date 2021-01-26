@@ -23,13 +23,16 @@ namespace lab4
 		}
 		for (size_t i = 0; i < mSize; i++)
 		{
-			mPointLine[i] = &other.GetPointLine()[i];
+			mPointLine[i] = new Point(other.GetPointLine()[i].GetX(), other.GetPointLine()[i].GetY());
 		}
 	}
 
 	PolyLine::~PolyLine()
 	{
-		//delete mPointLine;
+		for (size_t i = 0; i < 10; i++)
+		{
+			mPointLine[i] = nullptr;
+		}
 	}
 
 	bool PolyLine::AddPoint(float x, float y)
@@ -63,7 +66,7 @@ namespace lab4
 		}
 		for (size_t i = 0; i < mSize; i++)
 		{
-			mPointLine[i] = &other.GetPointLine()[i];
+			mPointLine[i] = new Point(other.GetPointLine()[i].GetX(), other.GetPointLine()[i].GetY());
 		}
 		return *this;
 	}
