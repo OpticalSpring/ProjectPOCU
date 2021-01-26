@@ -15,7 +15,10 @@ namespace lab4
 
 	PolyLine::PolyLine(const PolyLine& other)
 	{
-
+		if (&other == this) 
+		{
+			return;
+		}
 		mSize = other.GetSize();
 		
 		for (size_t i = 0; i < mSize; i++)
@@ -57,6 +60,10 @@ namespace lab4
 
 	PolyLine& PolyLine::operator=(const PolyLine& other)
 	{
+		if (&other == this)
+		{
+			return *this;
+		}
 		mSize = other.GetSize();
 		
 		for (size_t i = 0; i < mSize; i++)
