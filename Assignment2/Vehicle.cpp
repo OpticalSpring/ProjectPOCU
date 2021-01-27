@@ -11,7 +11,6 @@ namespace assignment2
 		mMaxPassengersCount = maxPassengersCount;
 		mSize = 0;
 		mWeight = 0;
-		mSpeed = 0;
 		mDistance = 0;
 	}
 
@@ -30,6 +29,7 @@ namespace assignment2
 			return false;
 		}
 		mPassengers[mSize] = person;
+		mWeight += person->GetWeight();
 		mSize++;
 		return true;
 	}
@@ -40,6 +40,7 @@ namespace assignment2
 		{
 			return false;
 		}
+		mWeight -= mPassengers[i]->GetWeight();
 		delete mPassengers[i];
 		for (size_t j = i; j < mSize - 1; j++)
 		{
@@ -57,6 +58,11 @@ namespace assignment2
 	unsigned int Vehicle::GetMaxPassengersCount() const
 	{
 		return mMaxPassengersCount;
+	}
+
+	unsigned int Vehicle::GetWeight() const
+	{
+		return mWeight;
 	}
 
 	const Person* Vehicle::GetPassenger(unsigned int i) const

@@ -37,14 +37,25 @@ namespace assignment2
 	}
 	unsigned int Airplane::GetMaxSpeed() const
 	{
-		return 0;
+		if (GetFlySpeed() > GetDriveSpeed()) 
+		{
+			return GetFlySpeed();
+		}
+		else 
+		{
+			return GetDriveSpeed();
+		}
 	}
 	unsigned int Airplane::GetFlySpeed() const
 	{
-		return 0;
+		double x = static_cast<double>(GetWeight());
+		double speed = 200.0 * pow(M_E, ((-x + 800.0) / 500.0));
+		return static_cast<unsigned int>(speed);
 	}
 	unsigned int Airplane::GetDriveSpeed() const
 	{
-		return 0;
+		double x = static_cast<double>(GetWeight());
+		double speed = 4.0 * pow(M_E, ((-x + 400.0) / 70.0));
+		return static_cast<unsigned int>(speed);
 	}
 }

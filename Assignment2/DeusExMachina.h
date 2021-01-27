@@ -15,6 +15,6 @@ namespace assignment2
 		
 	private:
 		const Vehicle* mVehicle[10];
-		int mSize;
+		unsigned int mSize;
 	};
 }
