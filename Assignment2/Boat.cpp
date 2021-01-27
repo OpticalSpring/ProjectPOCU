@@ -36,7 +36,7 @@ namespace assignment2
 	unsigned int Boat::GetSailSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		double speed = std::max((800 - 1.7 * x), 20.0);
+		double speed = std::max((800 - 10 * x), 20.0);
 
 		return static_cast<unsigned int>(speed + 0.5);
 	}

@@ -2,7 +2,7 @@
 
 namespace assignment2
 {
-	UBoat::UBoat() :Vehicle(50)
+	UBoat::UBoat() : Vehicle(50)
 	{
 	}
 
