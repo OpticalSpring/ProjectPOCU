@@ -14,6 +14,18 @@ namespace assignment2
 		mDistance = 0;
 	}
 
+	Vehicle::Vehicle(const Vehicle* other)
+	{
+		mSize = other->GetPassengersCount();
+		mMaxPassengersCount = other->GetMaxPassengersCount();
+		mWeight = other->GetWeight();
+		mDistance = other->GetDistance();
+		for (size_t i = 0; i < mSize; i++)
+		{
+			mPassengers[i] = new Person(other->GetPassenger(i));
+		}
+	}
+
 	Vehicle::~Vehicle()
 	{
 		for (size_t i = 0; i < mSize; i++)
@@ -92,5 +104,26 @@ namespace assignment2
 			return nullptr;
 		}
 		return mPassengers[i];
+	}
+	Vehicle& Vehicle::operator=(const Vehicle& other)
+	{
+		if (&other == this)
+		{
+			return *this;
+		}
+
+		for (size_t i = 0; i < mSize; i++)
+		{
+			delete mPassengers[i];
+		}
+		mSize = other.GetPassengersCount();
+		mMaxPassengersCount = other.GetMaxPassengersCount();
+		mWeight = other.GetWeight();
+		mDistance = other.GetDistance();
+		for (size_t i = 0; i < mSize; i++)
+		{
+			mPassengers[i] = new Person(other.GetPassenger(i));
+		}
+		return *this;
 	}
 }

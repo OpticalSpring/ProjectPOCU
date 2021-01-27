@@ -2,7 +2,7 @@
 
 namespace assignment2
 {
-	Motorcycle::Motorcycle() :Vehicle(2)
+	Motorcycle::Motorcycle() : Vehicle(2)
 	{
 	}
 

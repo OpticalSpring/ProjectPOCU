@@ -10,6 +10,7 @@ namespace assignment2
 
 	Sedan::~Sedan()
 	{
+		delete mTrailer;
 	}
 
 	bool Sedan::AddTrailer(const Trailer* trailer)

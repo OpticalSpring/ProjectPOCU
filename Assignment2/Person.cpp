@@ -8,6 +8,12 @@ namespace assignment2
 		mWeight = weight;
 	}
 
+	Person::Person(const Person* other)
+	{
+		mName = other->GetName();
+		mWeight = other->GetWeight();
+	}
+
 	Person::~Person()
 	{
 
