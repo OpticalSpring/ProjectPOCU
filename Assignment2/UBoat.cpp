@@ -11,14 +11,27 @@ namespace assignment2
 	}
 	unsigned int UBoat::GetMaxSpeed() const
 	{
-		return 0;
+		if (GetDiveSpeed() > GetSailSpeed())
+		{
+			return GetDiveSpeed();
+		}
+		else
+		{
+			return GetSailSpeed();
+		}
 	}
 	unsigned int UBoat::GetDiveSpeed() const
 	{
-		return 0;
+		double x = static_cast<double>(GetWeight());
+		unsigned int speed = 500 * log((x + 150) / 150) + 30 + 0.5;
+
+		return speed;
 	}
 	unsigned int UBoat::GetSailSpeed() const
 	{
-		return 0;
+		double x = static_cast<double>(GetWeight());
+		unsigned int speed = std::max((550 - x / 10), 200.0);
+
+		return speed;
 	}
 }

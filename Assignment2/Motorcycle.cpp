@@ -11,10 +11,13 @@ namespace assignment2
 	}
 	unsigned int Motorcycle::GetMaxSpeed() const
 	{
-		return 0;
+		return GetDriveSpeed();
 	}
 	unsigned int Motorcycle::GetDriveSpeed() const
 	{
-		return 0;
+		double x = static_cast<double>(GetWeight());
+		unsigned int speed = std::max((pow(-(x / 15), 3) + 2 * x + 400), 0.0);
+
+		return speed;
 	}
 }
