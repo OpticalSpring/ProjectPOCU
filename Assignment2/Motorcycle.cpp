@@ -22,7 +22,8 @@ namespace assignment2
 	}
 	void Motorcycle::Move()
 	{
-		switch (mCount % 6) {
+		switch (mCount % 6) 
+		{
 		case 0:
 		case 1:
 		case 2:

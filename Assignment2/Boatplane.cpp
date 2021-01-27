@@ -36,7 +36,8 @@ namespace assignment2
 	}
 	void Boatplane::Move()
 	{
-		switch (mCount % 4) {
+		switch (mCount % 4) 
+		{
 		case 0:
 			mDistance += GetMaxSpeed();
 			break;

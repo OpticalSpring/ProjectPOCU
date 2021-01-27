@@ -36,7 +36,8 @@ namespace assignment2
 	}
 	void UBoat::Move()
 	{
-		switch (mCount % 6) {
+		switch (mCount % 6) 
+		{
 		case 0:
 		case 1:
 			mDistance += GetMaxSpeed();
