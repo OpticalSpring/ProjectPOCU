@@ -8,9 +8,45 @@ namespace assignment2
 		mTrailer = nullptr;
 	}
 
+	Sedan::Sedan(const Sedan* other) : Vehicle(other)
+	{
+		mTrailer = nullptr;
+		if (other->GetTrailer() != nullptr)
+		{
+			mTrailer = new Trailer(other->GetTrailer()->GetWeight());
+		}
+	}
+
 	Sedan::~Sedan()
 	{
 		delete mTrailer;
+	}
+
+	Sedan& Sedan::operator=(const Sedan& other)
+	{
+		if (&other == this)
+		{
+			return *this;
+		}
+
+		for (size_t i = 0; i < mSize; i++)
+		{
+			delete mPassengers[i];
+		}
+		mSize = other.GetPassengersCount();
+		mMaxPassengersCount = other.GetMaxPassengersCount();
+		mWeight = other.GetWeight();
+		mDistance = other.GetDistance();
+		if (other.GetTrailer() != nullptr) 
+		{
+			delete mTrailer;
+			mTrailer = new Trailer(other.GetTrailer()->GetWeight());
+		}
+		for (size_t i = 0; i < mSize; i++)
+		{
+			mPassengers[i] = new Person(other.GetPassenger(i));
+		}
+		return *this;
 	}
 
 	bool Sedan::AddTrailer(const Trailer* trailer)
@@ -105,6 +141,11 @@ namespace assignment2
 		}
 
 		mCount++;
+	}
+
+	const Trailer* Sedan::GetTrailer() const
+	{
+		return mTrailer;
 	}
 
 	
