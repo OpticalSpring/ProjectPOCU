@@ -49,13 +49,14 @@ namespace assignment2
 	unsigned int Airplane::GetFlySpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		double speed = 200.0 * pow(M_E, ((-x + 800.0) / 500.0));
-		return static_cast<unsigned int>(speed);
+		unsigned int speed = 200.0 * pow(M_E, ((-x + 800.0) / 500.0)) +0.5;
+		
+		return speed;
 	}
 	unsigned int Airplane::GetDriveSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		double speed = 4.0 * pow(M_E, ((-x + 400.0) / 70.0));
-		return static_cast<unsigned int>(speed);
+		unsigned int speed = 4.0 * pow(M_E, ((-x + 400.0) / 70.0)) + 0.5;
+		return speed;
 	}
 }

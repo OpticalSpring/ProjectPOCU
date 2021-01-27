@@ -37,7 +37,6 @@ int main()
 	assert(a.GetPassengersCount() == 3);
 	assert(a.GetPassenger(1) == p2);
 	assert(a.GetFlySpeed() == 648);
-	cout << a.GetDriveSpeed() << endl;
 	assert(a.GetDriveSpeed() == 59);
 	assert(a.GetMaxSpeed() == 648);
 
