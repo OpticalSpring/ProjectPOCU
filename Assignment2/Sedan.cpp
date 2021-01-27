@@ -39,9 +39,12 @@ namespace assignment2
 	unsigned int Sedan::GetDriveSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		if (mTrailer != nullptr)
+		if (mTrailer == nullptr)
 		{
-			x += mTrailer->GetWeight();
+		}
+		else 
+		{
+			x += static_cast<double>(mTrailer->GetWeight());
 		}
 		unsigned int speed = 0;
 		if (x > 350)
@@ -71,7 +74,8 @@ namespace assignment2
 	{
 		if (mTrailer == nullptr)
 		{
-			switch (mCount % 6) {
+			switch (mCount % 6) 
+			{
 			case 0:
 			case 1:
 			case 2:
@@ -83,9 +87,10 @@ namespace assignment2
 				break;
 			}
 		}
-		else 
+		else
 		{
-			switch (mCount % 7) {
+			switch (mCount % 7) 
+			{
 			case 0:
 			case 1:
 			case 2:
@@ -98,7 +103,7 @@ namespace assignment2
 				break;
 			}
 		}
-		
+
 		mCount++;
 	}
 }

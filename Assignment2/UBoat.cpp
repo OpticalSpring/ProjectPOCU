@@ -47,5 +47,6 @@ namespace assignment2
 		case 5:
 			break;
 		}
+		mCount++;
 	}
 }

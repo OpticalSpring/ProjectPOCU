@@ -66,7 +66,7 @@ int main()
 	Sedan* sedan2 = new Sedan();
 	UBoat* uboat = new UBoat();
 
-	bool bAdded = sedan2->AddTrailer(new Trailer(50));
+	bool bAdded = sedan2->AddTrailer(new Trailer(100));
 	assert(bAdded);
 
 	bAdded = sedan2->AddTrailer(new Trailer(60));
@@ -109,7 +109,6 @@ int main()
 	deusExMachina1->Travel(); // Boat, Motorcycle, 두 Sedan이 이동
 	deusExMachina1->Travel(); // Boat, Motorcycle, 두 Sedan이 이동
 	deusExMachina1->Travel(); // 트레일러 달린 Sedan만 이동
-	cout << deusExMachina1->GetFurthestTravelled()->GetMaxPassengersCount() << endl;
 	assert(deusExMachina1->GetFurthestTravelled() == boat);
 
 	return 0;

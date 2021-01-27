@@ -44,6 +44,10 @@ namespace assignment2
 
 	const Vehicle* DeusExMachina::GetFurthestTravelled() const
 	{
+		if (mSize == 0) 
+		{
+			return nullptr;
+		}
 		unsigned int dis = 0;
 		int a = 0;
 		for (size_t i = 0; i < mSize; i++)
