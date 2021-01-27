@@ -20,4 +20,19 @@ namespace assignment2
 
 		return static_cast<unsigned int>(speed + 0.5);
 	}
+	void Motorcycle::Move()
+	{
+		switch (mCount % 6) {
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+			mDistance += GetMaxSpeed();
+			break;
+		case 5:
+			break;
+		}
+		mCount++;
+	}
 }

@@ -52,4 +52,17 @@ namespace assignment2
 		double speed = 4.0 * pow(M_E, ((-x + 400.0) / 70.0));
 		return static_cast<unsigned int>(speed + 0.5);
 	}
+	void Airplane::Move()
+	{
+		switch (mCount % 4) {
+		case 0:
+			mDistance += GetMaxSpeed();
+			break;
+		case 1:
+		case 2:
+		case 3:
+			break;
+		}
+		mCount++;
+	}
 }

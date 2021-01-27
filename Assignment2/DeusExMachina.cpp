@@ -12,7 +12,7 @@ namespace assignment2
 	{
 		for (size_t i = 0; i < mSize; i++)
 		{
-			
+			mVehicle[i]->Move();
 		}
 	}
 

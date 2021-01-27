@@ -12,6 +12,7 @@ namespace assignment2
 		mSize = 0;
 		mWeight = 0;
 		mDistance = 0;
+		mCount = 0;
 	}
 
 	Vehicle::Vehicle(const Vehicle* other)
@@ -20,6 +21,7 @@ namespace assignment2
 		mMaxPassengersCount = other->GetMaxPassengersCount();
 		mWeight = other->GetWeight();
 		mDistance = other->GetDistance();
+		mCount = other->GetDistance();
 		for (size_t i = 0; i < mSize; i++)
 		{
 			mPassengers[i] = new Person(other->GetPassenger(i));
@@ -96,6 +98,12 @@ namespace assignment2
 	{
 		return mDistance;
 	}
+
+	unsigned int Vehicle::GetCount() const
+	{
+		return mCount;
+	}
+
 
 	const Person* Vehicle::GetPassenger(unsigned int i) const
 	{

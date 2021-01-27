@@ -12,5 +12,6 @@ namespace assignment2
 		virtual unsigned int GetMaxSpeed() const;
 		virtual unsigned int GetDiveSpeed() const;
 		virtual unsigned int GetSailSpeed() const;
+		virtual void Move();
 	};
 }

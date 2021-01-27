@@ -14,7 +14,7 @@ namespace assignment2
 		const Vehicle* GetFurthestTravelled() const;
 		
 	private:
-		const Vehicle* mVehicle[10];
+		Vehicle* mVehicle[10];
 		unsigned int mSize;
 	};
 }

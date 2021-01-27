@@ -67,4 +67,38 @@ namespace assignment2
 
 		return speed;
 	}
+	void Sedan::Move()
+	{
+		if (mTrailer == nullptr)
+		{
+			switch (mCount % 6) {
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+				mDistance += GetMaxSpeed();
+				break;
+			case 5:
+				break;
+			}
+		}
+		else 
+		{
+			switch (mCount % 7) {
+			case 0:
+			case 1:
+			case 2:
+			case 3:
+			case 4:
+				mDistance += GetMaxSpeed();
+				break;
+			case 5:
+			case 6:
+				break;
+			}
+		}
+		
+		mCount++;
+	}
 }

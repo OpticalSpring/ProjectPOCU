@@ -21,11 +21,14 @@ namespace assignment2
 		unsigned int GetMaxPassengersCount() const;
 		unsigned int GetWeight() const;
 		unsigned int GetDistance() const;
+		unsigned int GetCount() const;
+		virtual void Move() = 0;
 	protected:
 		unsigned int mMaxPassengersCount;
 		const Person* mPassengers[100];
 		unsigned int mSize;
 		unsigned int mWeight;
 		unsigned int mDistance;
+		unsigned int mCount;
 	};
 }

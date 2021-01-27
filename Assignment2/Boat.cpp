@@ -40,4 +40,16 @@ namespace assignment2
 
 		return static_cast<unsigned int>(speed + 0.5);
 	}
+	void Boat::Move()
+	{
+		switch (mCount % 3) {
+		case 0:
+		case 1:
+			mDistance += GetMaxSpeed();
+			break;
+		case 2:
+			break;
+		}
+		mCount++;
+	}
 }

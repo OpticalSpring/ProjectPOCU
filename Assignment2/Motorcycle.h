@@ -11,5 +11,6 @@ namespace assignment2
 		~Motorcycle();
 		virtual unsigned int GetMaxSpeed() const;
 		virtual unsigned int GetDriveSpeed() const;
+		virtual void Move();
 	};
 }

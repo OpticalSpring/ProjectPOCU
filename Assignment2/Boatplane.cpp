@@ -34,4 +34,17 @@ namespace assignment2
 
 		return static_cast<unsigned int>(speed + 0.5);
 	}
+	void Boatplane::Move()
+	{
+		switch (mCount % 4) {
+		case 0:
+			mDistance += GetMaxSpeed();
+			break;
+		case 1:
+		case 2:
+		case 3:
+			break;
+		}
+		mCount++;
+	}
 }
