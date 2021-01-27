@@ -14,7 +14,7 @@ namespace assignment2
 
 	bool Sedan::AddTrailer(const Trailer* trailer)
 	{
-		if (mTrailer == nullptr) 
+		if (mTrailer == nullptr)
 		{
 			mTrailer = trailer;
 			return true;
@@ -38,12 +38,12 @@ namespace assignment2
 	unsigned int Sedan::GetDriveSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		if (mTrailer != nullptr) 
+		if (mTrailer != nullptr)
 		{
 			x += mTrailer->GetWeight();
 		}
 		unsigned int speed = 0;
-		if (x > 350) 
+		if (x > 350)
 		{
 			speed = 300;
 		}

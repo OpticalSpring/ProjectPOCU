@@ -49,7 +49,8 @@ int main()
 
 	assert(bp.GetPassengersCount() == 6);
 	assert(bp.GetMaxPassengersCount() == 10);
-
+	cout << a.GetPassengersCount();
+	cout << b.GetPassengersCount();
 	assert(a.GetPassengersCount() == 0);
 	assert(b.GetPassengersCount() == 0);
 

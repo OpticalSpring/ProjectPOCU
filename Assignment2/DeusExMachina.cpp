@@ -1,5 +1,5 @@
 #include "DeusExMachina.h"
-
+#include "Vehicle.h"
 namespace assignment2
 {
 	DeusExMachina* DeusExMachina::GetInstance()
@@ -44,6 +44,16 @@ namespace assignment2
 
 	const Vehicle* DeusExMachina::GetFurthestTravelled() const
 	{
-		return NULL;
+		unsigned int dis = 0;
+		int a = 0;
+		for (size_t i = 0; i < mSize; i++)
+		{
+			if (mVehicle[i]->GetDistance() > dis) 
+			{
+				dis = mVehicle[i]->GetDistance();
+				a = i;
+			}
+		}
+		return mVehicle[a];
 	}
 }

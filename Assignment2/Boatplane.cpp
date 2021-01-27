@@ -23,15 +23,15 @@ namespace assignment2
 	unsigned int Boatplane::GetFlySpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		unsigned int speed = 150.0 * pow(M_E, ((-x + 500.0) / 300.0)) + 0.5;
+		double speed = 150.0 * pow(M_E, ((-x + 500.0) / 300.0));
 
-		return speed;
+		return static_cast<unsigned int>(speed + 0.5);
 	}
 	unsigned int Boatplane::GetSailSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		unsigned int speed = std::max((800 - 1.7 * x), 20.0);
+		double speed = std::max((800 - 1.7 * x), 20.0);
 
-		return speed;
+		return static_cast<unsigned int>(speed + 0.5);
 	}
 }

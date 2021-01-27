@@ -50,6 +50,21 @@ namespace assignment2
 		return true;
 	}
 
+	bool Vehicle::ReplacePassenger(unsigned int i)
+	{
+		if (i >= mSize || i < 0)
+		{
+			return false;
+		}
+		mWeight = 0;
+		for (size_t j = i; j < mSize; j++)
+		{
+			mPassengers[j] = nullptr;
+		}
+		mSize = 0;
+		return true;
+	}
+
 	unsigned int Vehicle::GetPassengersCount() const
 	{
 		return mSize;
@@ -63,6 +78,11 @@ namespace assignment2
 	unsigned int Vehicle::GetWeight() const
 	{
 		return mWeight;
+	}
+
+	unsigned int Vehicle::GetDistance() const
+	{
+		return mDistance;
 	}
 
 	const Person* Vehicle::GetPassenger(unsigned int i) const

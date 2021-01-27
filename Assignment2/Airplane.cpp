@@ -24,24 +24,17 @@ namespace assignment2
 			bp.AddPassenger(boat.GetPassenger(i));
 		}
 
-		for (size_t i = 0; i < mSize; i++)
-		{
-			RemovePassenger(i);
-		}
-		for (size_t i = 0; i < boat.GetPassengersCount(); i++)
-		{
-			bp.RemovePassenger(i);
-		}
-
+		ReplacePassenger(0);
+		boat.ReplacePassenger(0);
 		return bp;
 	}
 	unsigned int Airplane::GetMaxSpeed() const
 	{
-		if (GetFlySpeed() > GetDriveSpeed()) 
+		if (GetFlySpeed() > GetDriveSpeed())
 		{
 			return GetFlySpeed();
 		}
-		else 
+		else
 		{
 			return GetDriveSpeed();
 		}
@@ -49,14 +42,14 @@ namespace assignment2
 	unsigned int Airplane::GetFlySpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		unsigned int speed = 200.0 * pow(M_E, ((-x + 800.0) / 500.0)) +0.5;
-		
-		return speed;
+		double speed = 200.0 * pow(M_E, ((-x + 800.0) / 500.0));
+
+		return static_cast<unsigned int>(speed + 0.5);
 	}
 	unsigned int Airplane::GetDriveSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		unsigned int speed = 4.0 * pow(M_E, ((-x + 400.0) / 70.0)) + 0.5;
-		return speed;
+		double speed = 4.0 * pow(M_E, ((-x + 400.0) / 70.0));
+		return static_cast<unsigned int>(speed + 0.5);
 	}
 }

@@ -24,14 +24,8 @@ namespace assignment2
 			bp.AddPassenger(GetPassenger(i));
 		}
 
-		for (size_t i = 0; i < plane.GetPassengersCount(); i++)
-		{
-			bp.RemovePassenger(i);
-		}
-		for (size_t i = 0; i < mSize; i++)
-		{
-			RemovePassenger(i);
-		}
+		ReplacePassenger(0);
+		plane.ReplacePassenger(0);
 
 		return bp;
 	}
@@ -42,8 +36,8 @@ namespace assignment2
 	unsigned int Boat::GetSailSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		unsigned int speed = std::max((800 - 1.7 * x), 20.0);
+		double speed = std::max((800 - 1.7 * x), 20.0);
 
-		return speed;
+		return static_cast<unsigned int>(speed + 0.5);
 	}
 }

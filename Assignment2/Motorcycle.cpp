@@ -16,8 +16,8 @@ namespace assignment2
 	unsigned int Motorcycle::GetDriveSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		unsigned int speed = std::max((pow(-(x / 15), 3) + 2 * x + 400), 0.0);
+		double speed = std::max((pow(-(x / 15), 3) + 2 * x + 400), 0.0);
 
-		return speed;
+		return static_cast<unsigned int>(speed + 0.5);
 	}
 }

@@ -23,15 +23,15 @@ namespace assignment2
 	unsigned int UBoat::GetDiveSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		unsigned int speed = 500 * log((x + 150) / 150) + 30 + 0.5;
+		double speed = 500 * log((x + 150) / 150) + 30;
 
-		return speed;
+		return static_cast<unsigned int>(speed + 0.5);
 	}
 	unsigned int UBoat::GetSailSpeed() const
 	{
 		double x = static_cast<double>(GetWeight());
-		unsigned int speed = std::max((550 - x / 10), 200.0);
+		double speed = std::max((550 - x / 10), 200.0);
 
-		return speed;
+		return static_cast<unsigned int>(speed + 0.5);
 	}
 }

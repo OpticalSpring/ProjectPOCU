@@ -13,10 +13,12 @@ namespace assignment2
 
 		bool AddPassenger(const Person* person);
 		bool RemovePassenger(unsigned int i);
+		bool ReplacePassenger(unsigned int i);
 		const Person* GetPassenger(unsigned int i) const;
 		unsigned int GetPassengersCount() const;
 		unsigned int GetMaxPassengersCount() const;
 		unsigned int GetWeight() const;
+		unsigned int GetDistance() const;
 	protected:
 		unsigned int mMaxPassengersCount;
 		const Person* mPassengers[100];
