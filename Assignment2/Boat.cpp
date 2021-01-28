@@ -24,9 +24,16 @@ namespace assignment2
 			bp.AddPassenger(GetPassenger(i));
 		}
 
-		ReplacePassenger(0);
-		plane.ReplacePassenger(0);
-
+		if (mSize + plane.GetPassengersCount() > 100)
+		{
+			plane.ReplacePassenger(mSize);
+			ReplacePassenger(100 - mSize);
+		}
+		else
+		{
+			plane.ReplacePassenger(plane.GetPassengersCount());
+			ReplacePassenger(mSize);
+		}
 		return bp;
 	}
 	unsigned int Boat::GetMaxSpeed() const

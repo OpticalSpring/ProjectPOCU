@@ -9,6 +9,10 @@ namespace assignment2
 			mPassengers[i] = nullptr;
 		}
 		mMaxPassengersCount = maxPassengersCount;
+		if (mMaxPassengersCount > 100) 
+		{
+			mMaxPassengersCount = 100;
+		}
 		mSize = 0;
 		mWeight = 0;
 		mDistance = 0;
@@ -66,16 +70,22 @@ namespace assignment2
 
 	bool Vehicle::ReplacePassenger(unsigned int i)
 	{
-		if (i >= mSize || i < 0)
+		if (i > mSize || i < 0)
 		{
 			return false;
 		}
-		mWeight = 0;
-		for (size_t j = i; j < mSize; j++)
+		
+		for (size_t j = i-1; j < i; j++)
 		{
+			mWeight -= mPassengers[j]->GetWeight();
 			mPassengers[j] = nullptr;
 		}
-		mSize = 0;
+		for (size_t j = i - 1; j < mSize; j++)
+		{
+			mPassengers[j-i] = mPassengers[j];
+		}
+		mSize -= i;
+		
 		return true;
 	}
 
