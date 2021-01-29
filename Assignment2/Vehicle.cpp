@@ -42,6 +42,10 @@ namespace assignment2
 		{
 			delete mPassengers[i];
 		}
+		for (size_t i = 0; i < 100; i++)
+		{
+			mPassengers[i] = nullptr;
+		}
 		mSize = other.GetPassengersCount();
 		mMaxPassengersCount = other.GetMaxPassengersCount();
 		mWeight = other.GetWeight();
@@ -58,6 +62,7 @@ namespace assignment2
 		for (size_t i = 0; i < mSize; i++)
 		{
 			delete mPassengers[i];
+			mPassengers[i] = nullptr;
 		}
 	}
 
@@ -86,6 +91,7 @@ namespace assignment2
 			mPassengers[j] = mPassengers[j + 1];
 		}
 		mSize--;
+		mPassengers[mSize] = nullptr;
 		return true;
 	}
 
