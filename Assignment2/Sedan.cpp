@@ -65,6 +65,7 @@ namespace assignment2
 		}
 		cout << "SedanRemoveTrailer" << endl;
 		delete mTrailer;
+		mTrailer = nullptr;
 		return true;
 	}
 	unsigned int Sedan::GetMaxSpeed() const

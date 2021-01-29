@@ -101,12 +101,12 @@ namespace assignment2
 			return false;
 		}
 
-		for (size_t j = i - 1; j < i; j++)
+		for (size_t j = 0; j < i; j++)
 		{
 			mWeight -= mPassengers[j]->GetWeight();
 			mPassengers[j] = nullptr;
 		}
-		for (size_t j = i - 1; j < mSize; j++)
+		for (size_t j = i; j < mSize; j++)
 		{
 			mPassengers[j - i] = mPassengers[j];
 		}
