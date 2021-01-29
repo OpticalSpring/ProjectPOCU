@@ -24,7 +24,7 @@ namespace assignment2
 			bp.AddPassenger(boat.GetPassenger(i));
 		}
 
-		if (mSize + boat.GetPassengersCount() > 100)
+		if (mSize + boat.GetPassengersCount() > 10000)
 		{
 			ReplacePassenger(mSize);
 			boat.ReplacePassenger(100 - mSize);

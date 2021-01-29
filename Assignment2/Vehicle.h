@@ -26,7 +26,8 @@ namespace assignment2
 		virtual void Move() = 0;
 	protected:
 		unsigned int mMaxPassengersCount;
-		const Person* mPassengers[100];
+		//const Person* mPassengers[100];
+		const Person** mPassengers;
 		unsigned int mSize;
 		unsigned int mWeight;
 		unsigned int mDistance;

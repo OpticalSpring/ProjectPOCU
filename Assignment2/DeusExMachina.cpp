@@ -28,7 +28,6 @@ namespace assignment2
 			delete mVehicle[i];
 			mVehicle[i] = nullptr;
 		}
-		delete mVehicle;
 		cout << "¼Ò¸ê" << endl;
 	}
 
