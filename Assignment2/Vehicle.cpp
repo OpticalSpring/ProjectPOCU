@@ -25,6 +25,10 @@ namespace assignment2
 		mWeight = other.GetWeight();
 		mDistance = other.GetDistance();
 		mCount = other.GetDistance();
+		for (size_t i = 0; i < 100; i++)
+		{
+			mPassengers[i] = nullptr;
+		}
 		for (size_t i = 0; i < mSize; i++)
 		{
 			mPassengers[i] = new Person(other.GetPassenger(i));
@@ -68,7 +72,11 @@ namespace assignment2
 
 	bool Vehicle::AddPassenger(const Person* person)
 	{
-		if (mSize >= mMaxPassengersCount)
+		if (mSize >= mMaxPassengersCount || person == nullptr)
+		{
+			return false;
+		}
+		if (IsOverlap(person))
 		{
 			return false;
 		}
@@ -149,6 +157,18 @@ namespace assignment2
 			return nullptr;
 		}
 		return mPassengers[i];
+	}
+
+	bool Vehicle::IsOverlap(const Person* person) const
+	{
+		for (unsigned int i = 0; i < mSize; i++)
+		{
+			if (mPassengers[i] == person)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

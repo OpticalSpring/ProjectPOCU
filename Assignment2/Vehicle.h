@@ -17,6 +17,7 @@ namespace assignment2
 		bool RemovePassenger(unsigned int i);
 		bool ReplacePassenger(unsigned int i);
 		const Person* GetPassenger(unsigned int i) const;
+		bool IsOverlap(const Person* person) const;
 		unsigned int GetPassengersCount() const;
 		unsigned int GetMaxPassengersCount() const;
 		unsigned int GetWeight() const;

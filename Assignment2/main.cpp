@@ -14,9 +14,8 @@
 using namespace assignment2;
 using namespace std;
 
-int main()
-{
-	
+
+void Test() {
 	Person* p = new Person("Bob", 85);
 
 	assert(p->GetName() == std::string("Bob"));
@@ -72,7 +71,7 @@ int main()
 
 	bAdded = sedan2->AddTrailer(new Trailer(60));
 	assert(!bAdded);
-	
+
 	bAdded = deusExMachina1->AddVehicle(airplane);
 	assert(bAdded);
 
@@ -111,6 +110,11 @@ int main()
 	deusExMachina1->Travel(); // Boat, Motorcycle, 두 Sedan이 이동
 	deusExMachina1->Travel(); // 트레일러 달린 Sedan만 이동
 	assert(deusExMachina1->GetFurthestTravelled() == boat);
+}
+int main()
+{
+	
+	Test();
 	
 	return 0;
 }
