@@ -8,7 +8,8 @@ namespace assignment2
 	{
 	public:
 		Vehicle(unsigned int maxPassengersCount);
-		Vehicle(const Vehicle* other);
+		Vehicle(const Vehicle& other);
+		Vehicle& operator=(const Vehicle& other);
 		~Vehicle();
 		virtual unsigned int GetMaxSpeed() const = 0;
 
@@ -16,7 +17,6 @@ namespace assignment2
 		bool RemovePassenger(unsigned int i);
 		bool ReplacePassenger(unsigned int i);
 		const Person* GetPassenger(unsigned int i) const;
-		Vehicle& operator=(const Vehicle& other);
 		unsigned int GetPassengersCount() const;
 		unsigned int GetMaxPassengersCount() const;
 		unsigned int GetWeight() const;

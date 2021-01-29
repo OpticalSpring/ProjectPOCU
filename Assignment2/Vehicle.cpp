@@ -1,5 +1,6 @@
 #include "Vehicle.h"
-
+#include <iostream>
+using namespace std;
 namespace assignment2
 {
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
@@ -19,17 +20,42 @@ namespace assignment2
 		mCount = 0;
 	}
 
-	Vehicle::Vehicle(const Vehicle* other)
+	Vehicle::Vehicle(const Vehicle& other)
 	{
-		mSize = other->GetPassengersCount();
-		mMaxPassengersCount = other->GetMaxPassengersCount();
-		mWeight = other->GetWeight();
-		mDistance = other->GetDistance();
-		mCount = other->GetDistance();
+		mSize = other.GetPassengersCount();
+		mMaxPassengersCount = other.GetMaxPassengersCount();
+		mWeight = other.GetWeight();
+		mDistance = other.GetDistance();
+		mCount = other.GetDistance();
 		for (size_t i = 0; i < mSize; i++)
 		{
-			mPassengers[i] = new Person(other->GetPassenger(i));
+			mPassengers[i] = new Person(other.GetPassenger(i));
 		}
+		cout << "Vcopy" << endl;
+	}
+
+	Vehicle& Vehicle::operator=(const Vehicle& other)
+	{
+		if (&other == this)
+		{
+			cout << "ME" << endl;
+			return *this;
+		}
+
+		for (size_t i = 0; i < mSize; i++)
+		{
+			delete mPassengers[i];
+		}
+		mSize = other.GetPassengersCount();
+		mMaxPassengersCount = other.GetMaxPassengersCount();
+		mWeight = other.GetWeight();
+		mDistance = other.GetDistance();
+		for (size_t i = 0; i < mSize; i++)
+		{
+			mPassengers[i] = new Person(other.GetPassenger(i));
+		}
+		cout << "V=" << endl;
+		return *this;
 	}
 
 	Vehicle::~Vehicle()
@@ -123,25 +149,5 @@ namespace assignment2
 		}
 		return mPassengers[i];
 	}
-	Vehicle& Vehicle::operator=(const Vehicle& other)
-	{
-		if (&other == this)
-		{
-			return *this;
-		}
-
-		for (size_t i = 0; i < mSize; i++)
-		{
-			delete mPassengers[i];
-		}
-		mSize = other.GetPassengersCount();
-		mMaxPassengersCount = other.GetMaxPassengersCount();
-		mWeight = other.GetWeight();
-		mDistance = other.GetDistance();
-		for (size_t i = 0; i < mSize; i++)
-		{
-			mPassengers[i] = new Person(other.GetPassenger(i));
-		}
-		return *this;
-	}
+	
 }

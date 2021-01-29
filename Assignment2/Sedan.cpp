@@ -1,58 +1,46 @@
 #include "Sedan.h"
 #include "Trailer.h"
-
+#include <iostream>
+using namespace std;
 namespace assignment2
 {
 	Sedan::Sedan() : Vehicle(4)
 	{
 		mTrailer = nullptr;
+		cout << "SedanNew" << endl;
 	}
 
-	Sedan::Sedan(const Sedan* other) : Vehicle(other)
+	Sedan::Sedan(const Sedan& other) : Vehicle(other)
 	{
-		mTrailer = nullptr;
-		if (other->GetTrailer() != nullptr)
+		if (other.GetTrailer() != nullptr) 
 		{
-			mTrailer = new Trailer(other->GetTrailer()->GetWeight());
+			mTrailer = new Trailer(other.GetTrailer()->GetWeight());
 		}
-	}
-
-	Sedan::~Sedan()
-	{
-		delete mTrailer;
+		cout << "SedanCopy" << endl;
 	}
 
 	Sedan& Sedan::operator=(const Sedan& other)
 	{
-		if (&other == this)
+		Vehicle::operator=(other);
+		if (other.GetTrailer() != nullptr)
 		{
-			return *this;
-		}
-
-		for (size_t i = 0; i < mSize; i++)
-		{
-			delete mPassengers[i];
-		}
-		mSize = other.GetPassengersCount();
-		mMaxPassengersCount = other.GetMaxPassengersCount();
-		mWeight = other.GetWeight();
-		mDistance = other.GetDistance();
-		if (other.GetTrailer() != nullptr) 
-		{
-			delete mTrailer;
 			mTrailer = new Trailer(other.GetTrailer()->GetWeight());
 		}
-		for (size_t i = 0; i < mSize; i++)
-		{
-			mPassengers[i] = new Person(other.GetPassenger(i));
-		}
+		cout << "Sedan=" << endl;
 		return *this;
+	}
+
+	Sedan::~Sedan()
+	{
+		cout << "SedanDelete" << endl;
+		delete mTrailer;
 	}
 
 	bool Sedan::AddTrailer(const Trailer* trailer)
 	{
 		if (mTrailer == nullptr)
 		{
+			cout << "SedanAddTrailer" << endl;
 			mTrailer = trailer;
 			return true;
 		}
@@ -65,6 +53,7 @@ namespace assignment2
 		{
 			return false;
 		}
+		cout << "SedanRemoveTrailer" << endl;
 		delete mTrailer;
 		return true;
 	}

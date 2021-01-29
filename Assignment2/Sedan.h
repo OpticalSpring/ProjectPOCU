@@ -9,9 +9,9 @@ namespace assignment2
 	{
 	public:
 		Sedan();
-		Sedan(const Sedan* other);
-		~Sedan();
+		Sedan(const Sedan& other);
 		Sedan& operator=(const Sedan& other);
+		~Sedan();
 		bool AddTrailer(const Trailer* trailer);
 		bool RemoveTrailer();
 		virtual unsigned int GetMaxSpeed() const;
