@@ -4,8 +4,19 @@
 using namespace std;
 namespace assignment2
 {
+	DeusExMachina::DeusExMachina()
+	{
+		mSize = 0;
+		for (size_t i = 0; i < 10; i++)
+		{
+			mVehicle[i] = nullptr;
+		}
+		cout << "생성" << endl;
+	}
+
 	DeusExMachina* DeusExMachina::GetInstance()
 	{
+		cout << "인스턴스받기" << endl;
 		static DeusExMachina ins;
 		return &ins;
 	}
@@ -15,12 +26,14 @@ namespace assignment2
 		for (size_t i = 0; i < mSize; i++)
 		{
 			delete mVehicle[i];
+			mVehicle[i] = nullptr;
 		}
-		cout << "des" << endl;
+		cout << "소멸" << endl;
 	}
 
 	void DeusExMachina::Travel() const
 	{
+		cout << "무브" << endl;
 		for (size_t i = 0; i < mSize; i++)
 		{
 			mVehicle[i]->Move();
@@ -35,6 +48,7 @@ namespace assignment2
 		}
 		mVehicle[mSize] = vehicle;
 		mSize++;
+		cout << "추가" << endl;
 		return true;
 	}
 
@@ -50,6 +64,8 @@ namespace assignment2
 			mVehicle[j] = mVehicle[j + 1];
 		}
 		mSize--;
+		mVehicle[mSize] = nullptr;
+		cout << "삭제" << endl;
 		return true;
 	}
 
@@ -69,6 +85,7 @@ namespace assignment2
 				a = i;
 			}
 		}
+		cout << "여기" << endl;
 		return mVehicle[a];
 	}
 }
