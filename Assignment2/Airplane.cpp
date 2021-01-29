@@ -24,12 +24,12 @@ namespace assignment2
 			bp.AddPassenger(boat.GetPassenger(i));
 		}
 
-		if (mSize + boat.GetPassengersCount() > 100) 
+		if (mSize + boat.GetPassengersCount() > 100)
 		{
 			ReplacePassenger(mSize);
-			boat.ReplacePassenger(100- mSize);
+			boat.ReplacePassenger(100 - mSize);
 		}
-		else 
+		else
 		{
 			ReplacePassenger(mSize);
 			boat.ReplacePassenger(boat.GetPassengersCount());
@@ -62,7 +62,7 @@ namespace assignment2
 	}
 	void Airplane::Move()
 	{
-		switch (mCount % 4) 
+		switch (mCount % 4)
 		{
 		case 0:
 			mDistance += GetMaxSpeed();

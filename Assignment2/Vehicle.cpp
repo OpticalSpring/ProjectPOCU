@@ -10,7 +10,7 @@ namespace assignment2
 			mPassengers[i] = nullptr;
 		}
 		mMaxPassengersCount = maxPassengersCount;
-		if (mMaxPassengersCount > 100) 
+		if (mMaxPassengersCount > 100)
 		{
 			mMaxPassengersCount = 100;
 		}
@@ -100,18 +100,18 @@ namespace assignment2
 		{
 			return false;
 		}
-		
-		for (size_t j = i-1; j < i; j++)
+
+		for (size_t j = i - 1; j < i; j++)
 		{
 			mWeight -= mPassengers[j]->GetWeight();
 			mPassengers[j] = nullptr;
 		}
 		for (size_t j = i - 1; j < mSize; j++)
 		{
-			mPassengers[j-i] = mPassengers[j];
+			mPassengers[j - i] = mPassengers[j];
 		}
 		mSize -= i;
-		
+
 		return true;
 	}
 
@@ -149,5 +149,5 @@ namespace assignment2
 		}
 		return mPassengers[i];
 	}
-	
+
 }
