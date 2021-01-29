@@ -74,7 +74,7 @@ void Test() {
 
 	bAdded = deusExMachina1->AddVehicle(airplane);
 	assert(bAdded);
-
+	
 	deusExMachina1->AddVehicle(boat);
 	deusExMachina1->AddVehicle(boatplane);
 	deusExMachina1->AddVehicle(motorcycle);
@@ -110,6 +110,9 @@ void Test() {
 	deusExMachina1->Travel(); // Boat, Motorcycle, 두 Sedan이 이동
 	deusExMachina1->Travel(); // 트레일러 달린 Sedan만 이동
 	assert(deusExMachina1->GetFurthestTravelled() == boat);
+	cout << " " << endl;
+	delete sedan2;
+	cout << " " << endl;
 }
 int main()
 {

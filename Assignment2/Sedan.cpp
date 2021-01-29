@@ -1,5 +1,7 @@
 #include "Sedan.h"
 #include "Trailer.h"
+#include <iostream>
+using namespace std;
 namespace assignment2
 {
 	Sedan::Sedan() : Vehicle(4)
@@ -39,6 +41,7 @@ namespace assignment2
 			delete mTrailer;
 			mTrailer = nullptr;
 		}
+		cout << "ÀÚ½Ä¼Ò¸ê" << endl;
 	}
 
 	bool Sedan::AddTrailer(const Trailer* trailer)

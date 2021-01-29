@@ -1,14 +1,18 @@
 #include "Vehicle.h"
+#include <iostream>
+using namespace std;
 namespace assignment2
 {
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
 	{
-		mMaxPassengersCount = maxPassengersCount;
-		mPassengers = new const Person * [mMaxPassengersCount];
-
-		for (size_t i = 0; i < mMaxPassengersCount; i++)
+		for (size_t i = 0; i < 100; i++)
 		{
 			mPassengers[i] = nullptr;
+		}
+		mMaxPassengersCount = maxPassengersCount;
+		if (mMaxPassengersCount > 100)
+		{
+			mMaxPassengersCount = 100;
 		}
 		mSize = 0;
 		mWeight = 0;
@@ -23,9 +27,7 @@ namespace assignment2
 		mWeight = other.GetWeight();
 		mDistance = other.GetDistance();
 		mCount = other.GetDistance();
-		mPassengers = new const Person * [mMaxPassengersCount];
-
-		for (size_t i = 0; i < mMaxPassengersCount; i++)
+		for (size_t i = 0; i < 100; i++)
 		{
 			mPassengers[i] = nullptr;
 		}
@@ -42,21 +44,18 @@ namespace assignment2
 			return *this;
 		}
 
-		for (size_t i = 0; i < mMaxPassengersCount; i++)
+		for (size_t i = 0; i < mSize; i++)
 		{
 			delete mPassengers[i];
 		}
-		delete[] mPassengers;
+		for (size_t i = 0; i < 100; i++)
+		{
+			mPassengers[i] = nullptr;
+		}
 		mSize = other.GetPassengersCount();
 		mMaxPassengersCount = other.GetMaxPassengersCount();
 		mWeight = other.GetWeight();
 		mDistance = other.GetDistance();
-		mPassengers = new const Person * [mMaxPassengersCount];
-
-		for (size_t i = 0; i < mMaxPassengersCount; i++)
-		{
-			mPassengers[i] = nullptr;
-		}
 		for (size_t i = 0; i < mSize; i++)
 		{
 			mPassengers[i] = new Person(other.GetPassenger(i));
@@ -71,6 +70,7 @@ namespace assignment2
 			delete mPassengers[i];
 			mPassengers[i] = nullptr;
 		}
+		cout << "ºÎ¸ð¼Ò¸ê" << endl;
 	}
 
 	bool Vehicle::AddPassenger(const Person* person)
