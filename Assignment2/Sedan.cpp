@@ -1,13 +1,10 @@
 #include "Sedan.h"
 #include "Trailer.h"
-#include <iostream>
-using namespace std;
 namespace assignment2
 {
 	Sedan::Sedan() : Vehicle(4)
 	{
 		mTrailer = nullptr;
-		cout << "SedanNew" << endl;
 	}
 
 	Sedan::Sedan(const Sedan& other) : Vehicle(other)
@@ -16,14 +13,12 @@ namespace assignment2
 		{
 			mTrailer = new Trailer(other.GetTrailer()->GetWeight());
 		}
-		cout << "SedanCopy" << endl;
 	}
 
 	Sedan& Sedan::operator=(const Sedan& other)
 	{
 		if (&other == this)
 		{
-			cout << "ME" << endl;
 			return *this;
 		}
 		Vehicle::operator=(other);
@@ -32,13 +27,11 @@ namespace assignment2
 		{
 			mTrailer = new Trailer(other.GetTrailer()->GetWeight());
 		}
-		cout << "Sedan=" << endl;
 		return *this;
 	}
 
 	Sedan::~Sedan()
 	{
-		cout << "SedanDelete" << endl;
 		if (mTrailer != nullptr) 
 		{
 			delete mTrailer;
@@ -50,7 +43,6 @@ namespace assignment2
 	{
 		if (mTrailer == nullptr)
 		{
-			cout << "SedanAddTrailer" << endl;
 			mTrailer = trailer;
 			return true;
 		}
@@ -63,7 +55,6 @@ namespace assignment2
 		{
 			return false;
 		}
-		cout << "SedanRemoveTrailer" << endl;
 		delete mTrailer;
 		mTrailer = nullptr;
 		return true;

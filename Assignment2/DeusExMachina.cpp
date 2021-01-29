@@ -1,5 +1,7 @@
 #include "DeusExMachina.h"
 #include "Vehicle.h"
+#include <iostream>
+using namespace std;
 namespace assignment2
 {
 	DeusExMachina* DeusExMachina::GetInstance()
@@ -14,6 +16,7 @@ namespace assignment2
 		{
 			delete mVehicle[i];
 		}
+		cout << "des" << endl;
 	}
 
 	void DeusExMachina::Travel() const

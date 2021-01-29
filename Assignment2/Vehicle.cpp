@@ -1,6 +1,4 @@
 #include "Vehicle.h"
-#include <iostream>
-using namespace std;
 namespace assignment2
 {
 	Vehicle::Vehicle(unsigned int maxPassengersCount)
@@ -31,14 +29,12 @@ namespace assignment2
 		{
 			mPassengers[i] = new Person(other.GetPassenger(i));
 		}
-		cout << "Vcopy" << endl;
 	}
 
 	Vehicle& Vehicle::operator=(const Vehicle& other)
 	{
 		if (&other == this)
 		{
-			cout << "ME" << endl;
 			return *this;
 		}
 
@@ -54,7 +50,6 @@ namespace assignment2
 		{
 			mPassengers[i] = new Person(other.GetPassenger(i));
 		}
-		cout << "V=" << endl;
 		return *this;
 	}
 
