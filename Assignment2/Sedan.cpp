@@ -21,7 +21,13 @@ namespace assignment2
 
 	Sedan& Sedan::operator=(const Sedan& other)
 	{
+		if (&other == this)
+		{
+			cout << "ME" << endl;
+			return *this;
+		}
 		Vehicle::operator=(other);
+		RemoveTrailer();
 		if (other.GetTrailer() != nullptr)
 		{
 			mTrailer = new Trailer(other.GetTrailer()->GetWeight());
@@ -33,7 +39,11 @@ namespace assignment2
 	Sedan::~Sedan()
 	{
 		cout << "SedanDelete" << endl;
-		delete mTrailer;
+		if (mTrailer != nullptr) 
+		{
+			delete mTrailer;
+			mTrailer = nullptr;
+		}
 	}
 
 	bool Sedan::AddTrailer(const Trailer* trailer)

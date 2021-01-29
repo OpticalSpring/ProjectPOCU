@@ -16,14 +16,13 @@ using namespace std;
 
 int main()
 {
-	Sedan* s1 = new Sedan();
-	Sedan* s2 = new Sedan();
-	s1->AddTrailer(new Trailer(100));
+	Sedan s1;
+	Sedan s2;
+	s1.AddTrailer(new Trailer(100));
 	s2 = s1;
-	Sedan* s3 = s1;
-	Boat* b1 = new Boat(3);
-	Boat* b2 = new Boat(3);
-	b1 = b1;
+	Sedan s3 = s1;
+	s3.RemoveTrailer();
+	cout << s3.GetWeight() << endl;
 
 	return 0;
 	//Person* p = new Person("Bob", 85);
