@@ -1,7 +1,7 @@
 #include "SquareLawn.h"
 namespace lab5
 {
-	SquareLawn::SquareLawn(unsigned int input) 
+	SquareLawn::SquareLawn(unsigned int input) : RectangleLawn(input, input)
 	{
 		mInput = input;
 		mGrassArea = input * input;
