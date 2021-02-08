@@ -4,12 +4,12 @@
 int main()
 {
 	std::vector<int> v;
-	/*v.push_back(4);
+	v.push_back(4);
 	v.push_back(3);
 	v.push_back(4);
 	v.push_back(12);
 	v.push_back(7);
-	v.push_back(11);*/
+	v.push_back(11);
 
 	int sum = lab6::Sum(v);
 	int max = lab6::Max(v);
