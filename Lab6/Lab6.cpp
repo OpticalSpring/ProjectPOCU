@@ -15,10 +15,7 @@ namespace lab6
 
 	int Min(const std::vector<int>& v)
 	{
-		if (v.empty() == true)
-		{
-			return INT32_MIN;
-		}
+		
 		int min = INT32_MAX;
 		for (auto it = v.begin(); it != v.end(); it++)
 		{
@@ -32,10 +29,7 @@ namespace lab6
 
 	int Max(const std::vector<int>& v)
 	{
-		if (v.empty() == true)
-		{
-			return INT32_MAX;
-		}
+		
 		int max = INT32_MIN;
 		for (auto it = v.begin(); it != v.end(); it++)
 		{
@@ -89,9 +83,9 @@ namespace lab6
 		{
 			return;
 		}
-		for (int i = 0; i < v.size() - 1; i++) 
+		for (size_t i = 0; i < v.size() - 1; i++) 
 		{
-			for (int j = i + 1; j < v.size(); j++) 
+			for (size_t j = i + 1; j < v.size(); j++)
 			{
 				if (v[i] < v[j]) 
 				{
