@@ -15,14 +15,14 @@ namespace lab6
 
 	int Min(const std::vector<int>& v)
 	{
-		if (v.empty() == true) 
+		if (v.empty() == true)
 		{
 			return INT32_MIN;
 		}
 		int min = INT32_MAX;
 		for (auto it = v.begin(); it != v.end(); it++)
 		{
-			if (min > *it) 
+			if (min > *it)
 			{
 				min = *it;
 			}
@@ -64,7 +64,6 @@ namespace lab6
 			return 0;
 		}
 		std::unordered_map<int, int> cmap;
-		cmap.reserve(v.size());
 		for (auto it = v.begin(); it != v.end(); it++)
 		{
 			cmap[*it]++;
@@ -73,22 +72,25 @@ namespace lab6
 		auto cit = cmap.begin();
 		for (auto it = cmap.begin(); it != cmap.end(); it++)
 		{
-			if (c < it->second) 
+			if (c < it->second)
 			{
 				c = it->second;
 				cit = it;
 			}
 		}
-		
+
 		return cit->first;
 	}
 
 	void SortDescending(std::vector<int>& v)
 	{
-		
-		for (int i = 0; i < v.size() - 1; i++) {
-			for (int j = i + 1; j < v.size(); j++) {
-				if (v[i] < v[j]) {
+
+		for (int i = 0; i < v.size() - 1; i++) 
+		{
+			for (int j = i + 1; j < v.size(); j++) 
+			{
+				if (v[i] < v[j]) 
+				{
 					int temp = v[j];
 					v[j] = v[i];
 					v[i] = temp;
