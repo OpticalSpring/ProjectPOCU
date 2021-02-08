@@ -64,6 +64,7 @@ namespace lab6
 			return 0;
 		}
 		std::unordered_map<int, int> cmap;
+		cmap.reserve(v.size());
 		for (auto it = v.begin(); it != v.end(); it++)
 		{
 			cmap[*it]++;
@@ -84,7 +85,10 @@ namespace lab6
 
 	void SortDescending(std::vector<int>& v)
 	{
-
+		if (v.empty() == true)
+		{
+			return;
+		}
 		for (int i = 0; i < v.size() - 1; i++) 
 		{
 			for (int j = i + 1; j < v.size(); j++) 
