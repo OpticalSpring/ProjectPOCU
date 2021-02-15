@@ -20,11 +20,15 @@ namespace assignment3
 		unsigned int GetCount();
 	private:
 		std::stack<T> mStack;
+		T mMin;
+		T mMax;
 	};
 
 	template<typename T>
 	inline SmartStack<T>::SmartStack()
 	{
+		mMin = std::numeric_limits<T>::max();
+		mMax = std::numeric_limits<T>::lowest();
 	}
 
 
@@ -34,6 +38,14 @@ namespace assignment3
 	inline void SmartStack<T>::Push(T number)
 	{
 		mStack.push(number);
+		if (mMax < number)
+		{
+			mMax = number;
+		}
+		if (mMin > number)
+		{
+			mMin = number;
+		}
 	}
 
 	template<typename T>
@@ -41,6 +53,33 @@ namespace assignment3
 	{
 		T r = mStack.top();
 		mStack.pop();
+
+		if (r == mMax) 
+		{
+			mMax = std::numeric_limits<T>::lowest();
+			std::stack<T> nStack = mStack;
+			for (size_t i = 0; i < mStack.size(); i++)
+			{
+				if (mMax < nStack.top())
+				{
+					mMax = nStack.top();
+				}
+				nStack.pop();
+			}
+		}
+		if (r == mMin)
+		{
+			mMin = std::numeric_limits<T>::lowest();
+			std::stack<T> nStack = mStack;
+			for (size_t i = 0; i < mStack.size(); i++)
+			{
+				if (mMin > nStack.top())
+				{
+					mMin = nStack.top();
+				}
+				nStack.pop();
+			}
+		}
 		return r;
 	}
 
@@ -58,18 +97,8 @@ namespace assignment3
 			return std::numeric_limits<T>::lowest();
 		}
 
-		T max = std::numeric_limits<T>::lowest();
-		std::stack<T> nStack = mStack;
-		for (size_t i = 0; i < mStack.size(); i++)
-		{
-			if (max < nStack.top()) 
-			{
-				max = nStack.top();
-			}
-			nStack.pop();
-		}
 
-		return max;
+		return mMax;
 	}
 
 	template<typename T>
@@ -79,18 +108,9 @@ namespace assignment3
 		{
 			return std::numeric_limits<T>::max();
 		}
-		T min = std::numeric_limits<T>::max();
-		std::stack<T> nStack = mStack;
-		for (size_t i = 0; i < mStack.size(); i++)
-		{
-			if (min > nStack.top())
-			{
-				min = nStack.top();
-			}
-			nStack.pop();
-		}
+		
 
-		return min;
+		return mMin;
 	}
 
 	template<typename T>
@@ -122,8 +142,8 @@ namespace assignment3
 	template<typename T>
 	inline double SmartStack<T>::GetVariance()
 	{
-		float sum = static_cast<double>(0);
-		float average = GetAverage();
+		double sum = static_cast<double>(0);
+		double average = GetAverage();
 		std::stack<T> nStack = mStack;
 		for (size_t i = 0; i < mStack.size(); i++)
 		{
