@@ -88,8 +88,8 @@ int main()
 	std::cout << ssq.GetStandardDeviation() << std::endl;
 	assert(std::abs(ssq.GetSum() - 11.2854) <= EPSILON);
 	assert(std::abs(ssq.GetAverage() - 1.41068) <= EPSILON);
-	assert(std::abs(ssq.GetVariance() - 48.3859) <= EPSILON);
-	assert(std::abs(ssq.GetStandardDeviation() - 6.956) <= EPSILON);
+	assert(std::abs(ssq.GetVariance() - 49.564) <= EPSILON);
+	assert(std::abs(ssq.GetStandardDeviation() - 7.04017) <= EPSILON);
 
 	return 0;
 }

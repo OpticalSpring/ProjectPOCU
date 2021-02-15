@@ -63,7 +63,7 @@ namespace assignment3
 		T r = mQueue.front();
 		mQueue.pop();
 		mSum -= r;
-		mSquaredSum -= mQueue.front() * mQueue.front();
+		mSquaredSum -= r * r;
 		if (r == mMax)
 		{
 			mMax = std::numeric_limits<T>::lowest();
