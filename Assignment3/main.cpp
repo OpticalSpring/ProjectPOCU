@@ -1,5 +1,6 @@
 #include <cassert>
 #include <cmath>
+#include <iostream>
 
 #include "SmartStack.h"
 #include "SmartQueue.h"
@@ -44,6 +45,7 @@ int main()
 	assert(ss.GetMin() == -5.9f);
 	assert(std::abs(ss.GetSum() - 19.1853008f) <= EPSILON);
 	assert(std::abs(ss.GetAverage() - 2.398) <= EPSILON);
+	
 	assert(std::abs(ss.GetVariance() - 17.714) <= EPSILON);
 	assert(std::abs(ss.GetStandardDeviation() - 4.209) <= EPSILON);
 
@@ -68,21 +70,26 @@ int main()
 	assert(std::abs(ssq.GetAverage() - 1.599) <= EPSILON);
 	assert(std::abs(ssq.GetVariance() - 40.057) <= EPSILON);
 	assert(std::abs(ssq.GetStandardDeviation() - 6.329) <= EPSILON);
-	assert(ssq.Peek() == 9.2f);
+	
+	assert(ssq.Peek() == 3.4999f);
 
 	popped1 = ssq.Dequeue();
 	popped2 = ssq.Dequeue();
 
-	assert(popped1 == 9.2f);
-	assert(popped2 == -12.4f);
+	assert(popped1 == 3.4999f);
+	assert(popped2 == 1.2f);
 	assert(ssq.GetCount() == 8U);
-	assert(ssq.Peek() == 1.1f);
+	assert(ssq.Peek() == 4.6555f);
 	assert(ssq.GetMax() == 10.2f);
-	assert(ssq.GetMin() == -5.9f);
-	assert(std::abs(ssq.GetSum() - 19.1853008f) <= EPSILON);
-	assert(std::abs(ssq.GetAverage() - 2.398) <= EPSILON);
-	assert(std::abs(ssq.GetVariance() - 17.714) <= EPSILON);
-	assert(std::abs(ssq.GetStandardDeviation() - 4.209) <= EPSILON);
+	assert(ssq.GetMin() == -12.4f);
+	std::cout << ssq.GetSum() << std::endl;
+	std::cout << ssq.GetAverage() << std::endl;
+	std::cout << ssq.GetVariance() << std::endl;
+	std::cout << ssq.GetStandardDeviation() << std::endl;
+	assert(std::abs(ssq.GetSum() - 11.2854) <= EPSILON);
+	assert(std::abs(ssq.GetAverage() - 1.41068) <= EPSILON);
+	assert(std::abs(ssq.GetVariance() - 48.3859) <= EPSILON);
+	assert(std::abs(ssq.GetStandardDeviation() - 6.956) <= EPSILON);
 
 	return 0;
 }

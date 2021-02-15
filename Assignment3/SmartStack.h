@@ -57,10 +57,14 @@ namespace assignment3
 	template<typename T>
 	inline T SmartStack<T>::Pop()
 	{
+		if (mStack.empty() == true)
+		{
+			return static_cast<T>(0);
+		}
 		T r = mStack.top();
 		mStack.pop();
 		mSum -= r;
-		mSquaredSum -= mStack.top() * mStack.top();
+		mSquaredSum -= r * r;
 		if (r == mMax)
 		{
 			mMax = std::numeric_limits<T>::lowest();
@@ -87,6 +91,14 @@ namespace assignment3
 				nStack.pop();
 			}
 		}
+		if (mStack.empty() == true)
+		{
+			mMin = std::numeric_limits<T>::max();
+			mMax = std::numeric_limits<T>::lowest();
+			mSum = static_cast<T>(0);
+			mSquaredSum = 0.0;
+		}
+
 		return r;
 	}
 
@@ -99,38 +111,24 @@ namespace assignment3
 	template<typename T>
 	inline T SmartStack<T>::GetMax()
 	{
-		if (mStack.empty() == true)
-		{
-			return std::numeric_limits<T>::lowest();
-		}
-
-
 		return mMax;
 	}
 
 	template<typename T>
 	inline T SmartStack<T>::GetMin()
 	{
-		if (mStack.empty() == true)
-		{
-			return std::numeric_limits<T>::max();
-		}
-
-
 		return mMin;
 	}
 
 	template<typename T>
 	inline double SmartStack<T>::GetAverage()
 	{
-
 		return mSum / static_cast<double>(mStack.size());
 	}
 
 	template<typename T>
 	inline T SmartStack<T>::GetSum()
 	{
-
 		return mSum;
 	}
 
@@ -146,7 +144,7 @@ namespace assignment3
 	template<typename T>
 	inline double SmartStack<T>::GetStandardDeviation()
 	{
-		double standardDeviation = sqrtf(static_cast<float> (GetVariance()));
+		double standardDeviation = sqrtf(static_cast<float>(GetVariance()));
 		return standardDeviation;
 	}
 

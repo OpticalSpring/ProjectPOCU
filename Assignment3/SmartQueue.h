@@ -58,7 +58,7 @@ namespace assignment3
 	{
 		if (mQueue.empty() == true)
 		{
-			return 0;
+			return static_cast<T>(0);
 		}
 		T r = mQueue.front();
 		mQueue.pop();
@@ -90,29 +90,23 @@ namespace assignment3
 				nQueue.pop();
 			}
 		}
-
+		if (mQueue.empty() == true)
+		{
+			mMin = std::numeric_limits<T>::max();
+			mMax = std::numeric_limits<T>::lowest();
+			mSum = static_cast<T>(0);
+			mSquaredSum = 0.0;
+		}
 		return r;
 	}
 	template<typename T>
 	inline T SmartQueue<T>::GetMax()
 	{
-		if (mQueue.empty() == true)
-		{
-			return std::numeric_limits<T>::lowest();
-		}
-
-
 		return mMax;
 	}
 	template<typename T>
 	inline T SmartQueue<T>::GetMin()
 	{
-		if (mQueue.empty() == true)
-		{
-			return std::numeric_limits<T>::max();
-		}
-
-
 		return mMin;
 	}
 	template<typename T>
@@ -136,7 +130,7 @@ namespace assignment3
 	template<typename T>
 	inline double SmartQueue<T>::GetStandardDeviation()
 	{
-		double standardDeviation = sqrtf(static_cast<float> (GetVariance()));
+		double standardDeviation = sqrtf(static_cast<float>(GetVariance()));
 		return standardDeviation;
 	}
 	template<typename T>
