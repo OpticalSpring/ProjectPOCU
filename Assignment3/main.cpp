@@ -2,6 +2,7 @@
 #include <cmath>
 
 #include "SmartStack.h"
+#include "SmartQueue.h"
 
 using namespace assignment3;
 
@@ -45,6 +46,43 @@ int main()
 	assert(std::abs(ss.GetAverage() - 2.398) <= EPSILON);
 	assert(std::abs(ss.GetVariance() - 17.714) <= EPSILON);
 	assert(std::abs(ss.GetStandardDeviation() - 4.209) <= EPSILON);
+
+	SmartQueue<float> ssq;
+
+	ssq.Enqueue(3.4999f);
+	ssq.Enqueue(1.2f);
+	ssq.Enqueue(4.6555f);
+	ssq.Enqueue(3.3299f);
+	ssq.Enqueue(10.2f);
+	ssq.Enqueue(1.1f);
+	ssq.Enqueue(-5.9f);
+	ssq.Enqueue(1.1f);
+	ssq.Enqueue(-12.4f);
+	ssq.Enqueue(9.2f);
+
+	assert(ssq.GetCount() == 10U);
+	assert(ssq.Peek() == 3.4999f);
+	assert(ssq.GetMax() == 10.2f);
+	assert(ssq.GetMin() == -12.4f);
+	//assert(std::abs(ssq.GetSum() - 15.985301f) <= EPSILON);
+	assert(std::abs(ssq.GetAverage() - 1.599) <= EPSILON);
+	assert(std::abs(ssq.GetVariance() - 40.057) <= EPSILON);
+	assert(std::abs(ssq.GetStandardDeviation() - 6.329) <= EPSILON);
+	assert(ssq.Peek() == 9.2f);
+
+	popped1 = ssq.Dequeue();
+	popped2 = ssq.Dequeue();
+
+	assert(popped1 == 9.2f);
+	assert(popped2 == -12.4f);
+	assert(ssq.GetCount() == 8U);
+	assert(ssq.Peek() == 1.1f);
+	assert(ssq.GetMax() == 10.2f);
+	assert(ssq.GetMin() == -5.9f);
+	assert(std::abs(ssq.GetSum() - 19.1853008f) <= EPSILON);
+	assert(std::abs(ssq.GetAverage() - 2.398) <= EPSILON);
+	assert(std::abs(ssq.GetVariance() - 17.714) <= EPSILON);
+	assert(std::abs(ssq.GetStandardDeviation() - 4.209) <= EPSILON);
 
 	return 0;
 }

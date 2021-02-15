@@ -20,15 +20,27 @@ namespace assignment3
 		unsigned int GetCount();
 	private:
 		std::queue<T> mQueue;
+		T mMin;
+		T mMax;
 	};
 	template<typename T>
 	inline SmartQueue<T>::SmartQueue()
 	{
+		mMin = std::numeric_limits<T>::max();
+		mMax = std::numeric_limits<T>::lowest();
 	}
 	template<typename T>
 	inline void SmartQueue<T>::Enqueue(T number)
 	{
 		mQueue.push(number);
+		if (mMax < number)
+		{
+			mMax = number;
+		}
+		if (mMin > number)
+		{
+			mMin = number;
+		}
 	}
 	template<typename T>
 	inline T SmartQueue<T>::Peek()
@@ -38,8 +50,40 @@ namespace assignment3
 	template<typename T>
 	inline T SmartQueue<T>::Dequeue()
 	{
+		if (mQueue.empty() == true)
+		{
+			return 0;
+		}
 		T r = mQueue.front();
 		mQueue.pop();
+
+		if (r == mMax)
+		{
+			mMax = std::numeric_limits<T>::lowest();
+			std::queue<T> nQueue = mQueue;
+			for (size_t i = 0; i < mQueue.size(); i++)
+			{
+				if (mMax < nQueue.front())
+				{
+					mMax = nQueue.front();
+				}
+				nQueue.pop();
+			}
+		}
+		if (r == mMin)
+		{
+			mMin = std::numeric_limits<T>::max();
+			std::queue<T> nQueue = mQueue;
+			for (size_t i = 0; i < mQueue.size(); i++)
+			{
+				if (mMin > nQueue.front())
+				{
+					mMin = nQueue.front();
+				}
+				nQueue.pop();
+			}
+		}
+
 		return r;
 	}
 	template<typename T>
@@ -50,18 +94,8 @@ namespace assignment3
 			return std::numeric_limits<T>::lowest();
 		}
 
-		T max = std::numeric_limits<T>::lowest();
-		std::queue<T> nQueue = mQueue;
-		for (size_t i = 0; i < mQueue.size(); i++)
-		{
-			if (max < nQueue.front())
-			{
-				max = nQueue.front();
-			}
-			nQueue.pop();
-		}
 
-		return max;
+		return mMax;
 	}
 	template<typename T>
 	inline T SmartQueue<T>::GetMin()
@@ -71,18 +105,8 @@ namespace assignment3
 			return std::numeric_limits<T>::max();
 		}
 
-		T min = std::numeric_limits<T>::max();
-		std::queue<T> nQueue = mQueue;
-		for (size_t i = 0; i < mQueue.size(); i++)
-		{
-			if (min > nQueue.front())
-			{
-				min = nQueue.front();
-			}
-			nQueue.pop();
-		}
 
-		return min;
+		return mMin;
 	}
 	template<typename T>
 	inline double SmartQueue<T>::GetAverage()
@@ -113,19 +137,19 @@ namespace assignment3
 	{
 		double sum = static_cast<double>(0);
 		double average = GetAverage();
-		std::stack<T> nStack = mStack;
-		for (size_t i = 0; i < mStack.size(); i++)
+		std::queue<T> nQueue = mQueue;
+		for (size_t i = 0; i < mQueue.size(); i++)
 		{
-			sum += (nStack.top() - average) * (nStack.top() - average);
-			nStack.pop();
+			sum += (nQueue.front() - average) * (nQueue.front() - average);
+			nQueue.pop();
 		}
-		double variance = sum / mStack.size();
+		double variance = sum / mQueue.size();
 		return variance;
 	}
 	template<typename T>
 	inline double SmartQueue<T>::GetStandardDeviation()
 	{
-		double standardDeviation = static_cast<double>(sqrtf(GetVariance()));
+		double standardDeviation = sqrtf(static_cast<float> (GetVariance()));
 		return standardDeviation;
 	}
 	template<typename T>

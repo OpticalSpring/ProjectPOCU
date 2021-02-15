@@ -157,7 +157,7 @@ namespace assignment3
 	template<typename T>
 	inline double SmartStack<T>::GetStandardDeviation()
 	{ 
-		double standardDeviation = static_cast<double>(sqrtf(GetVariance()));
+		double standardDeviation = sqrtf(static_cast<float> (GetVariance()));
 		return standardDeviation;
 	}
 
