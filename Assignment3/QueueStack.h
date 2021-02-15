@@ -4,6 +4,7 @@ namespace assignment3
 	template<typename T>
 	class QueueStack
 	{
+	public:
 		QueueStack();
 		void Enqueue(T number);
 		T Peek();

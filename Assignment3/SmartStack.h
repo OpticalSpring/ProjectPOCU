@@ -109,7 +109,7 @@ namespace assignment3
 	template<typename T>
 	inline T SmartStack<T>::GetSum()
 	{
-		double sum = 0;
+		T sum = 0;
 		std::stack<T> nStack = mStack;
 		for (size_t i = 0; i < mStack.size(); i++)
 		{
