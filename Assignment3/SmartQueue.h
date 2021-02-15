@@ -22,17 +22,23 @@ namespace assignment3
 		std::queue<T> mQueue;
 		T mMin;
 		T mMax;
+		T mSum;
+		double mSquaredSum;
 	};
 	template<typename T>
 	inline SmartQueue<T>::SmartQueue()
 	{
 		mMin = std::numeric_limits<T>::max();
 		mMax = std::numeric_limits<T>::lowest();
+		mSum = static_cast<T>(0);
+		mSquaredSum = 0.0;
 	}
 	template<typename T>
 	inline void SmartQueue<T>::Enqueue(T number)
 	{
 		mQueue.push(number);
+		mSum += number;
+		mSquaredSum += number * number;
 		if (mMax < number)
 		{
 			mMax = number;
@@ -56,7 +62,8 @@ namespace assignment3
 		}
 		T r = mQueue.front();
 		mQueue.pop();
-
+		mSum -= r;
+		mSquaredSum -= mQueue.front() * mQueue.front();
 		if (r == mMax)
 		{
 			mMax = std::numeric_limits<T>::lowest();
@@ -111,39 +118,19 @@ namespace assignment3
 	template<typename T>
 	inline double SmartQueue<T>::GetAverage()
 	{
-		double ave = 0;
-		std::queue<T> nQueue = mQueue;
-		for (size_t i = 0; i < mQueue.size(); i++)
-		{
-			ave += mQueue.front();
-			mQueue.pop();
-		}
-		return ave / mQueue.size();
+		return mSum / static_cast<double>(mQueue.size());
 	}
 	template<typename T>
 	inline T SmartQueue<T>::GetSum()
 	{
-		T sum = 0;
-		std::queue<T> nQueue = mQueue;
-		for (size_t i = 0; i < mQueue.size(); i++)
-		{
-			sum += mQueue.front();
-			mQueue.pop();
-		}
-		return sum;
+		return mSum;
 	}
 	template<typename T>
 	inline double SmartQueue<T>::GetVariance()
 	{
-		double sum = static_cast<double>(0);
-		double average = GetAverage();
-		std::queue<T> nQueue = mQueue;
-		for (size_t i = 0; i < mQueue.size(); i++)
-		{
-			sum += (nQueue.front() - average) * (nQueue.front() - average);
-			nQueue.pop();
-		}
-		double variance = sum / mQueue.size();
+		double squaredMean = GetAverage() * GetAverage();
+
+		double variance = mSquaredSum / mQueue.size() - squaredMean;
 		return variance;
 	}
 	template<typename T>

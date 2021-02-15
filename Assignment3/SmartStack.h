@@ -32,6 +32,7 @@ namespace assignment3
 		mMin = std::numeric_limits<T>::max();
 		mMax = std::numeric_limits<T>::lowest();
 		mSum = static_cast<T>(0);
+		mSquaredSum = 0.0;
 	}
 
 
