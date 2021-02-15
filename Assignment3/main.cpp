@@ -64,7 +64,7 @@ int main()
 	assert(ssq.Peek() == 3.4999f);
 	assert(ssq.GetMax() == 10.2f);
 	assert(ssq.GetMin() == -12.4f);
-	//assert(std::abs(ssq.GetSum() - 15.985301f) <= EPSILON);
+	assert(std::abs(ssq.GetSum() - 15.985301f) <= EPSILON);
 	assert(std::abs(ssq.GetAverage() - 1.599) <= EPSILON);
 	assert(std::abs(ssq.GetVariance() - 40.057) <= EPSILON);
 	assert(std::abs(ssq.GetStandardDeviation() - 6.329) <= EPSILON);

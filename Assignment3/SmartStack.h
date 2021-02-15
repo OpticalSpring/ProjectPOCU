@@ -22,6 +22,8 @@ namespace assignment3
 		std::stack<T> mStack;
 		T mMin;
 		T mMax;
+		T mSum;
+		double mSquaredSum;
 	};
 
 	template<typename T>
@@ -29,6 +31,7 @@ namespace assignment3
 	{
 		mMin = std::numeric_limits<T>::max();
 		mMax = std::numeric_limits<T>::lowest();
+		mSum = static_cast<T>(0);
 	}
 
 
@@ -38,6 +41,8 @@ namespace assignment3
 	inline void SmartStack<T>::Push(T number)
 	{
 		mStack.push(number);
+		mSum += number;
+		mSquaredSum += number * number;
 		if (mMax < number)
 		{
 			mMax = number;
@@ -53,7 +58,8 @@ namespace assignment3
 	{
 		T r = mStack.top();
 		mStack.pop();
-
+		mSum -= r;
+		mSquaredSum -= mStack.top() * mStack.top();
 		if (r == mMax) 
 		{
 			mMax = std::numeric_limits<T>::lowest();
@@ -116,41 +122,23 @@ namespace assignment3
 	template<typename T>
 	inline double SmartStack<T>::GetAverage()
 	{
-		double ave = static_cast<double>(0);
-		std::stack<T> nStack = mStack;
-		for (size_t i = 0; i < mStack.size(); i++)
-		{
-			ave += static_cast<double>(nStack.top());
-			nStack.pop();
-		}
-		return ave / static_cast<double>(mStack.size());
+		
+		return mSum / static_cast<double>(mStack.size());
 	}
 
 	template<typename T>
 	inline T SmartStack<T>::GetSum()
 	{
-		T sum = static_cast<T>(0);
-		std::stack<T> nStack = mStack;
-		for (size_t i = 0; i < mStack.size(); i++)
-		{
-			sum += nStack.top();
-			nStack.pop();
-		}
-		return sum;
+		
+		return mSum;
 	}
 
 	template<typename T>
 	inline double SmartStack<T>::GetVariance()
 	{
-		double sum = static_cast<double>(0);
-		double average = GetAverage();
-		std::stack<T> nStack = mStack;
-		for (size_t i = 0; i < mStack.size(); i++)
-		{
-			sum += (nStack.top() - average) * (nStack.top() - average);
-			nStack.pop();
-		}
-		double variance = sum / mStack.size();
+		double squaredMean = GetAverage() * GetAverage();
+
+		double variance = mSquaredSum / mStack.size() - squaredMean;
 		return variance;
 	}
 
