@@ -1,4 +1,7 @@
 #pragma once
+#include <queue>
+#include <stack>
+#include <limits>
 namespace assignment3
 {
 	template<typename T>
@@ -15,6 +18,8 @@ namespace assignment3
 		T GetSum();
 		unsigned int GetCount();
 		unsigned int GetStackCount();
+	private:
+		std::queue<std::stack<T>> mQueueStack;
 	};
 	template<typename T>
 	inline QueueStack<T>::QueueStack(unsigned int maxStackSize)

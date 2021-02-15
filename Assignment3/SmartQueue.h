@@ -20,16 +20,14 @@ namespace assignment3
 		unsigned int GetCount();
 	private:
 		std::queue<T> mQueue;
-		T mMin;
-		T mMax;
+		
 		T mSum;
 		double mSquaredSum;
 	};
 	template<typename T>
 	inline SmartQueue<T>::SmartQueue()
 	{
-		mMin = std::numeric_limits<T>::max();
-		mMax = std::numeric_limits<T>::lowest();
+		
 		mSum = static_cast<T>(0);
 		mSquaredSum = 0.0;
 	}
@@ -39,14 +37,6 @@ namespace assignment3
 		mQueue.push(number);
 		mSum += number;
 		mSquaredSum += number * number;
-		if (mMax < number)
-		{
-			mMax = number;
-		}
-		if (mMin > number)
-		{
-			mMin = number;
-		}
 	}
 	template<typename T>
 	inline T SmartQueue<T>::Peek()
@@ -64,50 +54,43 @@ namespace assignment3
 		mQueue.pop();
 		mSum -= r;
 		mSquaredSum -= r * r;
-		if (r == mMax)
-		{
-			mMax = std::numeric_limits<T>::lowest();
-			std::queue<T> nQueue = mQueue;
-			for (size_t i = 0; i < mQueue.size(); i++)
-			{
-				if (mMax < nQueue.front())
-				{
-					mMax = nQueue.front();
-				}
-				nQueue.pop();
-			}
-		}
-		if (r == mMin)
-		{
-			mMin = std::numeric_limits<T>::max();
-			std::queue<T> nQueue = mQueue;
-			for (size_t i = 0; i < mQueue.size(); i++)
-			{
-				if (mMin > nQueue.front())
-				{
-					mMin = nQueue.front();
-				}
-				nQueue.pop();
-			}
-		}
+		
 		if (mQueue.empty() == true)
 		{
-			mMin = std::numeric_limits<T>::max();
-			mMax = std::numeric_limits<T>::lowest();
 			mSum = static_cast<T>(0);
 			mSquaredSum = 0.0;
 		}
 		return r;
 	}
 	template<typename T>
-	inline T SmartQueue<T>::GetMax()
-	{
-		return mMax;
-	}
-	template<typename T>
 	inline T SmartQueue<T>::GetMin()
 	{
-		return mMin;
+		T min = std::numeric_limits<T>::max();
+		std::queue<T> nQueue = mQueue;
+		for (size_t i = 0; i < mQueue.size(); i++)
+		{
+			if (min > nQueue.front()) 
+			{
+				min = nQueue.front();
+			}
+			nQueue.pop();
+		}
+		return min;
+	}
+	template<typename T>
+	inline T SmartQueue<T>::GetMax()
+	{
+		T max = std::numeric_limits<T>::lowest();
+		std::queue<T> nQueue = mQueue;
+		for (size_t i = 0; i < mQueue.size(); i++)
+		{
+			if (max < nQueue.front())
+			{
+				max = nQueue.front();
+			}
+			nQueue.pop();
+		}
+		return max;
 	}
 	template<typename T>
 	inline double SmartQueue<T>::GetAverage()
