@@ -5,7 +5,7 @@ namespace assignment3
 	class QueueStack
 	{
 	public:
-		QueueStack();
+		QueueStack(unsigned int maxStackSize);
 		void Enqueue(T number);
 		T Peek();
 		T Dequeue();
