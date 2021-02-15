@@ -20,53 +20,106 @@ namespace assignment3
 		unsigned int GetStackCount();
 	private:
 		std::queue<std::stack<T>> mQueueStack;
+		unsigned int mMaxStackSize;
 	};
 	template<typename T>
 	inline QueueStack<T>::QueueStack(unsigned int maxStackSize)
 	{
+		mMaxStackSize = maxStackSize;
 	}
 	template<typename T>
 	inline void QueueStack<T>::Enqueue(T number)
 	{
+		if (mQueueStack.empty() == true || mQueueStack.back().size() == 0)
+		{
+			std::stack<T> st;
+			mQueueStack.push(st);
+			mQueueStack.back().push(number);
+		}
+		else
+		{
+			mQueueStack.back().push(number);
+		}
 	}
 	template<typename T>
 	inline T QueueStack<T>::Peek()
 	{
-		return T();
+		return mQueueStack.front().top();
 	}
 	template<typename T>
 	inline T QueueStack<T>::Dequeue()
 	{
-		return T();
+		T r = mQueueStack.front().top();
+		mQueueStack.front().pop();
+		if (mQueueStack.front().size() == 0) 
+		{
+			mQueueStack.pop();
+		}
+		return r;
 	}
 	template<typename T>
 	inline T QueueStack<T>::GetMax()
 	{
-		return T();
+		T max = std::numeric_limits<T>::lowest();
+		auto nQueueStack = mQueueStack;
+		for (size_t i = 0; i < mQueueStack.size(); i++)
+		{
+			if (max < nQueueStack.front().size()) 
+			{
+				max = nQueueStack.front().size();
+			}
+			nQueueStack.pop();
+		}
+		return max;
 	}
 	template<typename T>
 	inline T QueueStack<T>::GetMin()
 	{
-		return T();
+		T min = std::numeric_limits<T>::max();
+		auto nQueueStack = mQueueStack;
+		for (size_t i = 0; i < mQueueStack.size(); i++)
+		{
+			if (min < nQueueStack.front().size())
+			{
+				min = nQueueStack.front().size();
+			}
+			nQueueStack.pop();
+		}
+		return min;
 	}
 	template<typename T>
 	inline double QueueStack<T>::GetAverage()
 	{
-		return 0.0;
+		double ave = static_cast<double>(GetSum()) / static_cast<double>(GetCount());
+		return ave;
 	}
 	template<typename T>
 	inline T QueueStack<T>::GetSum()
 	{
-		return T();
+		T sum = 0;
+		auto nQueueStack = mQueueStack;
+		for (size_t i = 0; i < mQueueStack.size(); i++)
+		{
+			sum += nQueueStack.front().top();
+			nQueueStack.pop();
+		}
+		return sum;
 	}
 	template<typename T>
 	inline unsigned int QueueStack<T>::GetCount()
 	{
-		return 0;
+		unsigned int count = 0;
+		auto nQueueStack = mQueueStack;
+		for (size_t i = 0; i < mQueueStack.size(); i++)
+		{
+			count += nQueueStack.front().size();
+			nQueueStack.pop();
+		}
+		return count;
 	}
 	template<typename T>
 	inline unsigned int QueueStack<T>::GetStackCount()
 	{
-		return 0;
+		return mQueueStack.size();
 	}
 }
