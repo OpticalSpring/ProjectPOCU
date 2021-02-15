@@ -69,7 +69,7 @@ namespace assignment3
 		}
 		if (r == mMin)
 		{
-			mMin = std::numeric_limits<T>::lowest();
+			mMin = std::numeric_limits<T>::max();
 			std::stack<T> nStack = mStack;
 			for (size_t i = 0; i < mStack.size(); i++)
 			{
@@ -150,14 +150,15 @@ namespace assignment3
 			sum += (nStack.top() - average) * (nStack.top() - average);
 			nStack.pop();
 		}
-		float variance = sum / mStack.size();
+		double variance = sum / mStack.size();
 		return variance;
 	}
 
 	template<typename T>
 	inline double SmartStack<T>::GetStandardDeviation()
-	{
-		return sqrtf(GetVariance());
+	{ 
+		double standardDeviation = static_cast<double>(sqrtf(GetVariance()));
+		return standardDeviation;
 	}
 
 	template<typename T>
