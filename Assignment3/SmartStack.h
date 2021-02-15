@@ -60,7 +60,7 @@ namespace assignment3
 		mStack.pop();
 		mSum -= r;
 		mSquaredSum -= mStack.top() * mStack.top();
-		if (r == mMax) 
+		if (r == mMax)
 		{
 			mMax = std::numeric_limits<T>::lowest();
 			std::stack<T> nStack = mStack;
@@ -114,7 +114,7 @@ namespace assignment3
 		{
 			return std::numeric_limits<T>::max();
 		}
-		
+
 
 		return mMin;
 	}
@@ -122,14 +122,14 @@ namespace assignment3
 	template<typename T>
 	inline double SmartStack<T>::GetAverage()
 	{
-		
+
 		return mSum / static_cast<double>(mStack.size());
 	}
 
 	template<typename T>
 	inline T SmartStack<T>::GetSum()
 	{
-		
+
 		return mSum;
 	}
 
@@ -144,7 +144,7 @@ namespace assignment3
 
 	template<typename T>
 	inline double SmartStack<T>::GetStandardDeviation()
-	{ 
+	{
 		double standardDeviation = sqrtf(static_cast<float> (GetVariance()));
 		return standardDeviation;
 	}
