@@ -64,9 +64,13 @@ namespace assignment3
 		auto nQueueStack = mQueueStack;
 		for (size_t i = 0; i < mQueueStack.size(); i++)
 		{
-			if (max < nQueueStack.front().size()) 
+			for (size_t i = 0; i < mQueueStack.front().size(); i++)
 			{
-				max = nQueueStack.front().size();
+				if (max < nQueueStack.front().top()) 
+				{
+					max = nQueueStack.front().top();
+				}
+				nQueueStack.front().pop();
 			}
 			nQueueStack.pop();
 		}
@@ -79,9 +83,13 @@ namespace assignment3
 		auto nQueueStack = mQueueStack;
 		for (size_t i = 0; i < mQueueStack.size(); i++)
 		{
-			if (min < nQueueStack.front().size())
+			for (size_t i = 0; i < mQueueStack.front().size(); i++)
 			{
-				min = nQueueStack.front().size();
+				if (min > nQueueStack.front().top())
+				{
+					min = nQueueStack.front().top();
+				}
+				nQueueStack.front().pop();
 			}
 			nQueueStack.pop();
 		}
@@ -100,7 +108,11 @@ namespace assignment3
 		auto nQueueStack = mQueueStack;
 		for (size_t i = 0; i < mQueueStack.size(); i++)
 		{
-			sum += nQueueStack.front().top();
+			for (size_t i = 0; i < mQueueStack.front().size(); i++)
+			{
+				sum += nQueueStack.front().top();
+				nQueueStack.front().pop();
+			}
 			nQueueStack.pop();
 		}
 		return sum;
