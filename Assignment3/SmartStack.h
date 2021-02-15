@@ -96,20 +96,20 @@ namespace assignment3
 	template<typename T>
 	inline double SmartStack<T>::GetAverage()
 	{
-		double ave = 0;
+		double ave = static_cast<double>(0);
 		std::stack<T> nStack = mStack;
 		for (size_t i = 0; i < mStack.size(); i++)
 		{
-			ave += nStack.top();
+			ave += static_cast<double>(nStack.top());
 			nStack.pop();
 		}
-		return ave / mStack.size();
+		return ave / static_cast<double>(mStack.size());
 	}
 
 	template<typename T>
 	inline T SmartStack<T>::GetSum()
 	{
-		T sum = 0;
+		T sum = static_cast<T>(0);
 		std::stack<T> nStack = mStack;
 		for (size_t i = 0; i < mStack.size(); i++)
 		{
@@ -122,7 +122,7 @@ namespace assignment3
 	template<typename T>
 	inline double SmartStack<T>::GetVariance()
 	{
-		float sum = 0.0f;
+		float sum = static_cast<double>(0);
 		float average = GetAverage();
 		std::stack<T> nStack = mStack;
 		for (size_t i = 0; i < mStack.size(); i++)
