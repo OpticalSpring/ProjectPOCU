@@ -111,21 +111,22 @@ namespace assignment3
 	template<typename T>
 	inline double SmartQueue<T>::GetVariance()
 	{
-		float sum = 0.0f;
-		float average = GetAverage();
-		std::queue<T> nQueue = mQueue;
-		for (size_t i = 0; i < mQueue.size(); i++)
+		double sum = static_cast<double>(0);
+		double average = GetAverage();
+		std::stack<T> nStack = mStack;
+		for (size_t i = 0; i < mStack.size(); i++)
 		{
-			sum += (nQueue.front() - average) * (nQueue.front() - average);
-			nQueue.pop();
+			sum += (nStack.top() - average) * (nStack.top() - average);
+			nStack.pop();
 		}
-		float variance = sum / mQueue.size();
+		double variance = sum / mStack.size();
 		return variance;
 	}
 	template<typename T>
 	inline double SmartQueue<T>::GetStandardDeviation()
 	{
-		return sqrtf(GetVariance());
+		double standardDeviation = static_cast<double>(sqrtf(GetVariance()));
+		return standardDeviation;
 	}
 	template<typename T>
 	inline unsigned int SmartQueue<T>::GetCount()
