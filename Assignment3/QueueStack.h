@@ -30,7 +30,7 @@ namespace assignment3
 	template<typename T>
 	inline void QueueStack<T>::Enqueue(T number)
 	{
-		if (mQueueStack.empty() == true || mQueueStack.back().size() == 0)
+		if (mQueueStack.empty() == true || mQueueStack.back().size() == mMaxStackSize)
 		{
 			std::stack<T> st;
 			mQueueStack.push(st);
@@ -64,7 +64,7 @@ namespace assignment3
 		auto nQueueStack = mQueueStack;
 		for (size_t i = 0; i < mQueueStack.size(); i++)
 		{
-			for (size_t i = 0; i < mQueueStack.front().size(); i++)
+			for (size_t j = 0; j < nQueueStack.front().size(); j++)
 			{
 				if (max < nQueueStack.front().top()) 
 				{
@@ -83,7 +83,7 @@ namespace assignment3
 		auto nQueueStack = mQueueStack;
 		for (size_t i = 0; i < mQueueStack.size(); i++)
 		{
-			for (size_t i = 0; i < mQueueStack.front().size(); i++)
+			for (size_t j = 0; j < nQueueStack.front().size(); j++)
 			{
 				if (min > nQueueStack.front().top())
 				{
@@ -108,7 +108,7 @@ namespace assignment3
 		auto nQueueStack = mQueueStack;
 		for (size_t i = 0; i < mQueueStack.size(); i++)
 		{
-			for (size_t i = 0; i < mQueueStack.front().size(); i++)
+			for (size_t j = 0; j < nQueueStack.front().size(); j++)
 			{
 				sum += nQueueStack.front().top();
 				nQueueStack.front().pop();
