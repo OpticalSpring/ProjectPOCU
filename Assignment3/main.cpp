@@ -1,282 +1,46 @@
 #include <cassert>
 #include <cmath>
-#include <iostream>
+
 #include "QueueStack.h"
-#include "SmartStack.h"
-#include "SmartQueue.h"
 
 using namespace assignment3;
-using namespace std;
+
 int main()
 {
-	QueueStack<float> qsf(3);
+	const double EPSILON = 0.0009765625;
 
-	qsf.Enqueue(-10.2f);
-	qsf.Enqueue(10.2f);
-	qsf.Enqueue(-10.2f);
-	qsf.Enqueue(10.2f);
-	qsf.Enqueue(-10.2f);
-	qsf.Enqueue(10.2f);
-	qsf.Enqueue(10.2f);
-	qsf.Enqueue(10.2f);
-	qsf.Enqueue(10.2f);
-	qsf.Enqueue(10.2f);
-	cout << "--------------------another test--------------" << endl;
+	QueueStack<float> ss(3);
 
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Count is : " << qsf.GetCount() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
+	ss.Enqueue(3.4999f);
+	ss.Enqueue(1.2f);
+	ss.Enqueue(4.6555f);
+	ss.Enqueue(3.3299f);
+	ss.Enqueue(10.2f);
+	ss.Enqueue(1.1f);
+	ss.Enqueue(-5.9f);
+	ss.Enqueue(1.1f);
+	ss.Enqueue(-12.4f);
+	ss.Enqueue(9.2f);
 
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
+	assert(ss.GetCount() == 10U);
+	assert(ss.Peek() == 4.6555f);
+	assert(ss.GetMax() == 10.2f);
+	assert(ss.GetMin() == -12.4f);
+	assert(std::abs(ss.GetSum() - 15.985301f) <= EPSILON);
+	assert(std::abs(ss.GetAverage() - 1.599) <= EPSILON);
+	assert(ss.Peek() == 4.6555f);
 
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
+	float popped1 = ss.Dequeue();
+	float popped2 = ss.Dequeue();
 
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
+	assert(popped1 == 4.6555f);
+	assert(popped2 == 1.2f);
+	assert(ss.GetCount() == 8U);
+	assert(ss.Peek() == 3.4999f);
+	assert(ss.GetMax() == 10.2f);
+	assert(ss.GetMin() == -12.4f);
+	assert(std::abs(ss.GetSum() - 10.129801f) <= EPSILON);
+	assert(std::abs(ss.GetAverage() - 1.266225125) <= EPSILON);
 
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qsf.Dequeue() << endl;
-	cout << "Max is : " << qsf.GetMax() << endl;
-	cout << "Min is : " << qsf.GetMin() << endl;
-
-	QueueStack<int> ti(3);
-
-	ti.Enqueue(3);
-	ti.Enqueue(2);
-	ti.Enqueue(1);
-	ti.Enqueue(4);
-	ti.Enqueue(5);
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << ti.Dequeue() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << ti.Dequeue() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << ti.Dequeue() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << ti.Dequeue() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << ti.Dequeue() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	QueueStack<int> qs(3);
-	qs.Enqueue(1);
-	qs.Enqueue(2);
-	qs.Enqueue(3);
-	qs.Enqueue(5);
-
-	qs.Enqueue(5);
-	qs.Enqueue(-1);
-	qs.Enqueue(6);
-	qs.Enqueue(7);
-
-	qs.Enqueue(6);
-	qs.Enqueue(1);
-	qs.Enqueue(4);
-	qs.Enqueue(0);
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Popped One is  " << qs.Dequeue() << endl;
-	cout << "Max is : " << qs.GetMax() << endl;
-	cout << "Min is : " << qs.GetMin() << endl;
-
-
-	/*QueueStack<int> ti(3);
-	cout << "------------------------------------------" << endl;
-	cout << "Count is : " << ti.GetCount() << endl;
-	cout << "Sum is : " << ti.GetSum() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	ti.Enqueue(1);
-	ti.Enqueue(2);
-	ti.Enqueue(3);
-	ti.Enqueue(4);
-	ti.Enqueue(5);
-	ti.Enqueue(6);
-	ti.Enqueue(7);
-	ti.Enqueue(8);
-
-	cout << "------------------------------------------" << endl;
-	cout << "Dequeued one is : " << ti.Dequeue() << endl;
-	cout << "Count is : " << ti.GetCount() << endl;
-	cout << "Sum is : " << ti.GetSum() << endl;
-	cout << "StackCount is : " << ti.GetStackCount() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-
-	cout << "------------------------------------------" << endl;
-	cout << "Dequeued one is : " << ti.Dequeue() << endl;
-	cout << "Count is : " << ti.GetCount() << endl;
-	cout << "Sum is : " << ti.GetSum() << endl;
-	cout << "StackCount is : " << ti.GetStackCount() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Dequeued one is : " << ti.Dequeue() << endl;
-	cout << "Count is : " << ti.GetCount() << endl;
-	cout << "Sum is : " << ti.GetSum() << endl;
-	cout << "StackCount is : " << ti.GetStackCount() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Dequeued one is : " << ti.Dequeue() << endl;
-	cout << "Count is : " << ti.GetCount() << endl;
-	cout << "Sum is : " << ti.GetSum() << endl;
-	cout << "StackCount is : " << ti.GetStackCount() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Dequeued one is : " << ti.Dequeue() << endl;
-	cout << "Count is : " << ti.GetCount() << endl;
-	cout << "Sum is : " << ti.GetSum() << endl;
-	cout << "StackCount is : " << ti.GetStackCount() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Dequeued one is : " << ti.Dequeue() << endl;
-	cout << "Count is : " << ti.GetCount() << endl;
-	cout << "Sum is : " << ti.GetSum() << endl;
-	cout << "StackCount is : " << ti.GetStackCount() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Dequeued one is : " << ti.Dequeue() << endl;
-	cout << "Count is : " << ti.GetCount() << endl;
-	cout << "Sum is : " << ti.GetSum() << endl;
-	cout << "StackCount is : " << ti.GetStackCount() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Dequeued one is : " << ti.Dequeue() << endl;
-	cout << "Count is : " << ti.GetCount() << endl;
-	cout << "Sum is : " << ti.GetSum() << endl;
-	cout << "StackCount is : " << ti.GetStackCount() << endl;
-	cout << "Max is : " << ti.GetMax() << endl;
-	cout << "Min is : " << ti.GetMin() << endl;*/
-
-	QueueStack<int> fi(3);
-
-	fi.Enqueue(3);
-
-	fi = ti;
-
-	cout << "------------------------------------------" << endl;
-	cout << "Count is : " << fi.GetCount() << endl;
-	cout << "Sum is : " << fi.GetSum() << endl;
-	cout << "StackCount is : " << fi.GetStackCount() << endl;
-	cout << "Max is : " << fi.GetMax() << endl;
-	cout << "Min is : " << fi.GetMin() << endl;
-	cin.get();
 	return 0;
 }
