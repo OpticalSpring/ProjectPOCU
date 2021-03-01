@@ -67,16 +67,27 @@ namespace lab7
 	std::vector<T> operator+(const std::vector<T>& v1, const std::vector<T>& v2)
 	{
 		std::vector<T> combined;
-		for (size_t i = 0; i < v1.size(); i++)
+		for (size_t j = 0; j < v1.size(); j++)
 		{
-			combined.push_back(v1[i]);
+			bool bCheck = false;
+			for (size_t i = 0; i < combined.size(); i++)
+			{
+				if (combined[i] == v1[j])
+				{
+					bCheck = true;
+				}
+			}
+			if (bCheck == false)
+			{
+				combined.push_back(v1[j]);
+			}
 		}
 		for (size_t j = 0; j < v2.size(); j++)
 		{
 			bool bCheck = false;
-			for (size_t i = 0; i < v1.size(); i++)
+			for (size_t i = 0; i < combined.size(); i++)
 			{
-				if (v1[i] == v2[j])
+				if (combined[i] == v2[j])
 				{
 					bCheck = true;
 				}
