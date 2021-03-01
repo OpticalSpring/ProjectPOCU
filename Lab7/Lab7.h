@@ -54,11 +54,9 @@ namespace lab7
 		std::vector<T> rv;
 		for (size_t i = v.size(); i > 0; --i)
 		{
-			rv.push_back(v[i-1]);
-			std::cout << v[i-1] << std::endl;
+			rv.push_back(v[i - 1]);
 		}
-		
-		std::cout << "³¡" << std::endl;
+
 
 		return rv;
 	}
@@ -67,7 +65,25 @@ namespace lab7
 	std::vector<T> operator+(const std::vector<T>& v1, const std::vector<T>& v2)
 	{
 		std::vector<T> combined;
-
+		for (size_t i = 0; i < v1.size(); i++)
+		{
+			combined.push_back(v1[i]);
+		}
+		for (size_t j = 0; j < v2.size(); j++)
+		{
+			bool c = false;
+			for (size_t i = 0; i < v1.size(); i++)
+			{
+				if (v1[i] == v2[j])
+				{
+					c = true;
+				}
+			}
+			if (c == false)
+			{
+				combined.push_back(v2[j]);
+			}
+		}
 		return combined;
 	}
 
@@ -75,6 +91,18 @@ namespace lab7
 	std::map<K, V> operator+(const std::map<K, V>& m1, const std::map<K, V>& m2)
 	{
 		std::map<K, V> combined;
+
+		for (auto i = m1.begin(); i != m1.end(); i++)
+		{
+			combined.insert(std::pair<K, V>(i->first, i->second));
+		}
+
+		for (auto i = m2.begin(); i != m2.end(); i++)
+		{
+			combined.insert(std::pair<K, V>(i->first, i->second));
+		}
+
+
 		return combined;
 	}
 
