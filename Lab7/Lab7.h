@@ -73,15 +73,15 @@ namespace lab7
 		}
 		for (size_t j = 0; j < v2.size(); j++)
 		{
-			bool bc = false;
+			bool bCheck = false;
 			for (size_t i = 0; i < v1.size(); i++)
 			{
 				if (v1[i] == v2[j])
 				{
-					bc = true;
+					bCheck = true;
 				}
 			}
-			if (bc == false)
+			if (bCheck == false)
 			{
 				combined.push_back(v2[j]);
 			}
@@ -113,7 +113,11 @@ namespace lab7
 	{
 		for (size_t i = 0; i < v.size(); i++)
 		{
-			os << v[i] << ", ";
+			os << v[i];
+			if (i < v.size()-1) 
+			{
+				os << ", ";
+			}
 		}
 		return os;
 	}
