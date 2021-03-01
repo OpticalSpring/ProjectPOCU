@@ -10,13 +10,15 @@ namespace lab7
 	std::map<K, V> ConvertVectorsToMap(const std::vector<K>& keys, const std::vector<V>& values)
 	{
 		std::map<K, V> m;
-		if (keys.size() < values.size()) {
+		if (keys.size() < values.size()) 
+		{
 			for (size_t i = 0; i < keys.size(); i++)
 			{
 				m.insert(std::pair<K, V>(keys[i], values[i]));
 			}
 		}
-		else {
+		else 
+		{
 			for (size_t i = 0; i < values.size(); i++)
 			{
 				m.insert(std::pair<K, V>(keys[i], values[i]));
@@ -71,15 +73,15 @@ namespace lab7
 		}
 		for (size_t j = 0; j < v2.size(); j++)
 		{
-			bool c = false;
+			bool bc = false;
 			for (size_t i = 0; i < v1.size(); i++)
 			{
 				if (v1[i] == v2[j])
 				{
-					c = true;
+					bc = true;
 				}
 			}
-			if (c == false)
+			if (bc == false)
 			{
 				combined.push_back(v2[j]);
 			}
