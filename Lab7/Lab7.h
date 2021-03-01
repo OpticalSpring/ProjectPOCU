@@ -109,12 +109,20 @@ namespace lab7
 	template<typename T>
 	std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
 	{
+		for (size_t i = 0; i < v.size(); i++)
+		{
+			os << v[i] << ", ";
+		}
 		return os;
 	}
 
 	template <typename K, class V>
 	std::ostream& operator<<(std::ostream& os, const std::map<K, V>& m)
 	{
+		for (auto i = m.begin(); i != m.end(); i++)
+		{
+			os << "{ " << i->first << ", " << i->second << " }" << std::endl;
+		}
 		return os;
 	}
 }
