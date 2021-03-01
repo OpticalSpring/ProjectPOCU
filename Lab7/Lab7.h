@@ -114,7 +114,7 @@ namespace lab7
 		for (size_t i = 0; i < v.size(); i++)
 		{
 			os << v[i];
-			if (i < v.size()-1) 
+			if (i < v.size() - 1)
 			{
 				os << ", ";
 			}
