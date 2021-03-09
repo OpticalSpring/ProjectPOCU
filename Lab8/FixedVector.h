@@ -50,6 +50,7 @@ namespace lab8 {
 	{
 	}
 
+
 	template<typename T, size_t N>
 	inline bool FixedVector<T, N>::Add(const T& t)
 	{
