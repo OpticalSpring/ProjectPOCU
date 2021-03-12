@@ -9,15 +9,15 @@ namespace lab8
 	{
 	public:
 		FixedVector();
-		FixedVector(const FixedVector<bool, N>& brhs);
-		FixedVector<bool, N>& operator=(const FixedVector<bool, N>& brhs);
+		FixedVector(const FixedVector<bool, N>& bRhs);
+		FixedVector<bool, N>& operator=(const FixedVector<bool, N>& bRhs);
 		~FixedVector();
 
-		bool Add(const bool bt);
-		bool Remove(const bool bt);
+		bool Add(const bool bT);
+		bool Remove(const bool bT);
 		bool Get(size_t index);
 		bool operator[](size_t index);
-		int GetIndex(bool bt);
+		int GetIndex(bool bT);
 		size_t GetSize();
 		size_t GetCapacity();
 	private:
