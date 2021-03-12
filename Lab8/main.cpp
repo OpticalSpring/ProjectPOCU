@@ -72,9 +72,7 @@ int main()
 	{
 		assert(v[i]);
 	}
-	std::cout << v.GetSize();
 	v.Remove(true);
-	std::cout << v.GetSize();
 	assert(v.GetSize() == 4);
 
 	for (size_t i = 0; i < v.GetSize(); i++)

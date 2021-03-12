@@ -14,13 +14,13 @@ namespace lab8 {
 
 		bool Add(const bool t);
 		bool Remove(const bool t);
-		bool Get(unsigned int index);
-		bool operator[](unsigned int index);
+		bool Get(size_t index);
+		bool operator[](size_t index);
 		int GetIndex(bool t);
 		size_t GetSize();
 		size_t GetCapacity();
 	private:
-		int32_t mArray[N];
+		int32_t mArray[N / 32 + 1];
 		size_t mSize;
 	};
 
@@ -40,10 +40,9 @@ namespace lab8 {
 	template<size_t N>
 	inline FixedVector<bool, N>& FixedVector<bool, N>::operator=(const FixedVector<bool, N>& rhs)
 	{
-		FixedVector<bool, N> newVector;
-		newVector.mSize = rhs.mSize;
-		newVector.mArray = rhs.mArray;
-		return newVector;
+		mSize = rhs.mSize;
+		mArray = rhs.mArray;
+		return *this;
 	}
 
 	template<size_t N>
@@ -60,8 +59,17 @@ namespace lab8 {
 			return false;
 		}
 
-		mArray[mSize] = t;
-		mSize++;
+		size_t index = mSize / 32;
+
+		if (t)
+		{
+			mArray[index] |= (1 << mSize++);
+		}
+		else
+		{
+			mArray[index] &= ~(1 << mSize++);
+		}
+
 		return true;
 	}
 
@@ -72,34 +80,54 @@ namespace lab8 {
 		{
 			return false;
 		}
+		if (mSize == 0) 
+		{
+			return false;
+		}
 		for (size_t i = GetIndex(t); i < mSize - 1; i++)
 		{
-			mArray[i] = mArray[i + 1];
+			int32_t tmp = mArray[(i + 1) / 32] & (1 << (i + 1) % 32);
+			tmp >>= ((i + 1) % 32);
+			mArray[i / 32] &= ~(1 << i % 32);
+			mArray[i / 32] |= (tmp << i);
 		}
 		mSize--;
 		return true;
 	}
 
 	template<size_t N>
-	inline bool FixedVector<bool, N>::Get(unsigned int index)
+	inline bool FixedVector<bool, N>::Get(size_t index)
 	{
-		return mArray[index];
+		return static_cast<bool>(mArray[index / 32] & (1 << (index % 32)));
 	}
 
 	template<size_t N>
-	inline bool FixedVector<bool, N>::operator[](unsigned int index)
+	inline bool FixedVector<bool, N>::operator[](size_t index)
 	{
-		return mArray[index];
+		return static_cast<bool>(mArray[index / 32] & (1 << (index % 32)));
 	}
 
 	template<size_t N>
 	inline int FixedVector<bool, N>::GetIndex(bool t)
 	{
-		for (size_t i = 0; i < mSize; i++)
+		if (t == true)
 		{
-			if (t == mArray[i])
+			for (unsigned int i = 0; i < mSize; i++)
 			{
-				return i;
+				if (mArray[i / 32] & (1 << (i % 32)))
+				{
+					return static_cast<int>(i);
+				}
+			}
+		}
+		else
+		{
+			for (unsigned int i = 0; i < mSize; i++)
+			{
+				if ((~mArray[i / 32]) & (1 << (i % 32)))
+				{
+					return static_cast<int>(i);
+				}
 			}
 		}
 		return -1;
