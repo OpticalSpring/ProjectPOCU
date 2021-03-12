@@ -80,7 +80,7 @@ namespace lab8 {
 		{
 			return false;
 		}
-		if (mSize == 0) 
+		if (mSize == 0)
 		{
 			return false;
 		}

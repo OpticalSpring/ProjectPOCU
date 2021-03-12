@@ -54,7 +54,7 @@ namespace lab8 {
 	template<typename T, size_t N>
 	inline bool FixedVector<T, N>::Add(const T& t)
 	{
-		if (mSize >= N) 
+		if (mSize >= N)
 		{
 			return false;
 		}
@@ -67,11 +67,11 @@ namespace lab8 {
 	template<typename T, size_t N>
 	inline bool FixedVector<T, N>::Remove(const T& t)
 	{
-		if (GetIndex(t) == -1) 
+		if (GetIndex(t) == -1)
 		{
 			return false;
 		}
-		for (size_t i = GetIndex(t); i < mSize-1; i++)
+		for (size_t i = GetIndex(t); i < mSize - 1; i++)
 		{
 			mArray[i] = mArray[i + 1];
 		}
