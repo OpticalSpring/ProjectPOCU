@@ -1,22 +1,23 @@
 #pragma once
 
 #include <cstdint>
-namespace lab8 {
+namespace lab8 
+{
 
 	template<size_t N>
 	class FixedVector<bool, N>
 	{
 	public:
 		FixedVector();
-		FixedVector(const FixedVector<bool, N>& rhs);
-		FixedVector<bool, N>& operator=(const FixedVector<bool, N>& rhs);
+		FixedVector(const FixedVector<bool, N>& brhs);
+		FixedVector<bool, N>& operator=(const FixedVector<bool, N>& brhs);
 		~FixedVector();
 
-		bool Add(const bool t);
-		bool Remove(const bool t);
+		bool Add(const bool bt);
+		bool Remove(const bool bt);
 		bool Get(size_t index);
 		bool operator[](size_t index);
-		int GetIndex(bool t);
+		int GetIndex(bool bt);
 		size_t GetSize();
 		size_t GetCapacity();
 	private:
@@ -31,17 +32,17 @@ namespace lab8 {
 	}
 
 	template<size_t N>
-	inline FixedVector<bool, N>::FixedVector(const FixedVector<bool, N>& rhs)
+	inline FixedVector<bool, N>::FixedVector(const FixedVector<bool, N>& brhs)
 	{
-		mSize = rhs.mSize;
-		mArray = rhs.mArray;
+		mSize = brhs.mSize;
+		mArray = brhs.mArray;
 	}
 
 	template<size_t N>
-	inline FixedVector<bool, N>& FixedVector<bool, N>::operator=(const FixedVector<bool, N>& rhs)
+	inline FixedVector<bool, N>& FixedVector<bool, N>::operator=(const FixedVector<bool, N>& brhs)
 	{
-		mSize = rhs.mSize;
-		mArray = rhs.mArray;
+		mSize = brhs.mSize;
+		mArray = brhs.mArray;
 		return *this;
 	}
 
@@ -52,7 +53,7 @@ namespace lab8 {
 	}
 
 	template<size_t N>
-	inline bool FixedVector<bool, N>::Add(const bool t)
+	inline bool FixedVector<bool, N>::Add(const bool bt)
 	{
 		if (mSize >= N)
 		{
@@ -61,7 +62,7 @@ namespace lab8 {
 
 		size_t index = mSize / 32;
 
-		if (t)
+		if (bt)
 		{
 			mArray[index] |= (1 << mSize++);
 		}
@@ -74,9 +75,9 @@ namespace lab8 {
 	}
 
 	template<size_t N>
-	inline bool FixedVector<bool, N>::Remove(const bool t)
+	inline bool FixedVector<bool, N>::Remove(const bool bt)
 	{
-		if (GetIndex(t) == -1)
+		if (GetIndex(bt) == -1)
 		{
 			return false;
 		}
@@ -84,7 +85,7 @@ namespace lab8 {
 		{
 			return false;
 		}
-		for (size_t i = GetIndex(t); i < mSize - 1; i++)
+		for (size_t i = GetIndex(bt); i < mSize - 1; i++)
 		{
 			int32_t tmp = mArray[(i + 1) / 32] & (1 << (i + 1) % 32);
 			tmp >>= ((i + 1) % 32);
@@ -108,9 +109,9 @@ namespace lab8 {
 	}
 
 	template<size_t N>
-	inline int FixedVector<bool, N>::GetIndex(bool t)
+	inline int FixedVector<bool, N>::GetIndex(bool bt)
 	{
-		if (t == true)
+		if (bt == true)
 		{
 			for (unsigned int i = 0; i < mSize; i++)
 			{
