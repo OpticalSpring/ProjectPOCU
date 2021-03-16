@@ -3,9 +3,9 @@
 
 namespace lab9
 {
-	Game::Game(unsigned int seed, unsigned int poolSize) :mObjectPool(poolSize)
+	Game::Game(unsigned int seed, unsigned int poolSize) : mObjectPool(poolSize)
 	{
-		
+
 		srand(seed);
 	}
 
@@ -49,7 +49,7 @@ namespace lab9
 		return mActiveGameObjects;
 	}
 
-	ObjectPool<IceCube>& Game::GetObjectPool() 
+	ObjectPool<IceCube>& Game::GetObjectPool()
 	{
 		return mObjectPool;
 	}
