@@ -8,6 +8,8 @@ namespace lab9
 	{
 	public:
 		ObjectPool<T>(size_t poolSize);
+		ObjectPool(const ObjectPool& rhs) = delete;
+		void operator=(const ObjectPool& rhs) = delete;
 		~ObjectPool<T>();
 		T* Get();
 		void Return(T* t);
@@ -36,7 +38,8 @@ namespace lab9
 	template<typename T>
 	inline T* ObjectPool<T>::Get()
 	{
-		if (mPoolObject.empty()) {
+		if (mPoolObject.empty()) 
+		{
 			return new T;
 		}
 		auto rValue = mPoolObject.front();
