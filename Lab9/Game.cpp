@@ -21,7 +21,7 @@ namespace lab9
 
 	void Game::Spawn()
 	{
-		IceCube* iceCube = new IceCube();
+		IceCube* iceCube = mObjectPool.Get();
 		iceCube->Initialize(rand() % MAX_FRAME_COUNT_TO_LIVE + 1);
 		mActiveGameObjects.push_back(iceCube);
 	}
@@ -36,7 +36,7 @@ namespace lab9
 			if (!iceCube->IsActive())
 			{
 				it = mActiveGameObjects.erase(it);
-				delete iceCube;
+				mObjectPool.Return(iceCube);
 				continue;
 			}
 

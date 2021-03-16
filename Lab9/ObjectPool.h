@@ -25,8 +25,11 @@ namespace lab9
 	template<typename T>
 	inline T* ObjectPool<T>::Get()
 	{
+		if (poolObject.empty()) {
+			return new T;
+		}
 		auto rValue = poolObject.front();
-			poolObject.pop();
+		poolObject.pop();
 		return rValue;
 	}
 	template<typename T>
