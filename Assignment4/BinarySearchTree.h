@@ -108,7 +108,7 @@ namespace assignment4
 			curNode = s.top();
 			s.pop();
 
-			v.push_back(*(curNode->Data));
+			v.push_back(*curNode->Data);
 
 			curNode = curNode->Right;
 		}
