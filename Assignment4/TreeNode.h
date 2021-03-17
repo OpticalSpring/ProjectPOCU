@@ -20,13 +20,13 @@ namespace assignment4
 	template<typename T>
 	TreeNode<T>::TreeNode(std::unique_ptr<T> data)
 	{
-		Data = data;
+		Data = std::move(data);
 	}
 
 	template<typename T>
 	TreeNode<T>::TreeNode(std::shared_ptr<TreeNode<T>> parent, std::unique_ptr<T> data)
 	{
-		Data = data;
+		Data = std::move(data);
 		Parent = parent;
 	}
 }
