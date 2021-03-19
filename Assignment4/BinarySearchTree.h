@@ -20,6 +20,7 @@ namespace assignment4
 		const std::weak_ptr<TreeNode<T>> GetRootNode() const;
 
 		static std::vector<T> TraverseInOrder(const std::shared_ptr<TreeNode<T>> startNode);
+		std::shared_ptr<TreeNode<T>> RemoveSeqence(std::shared_ptr<TreeNode<T>> node, T _vaule);
 	private:
 		std::shared_ptr<TreeNode<T>> mRootNode;
 	};
@@ -34,14 +35,14 @@ namespace assignment4
 		else
 		{
 			std::shared_ptr<TreeNode<T>> curNode = mRootNode;
-			while (true) 
+			while (true)
 			{
 				if (*data < *curNode->Data)
 				{
 					if (curNode->Left == nullptr)
 					{
 						cout << *curNode->Data << " Left " << *data << endl;
-						curNode->Left = std::make_shared<TreeNode<T>>(curNode->Left, std::move(data));
+						curNode->Left = std::make_shared<TreeNode<T>>(curNode, std::move(data));
 						return;
 					}
 					else
@@ -54,7 +55,7 @@ namespace assignment4
 					if (curNode->Right == nullptr)
 					{
 						cout << *curNode->Data << " Right " << *data << endl;
-						curNode->Right = std::make_shared<TreeNode<T>>(curNode->Right, std::move(data));
+						curNode->Right = std::make_shared<TreeNode<T>>(curNode, std::move(data));
 						return;
 					}
 					else
@@ -95,7 +96,7 @@ namespace assignment4
 			curNode = s.top();
 			s.pop();
 
-			if (*curNode->Data == data) 
+			if (*curNode->Data == data)
 			{
 				return true;
 			}
@@ -109,10 +110,52 @@ namespace assignment4
 	template<typename T>
 	bool BinarySearchTree<T>::Delete(const T& data)
 	{
-		
-
+		//RemoveSeqence(mRootNode, data);
 		return false;
 	}
+
+	template <typename T> 
+	std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::RemoveSeqence(std::shared_ptr<TreeNode<T>> node, T _vaule)
+	{
+		if (node == nullptr)
+			return node;
+		else if (node->Data > _vaule) 
+			node->Left = RemoveSeqence(node->Left, _vaule);
+		else if (node->Data < _vaule) 
+			node->Right = RemoveSeqence(node->Right, _vaule);
+		else {
+			std::shared_ptr<TreeNode<T>> ptr = node;
+			//자식이없을떄 
+			if (node->Right == nullptr && node->Left == nullptr)
+			{
+				node.reset();
+				//delete node; 
+				node = nullptr;
+			}
+			//자식이 하나일떄 
+			else if (node->Right == nullptr)
+			{
+				node = node->Left; 
+				ptr.reset();
+				//delete ptr;
+			}
+			else if (node->Left == nullptr)
+			{
+				node = node->Right; 
+				ptr.reset();
+				//delete ptr;
+			}
+			//자식이 두개일떄 :: 왼쪽 노드중 가장큰값 찾아 부모노드로 바꾸기 
+			else {
+				ptr = SearchMaxNode(node->Left);
+				node->Data = ptr->Data;
+				node->Left = RemoveSeqence(node->Left, ptr->Data);
+			}
+		} 
+		return node;
+	}
+
+
 
 	template<typename T>
 	std::vector<T> BinarySearchTree<T>::TraverseInOrder(const std::shared_ptr<TreeNode<T>> startNode)
