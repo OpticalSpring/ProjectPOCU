@@ -20,11 +20,6 @@ int main()
 	std::vector<int> v = tree.TraverseInOrder(tree.GetRootNode().lock());
 
 	assert(v.size() == 8);
-	for (size_t i = 0; i < v.size(); i++)
-	{
-
-		std::cout << v[i] << std::endl;
-	}
 	assert(v[0] == 4);
 	assert(v[1] == 5);
 	assert(v[2] == 10);

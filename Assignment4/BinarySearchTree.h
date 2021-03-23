@@ -21,8 +21,13 @@ namespace assignment4
 
 		static std::vector<T> TraverseInOrder(const std::shared_ptr<TreeNode<T>> startNode);
 		std::shared_ptr<TreeNode<T>> RemoveSeqence(std::shared_ptr<TreeNode<T>> node, T _vaule);
+		std::shared_ptr<TreeNode<T>> SearchMaxNode(std::shared_ptr<TreeNode<T>> node);
 	private:
 		std::shared_ptr<TreeNode<T>> mRootNode;
+
+
+		
+
 	};
 
 	template<typename T>
@@ -110,18 +115,25 @@ namespace assignment4
 	template<typename T>
 	bool BinarySearchTree<T>::Delete(const T& data)
 	{
-		//RemoveSeqence(mRootNode, data);
-		return false;
+		if (Search(data)) 
+		{
+			RemoveSeqence(mRootNode, data);
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
 	}
 
-	template <typename T> 
+	template <typename T>
 	std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::RemoveSeqence(std::shared_ptr<TreeNode<T>> node, T _vaule)
 	{
-		if (node == nullptr)
+		if (node == nullptr || node->Data == nullptr)
 			return node;
-		else if (node->Data > _vaule) 
+		else if (*node->Data > _vaule)
 			node->Left = RemoveSeqence(node->Left, _vaule);
-		else if (node->Data < _vaule) 
+		else if (*node->Data < _vaule)
 			node->Right = RemoveSeqence(node->Right, _vaule);
 		else {
 			std::shared_ptr<TreeNode<T>> ptr = node;
@@ -129,29 +141,40 @@ namespace assignment4
 			if (node->Right == nullptr && node->Left == nullptr)
 			{
 				node.reset();
-				//delete node; 
 				node = nullptr;
 			}
 			//자식이 하나일떄 
 			else if (node->Right == nullptr)
 			{
-				node = node->Left; 
+				node = node->Left;
 				ptr.reset();
-				//delete ptr;
+				ptr = nullptr;
 			}
 			else if (node->Left == nullptr)
 			{
-				node = node->Right; 
+				node = node->Right;
 				ptr.reset();
-				//delete ptr;
+				ptr = nullptr;
 			}
 			//자식이 두개일떄 :: 왼쪽 노드중 가장큰값 찾아 부모노드로 바꾸기 
 			else {
 				ptr = SearchMaxNode(node->Left);
-				node->Data = ptr->Data;
-				node->Left = RemoveSeqence(node->Left, ptr->Data);
+				node->Data = std::move(ptr->Data);
+				node->Left = RemoveSeqence(node->Left, *node->Data);
 			}
-		} 
+		}
+		return node;
+	}
+
+	template<typename T>
+	inline std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::SearchMaxNode(std::shared_ptr<TreeNode<T>> node)
+	{
+		if (node == nullptr)
+			return nullptr;
+		while (node->Right != nullptr)
+		{
+			node = node->Right;
+		}
 		return node;
 	}
 
