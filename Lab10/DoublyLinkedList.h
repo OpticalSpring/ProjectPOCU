@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <memory>
-
+using namespace std;
 namespace lab10
 {
 	template<typename T>
@@ -55,22 +55,22 @@ namespace lab10
 		{
 			return;
 		}
-
-		if (index > GetLength() - 1)
+		if (index > GetLength() -1)
 		{
 			Insert(std::move(data));
 			return;
 		}
 		std::shared_ptr<Node<T>> newNode = std::make_shared<Node<T>>(std::move(data));
+		std::shared_ptr<Node<T>> curNode = mRootNode;
 
 		if (index == 0)
 		{
-			mRootNode->Previous = newNode;
-			newNode->Next = mRootNode;
+			newNode->Next = curNode;
+			curNode->Previous = newNode;
 			mRootNode = newNode;
+			mListLength++;
 			return;
 		}
-		std::shared_ptr<Node<T>> curNode = mRootNode;
 		unsigned int count = 0;
 
 		while (count < index)
@@ -78,33 +78,46 @@ namespace lab10
 			curNode = curNode->Next;
 			count++;
 		}
-
-
-
 		newNode->Next = curNode;
 		newNode->Previous = curNode->Previous.lock();
 		curNode->Previous.lock()->Next = newNode;
-		curNode->Previous.lock() = newNode;
+		curNode->Previous = newNode;
+		mListLength++;
 	}
 
 	template<typename T>
 	bool DoublyLinkedList<T>::Delete(const T& data)
 	{
+		if (GetLength() == 0)
+		{
+			return false;
+		}
 		std::shared_ptr<Node<T>> curNode = mRootNode;
 		if (*curNode->Data == data)
 		{
 			mRootNode = curNode->Next;
+			if (curNode->Next != nullptr) {
+				curNode->Next->Previous.lock() = nullptr;
+			}
 			mListLength--;
 			return true;
 		}
-		for (size_t i = 0; i < mListLength - 1; i++)
+		while (true)
 		{
 			curNode = curNode->Next;
+			if (curNode == nullptr) {
+				return false;
+			}
 			if (*curNode->Data == data)
 			{
-				curNode->Next->Previous = curNode->Previous;
-				std::shared_ptr<Node<T>> objPtr = curNode->Previous.lock();
-				objPtr->Next = curNode->Next;
+				curNode->Previous.lock()->Next = curNode->Next;
+				curNode->Previous.lock() = nullptr;
+				if (curNode->Next != nullptr) {
+
+					curNode->Next->Previous = curNode->Previous;
+					curNode->Next = nullptr;
+				}
+				
 				mListLength--;
 				return true;
 			}
@@ -115,7 +128,10 @@ namespace lab10
 	template<typename T>
 	bool DoublyLinkedList<T>::Search(const T& data) const
 	{
-
+		if (GetLength() == 0)
+		{
+			return false;
+		}
 		std::shared_ptr<Node<T>> curNode = mRootNode;
 		if (*curNode->Data == data)
 		{
