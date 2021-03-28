@@ -55,7 +55,7 @@ namespace lab10
 		{
 			return;
 		}
-		if (index > GetLength() -1)
+		if (index > GetLength() - 1)
 		{
 			Insert(std::move(data));
 			return;
@@ -96,7 +96,8 @@ namespace lab10
 		if (*curNode->Data == data)
 		{
 			mRootNode = curNode->Next;
-			if (curNode->Next != nullptr) {
+			if (curNode->Next != nullptr)
+			{
 				curNode->Next->Previous.lock() = nullptr;
 			}
 			mListLength--;
@@ -105,7 +106,8 @@ namespace lab10
 		while (true)
 		{
 			curNode = curNode->Next;
-			if (curNode == nullptr) {
+			if (curNode == nullptr)
+			{
 				return false;
 			}
 			if (*curNode->Data == data)
@@ -117,7 +119,7 @@ namespace lab10
 					curNode->Next->Previous = curNode->Previous;
 					curNode->Next = nullptr;
 				}
-				
+
 				mListLength--;
 				return true;
 			}
