@@ -35,10 +35,13 @@ int main()
 	assert(size == 6);
 
 	std::shared_ptr<Node<int>> node = list[2];
-	std::cout << *node->Data << std::endl;
 	assert(*node->Data == 4);
 
 	list.Insert(std::make_unique<int>(10), 2);
+	for (size_t i = 0; i < list.GetLength(); i++)
+	{
+		std::cout << *list[i]->Data << std::endl;
+	}
 
 	node = list[2];
 	assert(*node->Data == 10);
