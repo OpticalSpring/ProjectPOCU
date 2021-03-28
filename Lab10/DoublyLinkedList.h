@@ -114,7 +114,8 @@ namespace lab10
 			{
 				curNode->Previous.lock()->Next = curNode->Next;
 				curNode->Previous.lock() = nullptr;
-				if (curNode->Next != nullptr) {
+				if (curNode->Next != nullptr) 
+				{
 
 					curNode->Next->Previous = curNode->Previous;
 					curNode->Next = nullptr;
