@@ -118,6 +118,7 @@ namespace assignment4
 		if (Search(data)) 
 		{
 			RemoveSeqence(mRootNode, data);
+			cout << "Delete" << data << endl;
 			return true;
 		}
 		else 
@@ -192,7 +193,6 @@ namespace assignment4
 
 		std::stack<std::shared_ptr<TreeNode<T>>> s;
 		std::shared_ptr<TreeNode<T>> curNode = startNode;
-
 		while (curNode != nullptr || s.empty() == false)
 		{
 			while (curNode != nullptr)
@@ -208,7 +208,6 @@ namespace assignment4
 
 			curNode = curNode->Right;
 		}
-
 		return v;
 	}
 }
