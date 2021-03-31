@@ -65,24 +65,25 @@ namespace lab11
 	template<typename T>
 	inline Storage<T>& Storage<T>::operator=(const Storage<T>& rhs)
 	{
-		if (rhs == this) return this;
+		if (&rhs == this) return *this;
 		mSize = rhs.mSize;
 		mData = make_unique<T[]>(mSize);
 		for (size_t i = 0; i < mSize; i++)
 		{
 			mData[i] = rhs.mData[i];
 		}
+		return *this;
 	}
 
 	template<typename T>
 	inline Storage<T>& Storage<T>::operator=(Storage<T>&& rhs)
 	{
-		if (rhs == this) return this;
+		if (&rhs == this) return *this;
 		mData = move(rhs.mData);
 		mSize = rhs.mSize;
 		rhs.mSize = 0;
 		rhs.mData = nullptr;
-		return this;
+		return *this;
 	}
 
 
