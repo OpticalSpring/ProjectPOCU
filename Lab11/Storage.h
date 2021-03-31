@@ -19,7 +19,7 @@ namespace lab11
 		bool Update(unsigned int index, const T& data);
 		const std::unique_ptr<T[]>& GetData() const;
 		unsigned int GetSize() const;
-	private: 
+	private:
 		std::unique_ptr<T[]> mData;
 		unsigned int mSize;
 	};
@@ -65,7 +65,10 @@ namespace lab11
 	template<typename T>
 	inline Storage<T>& Storage<T>::operator=(const Storage<T>& rhs)
 	{
-		if (&rhs == this) return *this;
+		if (&rhs == this)
+		{
+			return *this;
+		}
 		mSize = rhs.mSize;
 		mData = make_unique<T[]>(mSize);
 		for (size_t i = 0; i < mSize; i++)
@@ -78,7 +81,10 @@ namespace lab11
 	template<typename T>
 	inline Storage<T>& Storage<T>::operator=(Storage<T>&& rhs)
 	{
-		if (&rhs == this) return *this;
+		if (&rhs == this)
+		{
+			return *this;
+		}
 		mData = move(rhs.mData);
 		mSize = rhs.mSize;
 		rhs.mSize = 0;
@@ -90,7 +96,7 @@ namespace lab11
 	template<typename T>
 	bool Storage<T>::Update(unsigned int index, const T& data)
 	{
-		if (index < mSize) 
+		if (index < mSize)
 		{
 			mData[index] = data;
 			return true;
@@ -101,7 +107,7 @@ namespace lab11
 	template<typename T>
 	const std::unique_ptr<T[]>& Storage<T>::GetData() const
 	{
-		
+
 		return std::move(mData);
 	}
 
