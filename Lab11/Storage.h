@@ -12,10 +12,8 @@ namespace lab11
 	public:
 		Storage(unsigned int length);
 		Storage(unsigned int length, const T& initialValue);
-		Storage(Storage<T>& rhs);
-		Storage<T>& operator=(Storage<T>& rhs);
-		Storage(const Storage<T>& rhs);
-		Storage<T>& operator=(const Storage<T>& rhs);
+		Storage(Storage<T>&& rhs);
+		Storage<T>& operator=(Storage<T>&& rhs);
 		bool Update(unsigned int index, const T& data);
 		const std::unique_ptr<T[]>& GetData() const;
 		unsigned int GetSize() const;
@@ -43,48 +41,25 @@ namespace lab11
 	}
 
 	template<typename T>
-	inline Storage<T>::Storage(Storage<T>& rhs)
+	inline Storage<T>::Storage(Storage<T>&& rhs)
 	{
 		mData = move(rhs.mData);
 		mSize = rhs.mSize;
 		rhs.mSize = 0;
+		rhs.mData = nullptr;
 	}
 
 	template<typename T>
-	inline Storage<T>& Storage<T>::operator=(Storage<T>& rhs)
+	inline Storage<T>& Storage<T>::operator=(Storage<T>&& rhs)
 	{
 		if (rhs == this) return this;
 		mData = move(rhs.mData);
 		mSize = rhs.mSize;
 		rhs.mSize = 0;
+		rhs.mData = nullptr;
 		return this;
 	}
 
-	template<typename T>
-	inline Storage<T>::Storage(const Storage<T>& rhs)
-	{
-		
-		mSize = rhs.mSize;
-		mData = make_unique<T[]>(mSize);
-		for (size_t i = 0; i < mSize; i++)
-		{
-			mData[i] = rhs.mData[i];
-		}
-	}
-
-	template<typename T>
-	inline Storage<T>& Storage<T>::operator=(const Storage<T>& rhs)
-	{
-		if (rhs == this) return this;
-	
-		mSize = rhs.mSize;
-		mData = make_unique<T[]>(mSize);
-		for (size_t i = 0; i < mSize; i++)
-		{
-			mData[i] = rhs.mData[i];
-		}
-		return this;
-	}
 
 	template<typename T>
 	bool Storage<T>::Update(unsigned int index, const T& data)
