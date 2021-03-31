@@ -70,7 +70,6 @@ namespace lab11
 		{
 			mData[i] = rhs.mData[i];
 		}
-		rhs.mData.reset();
 	}
 
 	template<typename T>
@@ -84,7 +83,6 @@ namespace lab11
 		{
 			mData[i] = rhs.mData[i];
 		}
-		rhs.mData.reset();
 		return this;
 	}
 
