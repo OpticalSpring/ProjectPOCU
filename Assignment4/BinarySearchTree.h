@@ -20,14 +20,8 @@ namespace assignment4
 		const std::weak_ptr<TreeNode<T>> GetRootNode() const;
 
 		static std::vector<T> TraverseInOrder(const std::shared_ptr<TreeNode<T>> startNode);
-		std::shared_ptr<TreeNode<T>> RemoveSeqence(std::shared_ptr<TreeNode<T>> node, T _vaule);
-		std::shared_ptr<TreeNode<T>> SearchMaxNode(std::shared_ptr<TreeNode<T>> node);
 	private:
 		std::shared_ptr<TreeNode<T>> mRootNode;
-
-
-		
-
 	};
 
 	template<typename T>
@@ -111,73 +105,103 @@ namespace assignment4
 
 		return false;
 	}
-
 	template<typename T>
 	bool BinarySearchTree<T>::Delete(const T& data)
 	{
-		if (Search(data)) 
+		shared_ptr<TreeNode<T>> p = mRootNode;
+		shared_ptr<TreeNode<T>> q = nullptr;
+		shared_ptr<TreeNode<T>> child = nullptr;
+		while (p)
 		{
-			RemoveSeqence(mRootNode, data);
-			cout << "Delete" << data << endl;
-			return true;
+			if (data == *p->Data)
+				break;
+			if (data < *p->Data)
+			{
+				q = p;
+				p = p->Left;
+			}
+			else
+			{
+				q = p;
+				p = p->Right;
+			}
 		}
-		else 
+		if (!p) 
 		{
 			return false;
 		}
-	}
-
-	template <typename T>
-	std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::RemoveSeqence(std::shared_ptr<TreeNode<T>> node, T _vaule)
-	{
-		if (node == nullptr || node->Data == nullptr)
-			return node;
-		else if (*node->Data > _vaule)
-			node->Left = RemoveSeqence(node->Left, _vaule);
-		else if (*node->Data < _vaule)
-			node->Right = RemoveSeqence(node->Right, _vaule);
 		else {
-			std::shared_ptr<TreeNode<T>> ptr = node;
-			//자식이없을떄 
-			if (node->Right == nullptr && node->Left == nullptr)
+			if (p->Left == nullptr && p->Right == nullptr) 
 			{
-				node.reset();
-				node = nullptr;
+				if (q) 
+				{
+					if (q->Right == p)
+					{
+						q->Right = nullptr;
+						cout << "삭제된 값 :  " << *p->Data;
+					}
+					else if (q->Left == p)
+					{
+						q->Left = nullptr;
+						cout << "삭제된 값 :   " << *p->Data;
+					}
+				}
+				else
+				{
+					mRootNode = nullptr; // 부모노드가 NULL인 노드는 루트노드이다. 루트노드를 삭제한다.
+					cout << "삭제 대상이 루트노드입니다. 트리가 비어있습니다. " << "\n";
+				}
 			}
-			//자식이 하나일떄 
-			else if (node->Right == nullptr)
+			else if (p->Left == nullptr || p->Right == nullptr) // 하나의 서브트리를 가지는 경우의 삭제이다.
 			{
-				node = node->Left;
-				ptr.reset();
-				ptr = nullptr;
+				cout << "삭제 대상이 하나의 서브트리를 가지고 있습니다." << "\n";
+				child = (p->Left != nullptr) ? p->Left : p->Right; // 하나의 서브트리가 왼쪽인경우와 오른쪽인 경우를 찾아냈다.
+				if (q) // 부모노드가 NULL이 아닌경우 부모노드의 링크와 삭제대상의 서브트리를 이어준다.
+				{
+					if (q->Left == p)
+					{
+						q->Left = child;
+						cout << "삭제된 값  :   " << *p->Data;
+					}
+					else if (q->Right == p)
+					{
+						q->Right = child;
+						cout << "삭제된 값 :   " << *p->Data;
+					}
+				}
+				else
+				{
+					mRootNode = child; // 부모노드가 NULL인 경우 삭제대상은 루트노드이다. 루트는 자식이 된다.
+					cout << "삭제 대상이 루트노드입니다. " << "\n";
+				}
 			}
-			else if (node->Left == nullptr)
+			else // 두개의 서브트리를 가지는 경우의 삭제이다.
 			{
-				node = node->Right;
-				ptr.reset();
-				ptr = nullptr;
+				cout << "삭제 대상이 두개의 서브트리를 가지고 있습니다 . 오른쪽 서브트리에서 가장 작은 값을 찾습니다. " << "\n";
+				shared_ptr<TreeNode<T>> search_p = p;
+				shared_ptr<TreeNode<T>> search = 0;
+				search = search_p->Right;
+				while (search->Left != 0) // 오른쪽 서브트리에서 가장 작은 값을 찾는다.
+				{
+					search_p = search;
+					search = search->Left;
+				}
+				if (search_p->Left == search)
+				{
+					search_p->Left = search->Right;
+				}
+				else
+					search_p->Right = search->Right;
+				cout << "삭제될 값 : " << *p->Data << "교체 될 값 : " << *search->Data << "\n";
+
+				p->Data = move(search->Data);
+				search.reset();
+				search_p.reset();
 			}
-			//자식이 두개일떄 :: 왼쪽 노드중 가장큰값 찾아 부모노드로 바꾸기 
-			else {
-				ptr = SearchMaxNode(node->Left);
-				node->Data = std::move(ptr->Data);
-				node->Left = RemoveSeqence(node->Left, *node->Data);
-			}
+
 		}
-		return node;
 	}
 
-	template<typename T>
-	inline std::shared_ptr<TreeNode<T>> BinarySearchTree<T>::SearchMaxNode(std::shared_ptr<TreeNode<T>> node)
-	{
-		if (node == nullptr)
-			return nullptr;
-		while (node->Right != nullptr)
-		{
-			node = node->Right;
-		}
-		return node;
-	}
 
 
 
