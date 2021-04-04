@@ -69,52 +69,20 @@ namespace assignment4
 	template<typename T>
 	const std::weak_ptr<TreeNode<T>> BinarySearchTree<T>::GetRootNode() const
 	{
-
 		return mRootNode;
 	}
 
 	template<typename T>
 	bool BinarySearchTree<T>::Search(const T& data)
 	{
-		if (mRootNode == nullptr)
-		{
-			return false;
-		}
-
-		std::stack<std::shared_ptr<TreeNode<T>>> s;
-		std::shared_ptr<TreeNode<T>> curNode = mRootNode;
-
-		while (curNode != nullptr || s.empty() == false)
-		{
-			while (curNode != nullptr)
-			{
-				s.push(curNode);
-				curNode = curNode->Left;
-			}
-
-			curNode = s.top();
-			s.pop();
-
-			if (*curNode->Data == data)
-			{
-				return true;
-			}
-
-			curNode = curNode->Right;
-		}
-
-		return false;
-	}
-	template<typename T>
-	bool BinarySearchTree<T>::Delete(const T& data)
-	{
 		shared_ptr<TreeNode<T>> p = mRootNode;
 		shared_ptr<TreeNode<T>> q = nullptr;
-		shared_ptr<TreeNode<T>> child = nullptr;
 		while (p)
 		{
 			if (data == *p->Data)
+			{
 				break;
+			}
 			if (data < *p->Data)
 			{
 				q = p;
@@ -126,80 +94,107 @@ namespace assignment4
 				p = p->Right;
 			}
 		}
-		if (!p) 
+		if (!p)
 		{
 			return false;
 		}
-		else {
-			if (p->Left == nullptr && p->Right == nullptr) 
+		return true;
+	}
+	template<typename T>
+	bool BinarySearchTree<T>::Delete(const T& data)
+	{
+		shared_ptr<TreeNode<T>> p = mRootNode;
+		shared_ptr<TreeNode<T>> q = nullptr;
+		shared_ptr<TreeNode<T>> child = nullptr;
+		while (p)
+		{
+			if (data == *p->Data)
 			{
-				if (q) 
+				break;
+			}
+			if (data < *p->Data)
+			{
+				q = p;
+				p = p->Left;
+			}
+			else
+			{
+				q = p;
+				p = p->Right;
+			}
+		}
+		if (!p)
+		{
+			return false;
+		}
+		else
+		{
+			if (p->Left == nullptr && p->Right == nullptr)
+			{
+				if (q)
 				{
 					if (q->Right == p)
 					{
 						q->Right = nullptr;
-						cout << "삭제된 값 :  " << *p->Data;
 					}
 					else if (q->Left == p)
 					{
 						q->Left = nullptr;
-						cout << "삭제된 값 :   " << *p->Data;
 					}
 				}
 				else
 				{
-					mRootNode = nullptr; // 부모노드가 NULL인 노드는 루트노드이다. 루트노드를 삭제한다.
-					cout << "삭제 대상이 루트노드입니다. 트리가 비어있습니다. " << "\n";
+					mRootNode = nullptr;
 				}
 			}
-			else if (p->Left == nullptr || p->Right == nullptr) // 하나의 서브트리를 가지는 경우의 삭제이다.
+			else if (p->Left == nullptr || p->Right == nullptr)
 			{
-				cout << "삭제 대상이 하나의 서브트리를 가지고 있습니다." << "\n";
-				child = (p->Left != nullptr) ? p->Left : p->Right; // 하나의 서브트리가 왼쪽인경우와 오른쪽인 경우를 찾아냈다.
-				if (q) // 부모노드가 NULL이 아닌경우 부모노드의 링크와 삭제대상의 서브트리를 이어준다.
+
+				child = (p->Left != nullptr) ? p->Left : p->Right;
+				if (q)
 				{
 					if (q->Left == p)
 					{
 						q->Left = child;
-						cout << "삭제된 값  :   " << *p->Data;
 					}
 					else if (q->Right == p)
 					{
 						q->Right = child;
-						cout << "삭제된 값 :   " << *p->Data;
 					}
 				}
 				else
 				{
-					mRootNode = child; // 부모노드가 NULL인 경우 삭제대상은 루트노드이다. 루트는 자식이 된다.
-					cout << "삭제 대상이 루트노드입니다. " << "\n";
+					mRootNode = child;
 				}
 			}
-			else // 두개의 서브트리를 가지는 경우의 삭제이다.
+			else
 			{
-				cout << "삭제 대상이 두개의 서브트리를 가지고 있습니다 . 오른쪽 서브트리에서 가장 작은 값을 찾습니다. " << "\n";
-				shared_ptr<TreeNode<T>> search_p = p;
-				shared_ptr<TreeNode<T>> search = 0;
-				search = search_p->Right;
-				while (search->Left != 0) // 오른쪽 서브트리에서 가장 작은 값을 찾는다.
+
+				shared_ptr<TreeNode<T>> searchPtr = p;
+				shared_ptr<TreeNode<T>> search = nullptr;
+				search = searchPtr->Right;
+				while (search->Left != nullptr)
 				{
-					search_p = search;
+					searchPtr = search;
 					search = search->Left;
 				}
-				if (search_p->Left == search)
+				if (searchPtr->Left == search)
 				{
-					search_p->Left = search->Right;
+					searchPtr->Left = search->Right;
 				}
 				else
-					search_p->Right = search->Right;
-				cout << "삭제될 값 : " << *p->Data << "교체 될 값 : " << *search->Data << "\n";
+				{
+					searchPtr->Right = search->Right;
+				}
+
 
 				p->Data = move(search->Data);
 				search.reset();
-				search_p.reset();
+				searchPtr.reset();
 			}
 
 		}
+		return true;
 	}
 
 
