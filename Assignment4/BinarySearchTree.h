@@ -36,11 +36,11 @@ namespace assignment4
 		shared_ptr<TreeNode<T>> p = mRootNode;
 		shared_ptr<TreeNode<T>> q = nullptr;
 
-		while (p != nullptr)
+		while (p)
 		{
 			q = p;
 
-			if (*(p->Data) >= *data)
+			if (*p->Data >= *data)
 			{
 				p = p->Left;
 			}
@@ -50,7 +50,7 @@ namespace assignment4
 			}
 		}
 
-		if (*(q->Data) >= *data)
+		if (*q->Data >= *data)
 		{
 			q->Left = make_shared<TreeNode<T>>(move(data));
 			q->Left->Parent = q;
